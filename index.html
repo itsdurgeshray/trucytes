@@ -38,7 +38,6 @@ html{scroll-behavior:smooth}
 
 /* ─── BASE ───────────────────────────────────────────────────────────────── */
 body{background:var(--white);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
-
 h1,h2,h3,h4,h5,h6,nav,button,.btn-primary,.btn-ghost,.btn-outline,.label-tag,.step-num,.stat-n{font-family:var(--head)}
 
 /* ─── LAYOUT ─────────────────────────────────────────────────────────────── */
@@ -55,54 +54,23 @@ h1,h2,h3,h4,h5,h6,nav,button,.btn-primary,.btn-ghost,.btn-outline,.label-tag,.st
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
 /* ─── TYPOGRAPHY ─────────────────────────────────────────────────────────── */
-.label-tag{
-  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--orange);display:inline-block;margin-bottom:14px;
-}
+.label-tag{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);display:inline-block;margin-bottom:14px}
 .section-title{font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.08;color:var(--text);letter-spacing:-.02em}
 .section-title em{font-style:italic;font-weight:400;color:var(--text2)}
 .section-desc{font-size:17px;color:var(--text2);line-height:1.75;max-width:560px;margin-top:16px}
 
 /* ─── BUTTONS ────────────────────────────────────────────────────────────── */
-.btn-primary{
-  font-family:var(--head);font-size:13px;font-weight:600;letter-spacing:-.01em;
-  background:var(--orange);color:#fff;border:none;cursor:pointer;
-  padding:13px 26px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  transition:background .18s,transform .15s,box-shadow .18s;
-}
+.btn-primary{font-family:var(--head);font-size:13px;font-weight:600;letter-spacing:-.01em;background:var(--orange);color:#fff;border:none;cursor:pointer;padding:13px 26px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .18s,transform .15s,box-shadow .18s}
 .btn-primary:hover{background:var(--orange2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,97,10,.28)}
-.btn-ghost{
-  font-family:var(--head);font-size:13px;font-weight:500;
-  background:transparent;color:var(--text);border:1.5px solid var(--border2);
-  padding:12px 24px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  transition:all .18s;cursor:pointer;
-}
+.btn-ghost{font-family:var(--head);font-size:13px;font-weight:500;background:transparent;color:var(--text);border:1.5px solid var(--border2);padding:12px 24px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .18s;cursor:pointer}
 .btn-ghost:hover{border-color:var(--text);background:var(--off)}
-.btn-outline-orange{
-  font-family:var(--head);font-size:13px;font-weight:600;
-  background:transparent;color:var(--orange);border:1.5px solid var(--orange);
-  padding:11px 22px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:7px;
-  transition:all .18s;cursor:pointer;
-}
-.btn-outline-orange:hover{background:var(--orange-lt)}
-.link-arrow{
-  font-family:var(--head);font-size:13px;font-weight:600;color:var(--orange);
-  text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s;
-}
+.link-arrow{font-family:var(--head);font-size:13px;font-weight:600;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
 .link-arrow:hover{gap:10px}
 .link-arrow svg{flex-shrink:0}
 
 /* ─── NAV ────────────────────────────────────────────────────────────────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:300;height:62px;
-  display:flex;align-items:center;padding:0 48px;
-  background:rgba(7,8,15,.88);backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,255,255,.07);
-  transition:background .3s,border-color .3s,height .3s;
-}
-nav.light{
-  background:rgba(255,255,255,.96);border-bottom-color:var(--border);
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:62px;display:flex;align-items:center;padding:0 48px;background:rgba(7,8,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);transition:background .3s,border-color .3s}
+nav.light{background:rgba(255,255,255,.96);border-bottom-color:var(--border)}
 .nav-logo{font-family:var(--head);font-size:20px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em}
 .nav-logo span{color:var(--orange)}
 nav.light .nav-logo{color:var(--text)}
@@ -118,22 +86,10 @@ nav.light .nav-catalog{color:var(--text2)}
 nav.light .nav-catalog:hover{color:var(--text)}
 
 /* ─── HERO (DARK) ────────────────────────────────────────────────────────── */
-.hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
-  background:var(--navy);
-}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy)}
 #hero-cv{position:absolute;inset:0;width:100%;height:100%}
-.hero-glow{
-  position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 55% 65% at 10% 60%, rgba(232,97,10,.09) 0%,transparent 55%),
-    radial-gradient(ellipse 45% 55% at 90% 20%, rgba(60,100,180,.07) 0%,transparent 50%);
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);
-  background-size:40px 40px;pointer-events:none;
-}
+.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 65% at 10% 60%,rgba(232,97,10,.09) 0%,transparent 55%),radial-gradient(ellipse 45% 55% at 90% 20%,rgba(60,100,180,.07) 0%,transparent 50%)}
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
 .hero-content{position:relative;z-index:2;padding-left:48px;max-width:1080px}
 .h-eye{font-family:var(--body);font-style:italic;font-size:16px;color:rgba(255,255,255,.5);margin-bottom:20px;opacity:0;animation:fup .8s .3s ease forwards}
 .h-h1{font-family:var(--head);font-weight:700;font-size:clamp(60px,8.5vw,120px);line-height:.93;letter-spacing:-.035em;color:#fff;opacity:0;animation:fup .9s .5s ease forwards}
@@ -144,99 +100,64 @@ nav.light .nav-catalog:hover{color:var(--text)}
 .h-routing{opacity:0;animation:fup .9s 1.3s ease forwards}
 .routing-lbl{font-family:var(--head);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px}
 .routing-pills{display:flex;gap:8px}
-.rpill{
-  font-family:var(--head);font-size:12px;font-weight:500;
-  padding:7px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.18);
-  color:rgba(255,255,255,.55);background:transparent;cursor:pointer;transition:all .22s;
-}
+.rpill{font-family:var(--head);font-size:12px;font-weight:500;padding:7px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.55);background:transparent;cursor:pointer;transition:all .22s}
 .rpill:hover,.rpill.on{border-color:var(--orange);color:var(--orange);background:rgba(232,97,10,.1)}
-.hero-scroll{
-  position:absolute;bottom:36px;left:48px;z-index:2;
-  display:flex;align-items:center;gap:12px;
-  opacity:0;animation:fup .9s 1.6s ease forwards;
-}
+.hero-scroll{position:absolute;bottom:36px;left:48px;z-index:2;display:flex;align-items:center;gap:12px;opacity:0;animation:fup .9s 1.6s ease forwards}
 .scrl-line{width:32px;height:1px;background:rgba(255,255,255,.25)}
 .scrl-lbl{font-family:var(--head);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-
-/* bottom blend */
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,var(--navy));z-index:1;pointer-events:none}
 
-/* ─── TRUST BAR ──────────────────────────────────────────────────────────── */
-.trust-bar{
-  background:var(--navy);padding:28px 48px;
-  display:grid;grid-template-columns:repeat(5,1fr);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.ti{display:flex;align-items:center;gap:14px;padding:0 24px;border-right:1px solid rgba(255,255,255,.08)}
-.ti:first-child{padding-left:0}
-.ti:last-child{border-right:none}
-.ti-n{font-family:var(--head);font-size:26px;font-weight:700;color:#fff;line-height:1;flex-shrink:0}
-.ti-l{font-family:var(--head);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);line-height:1.5}
-
-/* ─── SECTION A: THE CASE ────────────────────────────────────────────────── */
-.section-case{
-  background:var(--white);padding:100px 0;
-}
-.case-inner{
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
-  max-width:1200px;margin:0 auto;padding:0 48px;
-}
-.case-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:12px;overflow:hidden}
-.csb{padding:36px 32px;position:relative}
-.csb:nth-child(1){background:var(--orange)}
-.csb:nth-child(2){background:var(--navy)}
-.csb:nth-child(3){background:var(--off);border:1.5px solid var(--border)}
-.csb:nth-child(4){background:var(--warm);border:1.5px solid var(--border)}
-.csb-n{font-family:var(--head);font-size:clamp(36px,4vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1;display:block;margin-bottom:8px}
-.csb:nth-child(1) .csb-n,.csb:nth-child(1) .csb-l{color:#fff}
-.csb:nth-child(2) .csb-n,.csb:nth-child(2) .csb-l{color:#fff;opacity:1}
-.csb:nth-child(2) .csb-l{opacity:.6}
-.csb:nth-child(3) .csb-n{color:var(--text)}
-.csb:nth-child(4) .csb-n{color:var(--text)}
-.csb-l{font-family:var(--head);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);line-height:1.5}
-.case-copy .label-tag{margin-bottom:10px}
+/* ─── THE CASE ───────────────────────────────────────────────────────────── */
+.section-case{background:var(--white);padding:100px 0}
+.case-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;padding:0 48px}
+.case-attrs-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:12px;overflow:hidden}
+.ca{padding:32px 28px}
+.ca:nth-child(1){background:var(--navy)}
+.ca:nth-child(2){background:var(--orange)}
+.ca:nth-child(3){background:var(--off);border:1.5px solid var(--border)}
+.ca:nth-child(4){background:var(--warm);border:1.5px solid var(--border)}
+.ca-icon{font-size:24px;margin-bottom:14px;display:block;line-height:1}
+.ca-title{font-family:var(--head);font-size:15px;font-weight:700;line-height:1.25;margin-bottom:8px}
+.ca:nth-child(1) .ca-title,.ca:nth-child(2) .ca-title{color:#fff}
+.ca:nth-child(3) .ca-title,.ca:nth-child(4) .ca-title{color:var(--text)}
+.ca-desc{font-size:13px;line-height:1.65}
+.ca:nth-child(1) .ca-desc,.ca:nth-child(2) .ca-desc{color:rgba(255,255,255,.6)}
+.ca:nth-child(3) .ca-desc,.ca:nth-child(4) .ca-desc{color:var(--text2)}
 .case-copy h2{font-family:var(--head);font-size:clamp(32px,3.5vw,46px);font-weight:700;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:20px}
 .case-copy h2 em{font-style:italic;font-weight:400;color:var(--text2)}
 .case-copy p{font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:16px}
 .case-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 
-/* ─── SECTION 1: CONFIGURATOR ───────────────────────────────────────────── */
+/* ─── CONFIGURATOR ───────────────────────────────────────────────────────── */
 .section-config{background:var(--off);padding:100px 0}
 .config-inner{max-width:1200px;margin:0 auto;padding:0 48px}
 .config-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:56px}
-.config-head-lead{
-  background:var(--orange-lt);border:1px solid rgba(232,97,10,.2);border-radius:10px;
-  padding:24px 28px;
-}
+.config-head-lead{background:var(--orange-lt);border:1px solid rgba(232,97,10,.2);border-radius:10px;padding:24px 28px}
 .config-head-lead p{font-family:var(--head);font-size:14px;font-weight:500;color:var(--orange2);line-height:1.65;margin-bottom:14px}
 .config-head-lead .mini-form{display:flex;gap:8px}
-.config-head-lead input{
-  flex:1;font-family:var(--body);font-size:14px;padding:10px 14px;
-  border:1px solid rgba(232,97,10,.3);border-radius:6px;outline:none;
-  background:#fff;color:var(--text);transition:border-color .2s;
-}
+.config-head-lead input{flex:1;font-family:var(--body);font-size:14px;padding:10px 14px;border:1px solid rgba(232,97,10,.3);border-radius:6px;outline:none;background:#fff;color:var(--text);transition:border-color .2s}
 .config-head-lead input:focus{border-color:var(--orange)}
 .config-head-lead input::placeholder{color:var(--text3)}
 
-/* configurator widget */
-.configurator{
-  display:grid;grid-template-columns:340px 1fr;gap:3px;border-radius:14px;overflow:hidden;
-  border:1.5px solid var(--border);background:var(--border);
-  box-shadow:0 8px 40px rgba(0,0,0,.07);
-}
-.config-panel{background:var(--white);padding:32px}
-.config-panel h4{font-family:var(--head);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.config-group{margin-bottom:28px}
-.config-group-label{font-family:var(--head);font-size:12px;font-weight:600;color:var(--text2);margin-bottom:10px;display:block}
-.config-options{display:flex;flex-wrap:wrap;gap:7px}
-.copt{
-  font-family:var(--head);font-size:12px;font-weight:500;
-  padding:6px 14px;border-radius:100px;border:1.5px solid var(--border);
-  color:var(--text2);cursor:pointer;transition:all .18s;background:var(--white);
-  user-select:none;
-}
+.configurator{display:grid;grid-template-columns:360px 1fr;gap:3px;border-radius:14px;overflow:hidden;border:1.5px solid var(--border);background:var(--border);box-shadow:0 8px 40px rgba(0,0,0,.07)}
+.config-panel{background:var(--white);padding:28px;overflow-y:auto;max-height:680px}
+.config-panel h4{font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+
+/* control type toggle */
+.ctrl-type{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:28px;border-radius:8px;overflow:hidden;border:1.5px solid var(--border)}
+.ctype-btn{font-family:var(--head);font-size:12px;font-weight:600;padding:10px 14px;border:none;background:var(--white);color:var(--text2);cursor:pointer;transition:all .18s;text-align:center;line-height:1.4}
+.ctype-btn:hover{background:var(--off)}
+.ctype-btn.sel{background:var(--navy);color:#fff}
+
+.config-group{margin-bottom:24px}
+.config-group-label{font-family:var(--head);font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px;display:block}
+.config-sub-label{font-family:var(--head);font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);margin-bottom:7px;margin-top:12px;display:block}
+.config-sub-label:first-child{margin-top:0}
+.config-options{display:flex;flex-wrap:wrap;gap:6px}
+.copt{font-family:var(--head);font-size:12px;font-weight:500;padding:6px 13px;border-radius:100px;border:1.5px solid var(--border);color:var(--text2);cursor:pointer;transition:all .18s;background:var(--white);user-select:none}
 .copt:hover{border-color:var(--orange);color:var(--orange)}
 .copt.sel{background:var(--orange);border-color:var(--orange);color:#fff}
+.config-divider{height:1px;background:var(--border);margin:20px 0}
 
 .config-output{background:var(--white);padding:32px;display:flex;flex-direction:column}
 .config-output-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
@@ -245,163 +166,76 @@ nav.light .nav-catalog:hover{color:var(--text)}
 .config-badge.pending{background:var(--orange-lt);color:var(--orange)}
 
 /* cell schematic */
-.cell-schematic{flex:1;display:flex;align-items:center;justify-content:center;background:var(--off);border-radius:10px;padding:24px;min-height:220px;margin-bottom:20px;position:relative;overflow:hidden}
+.cell-schematic{display:flex;align-items:center;justify-content:center;background:var(--off);border-radius:10px;padding:20px;min-height:200px;margin-bottom:20px;position:relative;overflow:hidden}
 .cell-schematic canvas{max-width:100%;max-height:100%}
 
-.spec-table{width:100%;border-collapse:collapse;margin-bottom:20px}
+.spec-table{width:100%;border-collapse:collapse;margin-bottom:14px}
 .spec-table tr{border-bottom:1px solid var(--border)}
 .spec-table tr:last-child{border-bottom:none}
-.spec-table td{font-size:13px;padding:9px 0}
-.spec-table td:first-child{font-family:var(--head);font-weight:600;color:var(--text2);width:50%}
+.spec-table td{font-size:13px;padding:8px 0}
+.spec-table td:first-child{font-family:var(--head);font-weight:600;color:var(--text2);width:48%}
 .spec-table td:last-child{color:var(--text);font-weight:500}
-.spec-table .spec-highlight{color:var(--orange);font-weight:700}
+.spec-highlight{color:var(--orange)!important;font-weight:700!important}
 
-.config-cta-row{display:flex;gap:10px;align-items:center;padding-top:16px;border-top:1px solid var(--border)}
+/* property description panel */
+.prop-desc{background:var(--navy-lt);border:1px solid rgba(13,27,62,.12);border-radius:8px;padding:0 16px;max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .25s ease,padding .3s ease,margin .3s ease;margin-bottom:0}
+.prop-desc.visible{padding:14px 16px;max-height:200px;opacity:1;margin-bottom:14px}
+.pd-title{font-family:var(--head);font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.pd-text{font-family:var(--body);font-size:12px;color:var(--text2);line-height:1.65}
 
-/* ─── SECTION 2: COMPARISON + APPLICATIONS ──────────────────────────────── */
-.section-compare{background:var(--white);padding:100px 0}
-.compare-inner{max-width:1200px;margin:0 auto;padding:0 48px}
-.compare-head-row{display:grid;grid-template-columns:1fr auto;align-items:end;margin-bottom:56px;gap:40px}
+.config-cta-row{display:flex;gap:10px;align-items:center;padding-top:16px;border-top:1px solid var(--border);margin-top:auto}
 
-/* inline email capture */
-.inline-capture{
-  background:var(--navy-lt);border:1px solid rgba(13,27,62,.12);border-radius:10px;
-  padding:20px 24px;min-width:320px;
-}
-.inline-capture p{font-family:var(--head);font-size:13px;font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.5}
-.inline-capture .ic-form{display:flex;gap:8px}
-.inline-capture input{
-  flex:1;font-family:var(--body);font-size:13px;padding:10px 14px;
-  border:1.5px solid rgba(13,27,62,.2);border-radius:6px;outline:none;
-  background:#fff;color:var(--text);transition:border-color .2s;
-}
-.inline-capture input:focus{border-color:var(--navy)}
-.inline-capture input::placeholder{color:var(--text3)}
-.btn-navy{
-  font-family:var(--head);font-size:12px;font-weight:600;
-  background:var(--navy);color:#fff;border:none;
-  padding:10px 18px;border-radius:6px;cursor:pointer;white-space:nowrap;
-  transition:background .18s;
-}
-.btn-navy:hover{background:var(--navy2)}
+/* ─── ANATOMY SECTION ────────────────────────────────────────────────────── */
+.section-anatomy{background:var(--white);padding:100px 0}
+.anat-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.anat-head{margin-bottom:64px}
+.anat-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.anat-canvas-wrap{background:var(--off);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;position:sticky;top:80px;box-shadow:0 8px 40px rgba(0,0,0,.06)}
+.anat-canvas-wrap canvas{width:100%;display:block}
+.anat-canvas-label{padding:14px 20px;border-top:1px solid var(--border);font-family:var(--head);font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--text3);text-align:center;transition:color .3s}
+.anat-props{display:flex;flex-direction:column;gap:12px}
+.anat-prop{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:28px 32px;cursor:pointer;transition:border-color .2s,background .2s;border-left:4px solid transparent}
+.anat-prop:hover{border-color:var(--border2)}
+.anat-prop.active{background:var(--off);border-color:var(--border2)}
+.anat-prop:nth-child(1).active{border-left-color:var(--orange)}
+.anat-prop:nth-child(2).active{border-left-color:#22C55E}
+.anat-prop:nth-child(3).active{border-left-color:var(--navy)}
+.ap-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.ap-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.anat-prop:nth-child(1) .ap-dot{background:var(--orange)}
+.anat-prop:nth-child(2) .ap-dot{background:#22C55E}
+.anat-prop:nth-child(3) .ap-dot{background:var(--navy)}
+.ap-name{font-family:var(--head);font-size:16px;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.ap-badge{font-family:var(--head);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-left:auto;white-space:nowrap}
+.anat-prop:nth-child(1) .ap-badge{color:var(--orange);background:var(--orange-lt)}
+.anat-prop:nth-child(2) .ap-badge{color:var(--green-ok);background:var(--green-lt)}
+.anat-prop:nth-child(3) .ap-badge{color:var(--navy);background:var(--navy-lt)}
+.ap-desc{font-size:15px;color:var(--text2);line-height:1.78}
+.ap-sub{font-family:var(--head);font-size:12px;font-weight:500;color:var(--text3);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);line-height:1.55}
 
-/* comparison table */
-.compare-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1.5px solid var(--border)}
-.ct-head{background:var(--navy);color:#fff}
-.ct-head th{
-  font-family:var(--head);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  padding:16px 20px;text-align:left;border-right:1px solid rgba(255,255,255,.08);
-}
-.ct-head th:last-child{border-right:none}
-.ct-head th:first-child{background:var(--navy2);width:28%}
-.ct-head th:nth-child(2){background:var(--orange);width:30%}
-.compare-table tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
-.compare-table tbody tr:last-child{border-bottom:none}
-.compare-table tbody tr:hover{background:var(--off)}
-.compare-table td{padding:14px 20px;font-size:14px;vertical-align:middle;border-right:1px solid var(--border)}
-.compare-table td:last-child{border-right:none}
-.compare-table td:first-child{font-family:var(--head);font-weight:600;color:var(--text);background:var(--off)}
-.ct-win{
-  font-family:var(--head);font-size:12px;font-weight:700;
-  display:inline-flex;align-items:center;gap:6px;color:var(--green-ok);
-}
-.ct-win::before{content:'✓';font-size:13px}
-.ct-partial{color:var(--text2);font-size:13px;display:flex;align-items:center;gap:5px}
-.ct-partial::before{content:'~';font-weight:700;color:var(--text3)}
-.ct-lose{color:var(--red-no);font-size:13px;display:flex;align-items:center;gap:5px}
-.ct-lose::before{content:'✗';font-weight:700}
-.ct-trucyte-col{background:rgba(232,97,10,.04)!important}
-
-/* application tiles */
-.app-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:3px;border-radius:12px;overflow:hidden;border:1.5px solid var(--border)}
-.app-tile{background:var(--white);padding:28px 24px;position:relative;overflow:hidden;transition:background .2s}
-.app-tile:hover{background:var(--off)}
-.app-tile::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--border2)}
-.app-tile.at-active::after{background:var(--orange)}
-.at-icon{width:36px;height:36px;color:var(--text3);margin-bottom:16px;transition:color .2s}
-.app-tile.at-active .at-icon,.app-tile:hover .at-icon{color:var(--orange)}
-.at-name{font-family:var(--head);font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-.01em}
-.at-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:14px}
-.at-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
-.at-tag{font-family:var(--head);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);padding:3px 8px;border:1px solid var(--border);border-radius:4px}
-.at-link{font-family:var(--head);font-size:12px;font-weight:600;color:var(--orange);display:flex;align-items:center;gap:5px;transition:gap .18s;text-decoration:none}
-.at-link:hover{gap:9px}
-
-/* ─── SECTION 3: JOURNEY / TIMELINE ─────────────────────────────────────── */
+/* ─── JOURNEY ────────────────────────────────────────────────────────────── */
 .section-journey{background:var(--off);padding:100px 0;overflow:hidden}
 .journey-inner{max-width:1200px;margin:0 auto;padding:0 48px}
 .journey-head{text-align:center;max-width:680px;margin:0 auto 72px}
-
-/* horizontal timeline */
 .journey-track{position:relative}
-.journey-line{
-  position:absolute;top:48px;left:64px;right:64px;height:2px;
-  background:var(--border);z-index:0;
-}
-.journey-line-fill{
-  position:absolute;top:0;left:0;height:100%;
-  background:var(--orange);transition:width 1s ease;width:0%;
-}
-.journey-steps{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1;
-}
+.journey-line{position:absolute;top:48px;left:64px;right:64px;height:2px;background:var(--border);z-index:0}
+.journey-line-fill{position:absolute;top:0;left:0;height:100%;background:var(--orange);transition:width 1s ease;width:0%}
+.journey-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
 .jstep{padding:0 20px;text-align:center}
-.jstep-dot{
-  width:48px;height:48px;border-radius:50%;background:var(--white);border:2px solid var(--border);
-  margin:0 auto 24px;display:flex;align-items:center;justify-content:center;
-  font-family:var(--head);font-size:16px;font-weight:700;color:var(--text3);
-  transition:all .4s;position:relative;z-index:2;
-}
-.jstep.done .jstep-dot,.jstep.active .jstep-dot{
-  background:var(--orange);border-color:var(--orange);color:#fff;
-  box-shadow:0 0 0 6px rgba(232,97,10,.15);
-}
+.jstep-dot{width:48px;height:48px;border-radius:50%;background:var(--white);border:2px solid var(--border);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:16px;font-weight:700;color:var(--text3);transition:all .4s;position:relative;z-index:2}
+.jstep.done .jstep-dot,.jstep.active .jstep-dot{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 0 0 6px rgba(232,97,10,.15)}
 .jstep-tag{font-family:var(--head);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
 .jstep.done .jstep-tag,.jstep.active .jstep-tag{color:var(--orange)}
 .jstep-title{font-family:var(--head);font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.01em;margin-bottom:10px;line-height:1.2}
 .jstep-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:18px}
-.jstep-cta{
-  display:inline-flex;align-items:center;gap:6px;font-family:var(--head);
-  font-size:12px;font-weight:600;color:var(--orange);text-decoration:none;
-  border:1.5px solid var(--orange);border-radius:6px;padding:8px 16px;
-  transition:all .18s;background:transparent;cursor:pointer;
-}
+.jstep-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--head);font-size:12px;font-weight:600;color:var(--orange);text-decoration:none;border:1.5px solid var(--orange);border-radius:6px;padding:8px 16px;transition:all .18s;background:transparent;cursor:pointer}
 .jstep-cta:hover{background:var(--orange);color:#fff}
 .jstep-cta.ghost{border-color:var(--border2);color:var(--text2)}
 .jstep-cta.ghost:hover{border-color:var(--orange);color:var(--orange);background:transparent}
-
-/* journey bottom strip */
-.journey-strip{
-  margin-top:72px;background:var(--navy);border-radius:14px;padding:36px 40px;
-  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
-}
+.journey-strip{margin-top:72px;background:var(--navy);border-radius:14px;padding:36px 40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
 .jstrip-copy h3{font-family:var(--head);font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
 .jstrip-copy p{font-size:15px;color:rgba(255,255,255,.55);max-width:540px}
 .jstrip-actions{display:flex;gap:10px;flex-shrink:0}
-
-/* ─── PROOF ──────────────────────────────────────────────────────────────── */
-.section-proof{background:var(--white);padding:100px 0}
-.proof-inner{max-width:1200px;margin:0 auto;padding:0 48px}
-.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:14px;overflow:hidden;border:1.5px solid var(--border)}
-.proof-quote-block{background:var(--navy);padding:56px}
-.pqb-label{font-family:var(--head);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:32px;display:block}
-.pqb-q{font-family:var(--head);font-style:italic;font-weight:400;font-size:clamp(18px,2.2vw,26px);color:#fff;line-height:1.45;margin-bottom:28px}
-.pqb-attr strong{font-family:var(--head);font-size:14px;font-weight:600;color:#fff;display:block;margin-bottom:4px}
-.pqb-attr span{font-family:var(--body);font-size:13px;color:rgba(255,255,255,.45)}
-.proof-stats-block{background:var(--off);display:grid;grid-template-columns:1fr 1fr;gap:3px}
-.psb{background:var(--white);padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
-.psb:nth-child(1){background:var(--orange-lt)}
-.psb-n{font-family:var(--head);font-size:clamp(36px,3.5vw,52px);font-weight:700;letter-spacing:-.03em;color:var(--orange);line-height:1;margin-bottom:8px;display:block}
-.psb:nth-child(1) .psb-n{color:var(--orange)}
-.psb-l{font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);line-height:1.5}
-.proof-logos{margin-top:56px}
-.proof-logos p{font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:20px;text-align:center}
-.logos-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
-.logo-pill{
-  font-family:var(--head);font-size:13px;font-weight:700;color:var(--text3);
-  padding:10px 24px;border:1.5px solid var(--border);border-radius:8px;
-  letter-spacing:-.01em;
-}
 
 /* ─── FORM ───────────────────────────────────────────────────────────────── */
 .section-form{background:var(--off);padding:100px 0}
@@ -410,59 +244,31 @@ nav.light .nav-catalog:hover{color:var(--text)}
 .form-left h2 em{font-style:italic;font-weight:400;color:var(--text2)}
 .form-left .promise{font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:32px}
 .form-trust{list-style:none}
-.form-trust li{
-  font-family:var(--head);font-size:14px;font-weight:500;color:var(--text2);
-  padding:12px 0;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:12px;
-}
-.form-trust li .check{
-  width:22px;height:22px;border-radius:50%;background:var(--green-lt);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  font-size:12px;color:var(--green-ok);
-}
+.form-trust li{font-family:var(--head);font-size:14px;font-weight:500;color:var(--text2);padding:12px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.form-trust li .check{width:22px;height:22px;border-radius:50%;background:var(--green-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;color:var(--green-ok)}
 .form-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:36px;box-shadow:0 4px 24px rgba(0,0,0,.05)}
 .form-card form{display:flex;flex-direction:column;gap:18px}
 .field label{font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:7px}
-.field input,.field select{
-  width:100%;font-family:var(--body);font-size:15px;
-  padding:13px 16px;border:1.5px solid var(--border);border-radius:8px;
-  outline:none;color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s;
-}
+.field input,.field select{width:100%;font-family:var(--body);font-size:15px;padding:13px 16px;border:1.5px solid var(--border);border-radius:8px;outline:none;color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s}
 .field input:focus,.field select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,97,10,.1)}
 .field input::placeholder{color:var(--text3)}
 .field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9794' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-color:var(--white)}
-.field select option{background:var(--white)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-submit-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:4px}
 .form-note{font-family:var(--head);font-size:11px;font-weight:500;color:var(--text3)}
 
-/* ─── STICKY CTA BAR ─────────────────────────────────────────────────────── */
-.sticky-bar{
-  position:fixed;bottom:0;left:0;right:0;z-index:250;
-  background:rgba(255,255,255,.96);backdrop-filter:blur(16px);
-  border-top:1px solid var(--border);
-  padding:14px 48px;
-  display:flex;align-items:center;justify-content:space-between;
-  transform:translateY(100%);transition:transform .35s ease;
-}
+/* ─── STICKY BAR ─────────────────────────────────────────────────────────── */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:250;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .35s ease}
 .sticky-bar.show{transform:translateY(0)}
 .sb-copy{font-family:var(--head);font-size:14px;font-weight:600;color:var(--text)}
 .sb-copy span{color:var(--orange)}
 .sb-actions{display:flex;gap:10px;align-items:center}
-.sb-dismiss{
-  font-family:var(--head);font-size:12px;font-weight:500;color:var(--text3);
-  background:none;border:none;cursor:pointer;padding:4px;
-}
+.sb-dismiss{font-family:var(--head);font-size:12px;font-weight:500;color:var(--text3);background:none;border:none;cursor:pointer;padding:4px}
 
 /* ─── FOOTER ─────────────────────────────────────────────────────────────── */
 footer{background:var(--navy)}
-.footer-statement{
-  padding:72px 48px;border-bottom:1px solid rgba(255,255,255,.07);
-}
-.footer-statement p{
-  font-family:var(--head);font-size:clamp(24px,4vw,52px);font-weight:700;
-  color:rgba(255,255,255,.35);letter-spacing:-.025em;line-height:1.2;
-}
+.footer-statement{padding:72px 48px;border-bottom:1px solid rgba(255,255,255,.07)}
+.footer-statement p{font-family:var(--head);font-size:clamp(24px,4vw,52px);font-weight:700;color:rgba(255,255,255,.35);letter-spacing:-.025em;line-height:1.2}
 .footer-statement p strong{color:#fff;font-weight:700}
 .footer-statement p em{font-style:italic;font-weight:400;color:var(--orange)}
 .footer-nav{padding:64px 48px 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px}
@@ -477,21 +283,11 @@ footer{background:var(--navy)}
 .footer-bottom p{font-family:var(--head);font-size:11px;color:rgba(255,255,255,.28)}
 
 /* ─── PERSONA NOTES ──────────────────────────────────────────────────────── */
-.pnote{
-  display:none;padding:14px 18px;border-radius:8px;margin-top:16px;
-  background:var(--orange-lt);border-left:3px solid var(--orange);
-  font-family:var(--head);font-size:13px;font-weight:500;color:var(--orange2);line-height:1.6;
-}
-body.p-researcher .pnote-r,
-body.p-procurement .pnote-p,
-body.p-director .pnote-d{display:block}
+.pnote{display:none;padding:14px 18px;border-radius:8px;margin-top:16px;background:var(--orange-lt);border-left:3px solid var(--orange);font-family:var(--head);font-size:13px;font-weight:500;color:var(--orange2);line-height:1.6}
+body.p-researcher .pnote-r,body.p-procurement .pnote-p,body.p-director .pnote-d{display:block}
 
 /* ─── KEYFRAMES ──────────────────────────────────────────────────────────── */
-@keyframes fup{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -502,9 +298,8 @@ body.p-director .pnote-d{display:block}
   <ul class="nav-links">
     <li><a href="#section-case">Science</a></li>
     <li><a href="#section-config">Configure</a></li>
-    <li><a href="#section-compare">Applications</a></li>
+    <li><a href="#section-anatomy">Engineering</a></li>
     <li><a href="#section-journey">Process</a></li>
-    <li><a href="#section-proof">Research</a></li>
   </ul>
   <div class="nav-right">
     <a href="#" class="nav-catalog">Catalog</a>
@@ -512,7 +307,7 @@ body.p-director .pnote-d{display:block}
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════════════ HERO (DARK) -->
+<!-- ════════════════════════════════════════════════ HERO -->
 <section class="hero">
   <canvas id="hero-cv"></canvas>
   <div class="hero-glow"></div>
@@ -521,7 +316,7 @@ body.p-director .pnote-d{display:block}
     <p class="h-eye">Not Plastic. Not a Person. Not an Animal.</p>
     <h1 class="h-h1">Custom<br><span class="italic-word">TruCytes®</span></h1>
     <p class="h-kicker">Biomarker Controls &nbsp;·&nbsp; SlinghotBio</p>
-    <p class="h-desc">Engineered synthetic cell mimics — more consistent than biological controls, precisely customizable, ambient-stable, and ready for your exact research requirements.</p>
+    <p class="h-desc">Precision-engineered synthetic cell mimics designed to replicate the phenotype and function critical to your research — with unmatched consistency, accuracy, and scalability.</p>
     <div class="h-ctas">
       <a href="#section-form" class="btn-primary" style="padding:14px 28px">Request Evaluation Kit</a>
       <a href="#section-config" class="btn-ghost" style="color:rgba(255,255,255,.65);border-color:rgba(255,255,255,.2)">Configure yours</a>
@@ -531,11 +326,11 @@ body.p-director .pnote-d{display:block}
       <div class="routing-pills">
         <button class="rpill" onclick="routeTo('researcher','#section-case',this)">Researcher</button>
         <button class="rpill" onclick="routeTo('procurement','#section-journey',this)">Procurement</button>
-        <button class="rpill" onclick="routeTo('director','#section-proof',this)">Lab Director</button>
+        <button class="rpill" onclick="routeTo('director','#section-anatomy',this)">Lab Director</button>
       </div>
-      <div class="pnote pnote-r" style="margin-top:14px;max-width:460px">Technical data sheets, QC criteria and validated assay protocols are available in your evaluation kit. Scroll to see assay compatibility →</div>
-      <div class="pnote pnote-p" style="margin-top:14px;max-width:460px">Volume pricing, ISO 13485 docs, and framework agreements available from Step 2. No minimum commitments at evaluation. →</div>
-      <div class="pnote pnote-d" style="margin-top:14px;max-width:460px">TruCytes® are cited in 250+ peer-reviewed publications across 34 countries. Multi-site standardisation packages available. →</div>
+      <div class="pnote pnote-r" style="margin-top:14px;max-width:460px">Technical data sheets, QC criteria, and validated assay protocols are available in your evaluation kit. Scroll to explore assay compatibility →</div>
+      <div class="pnote pnote-p" style="margin-top:14px;max-width:460px">Volume pricing, ISO 13485 documentation, and framework agreements available from Step 2. No minimum commitments at evaluation stage. →</div>
+      <div class="pnote pnote-d" style="margin-top:14px;max-width:460px">Multi-site standardisation packages and institutional supply agreements available. Our Field Application Scientists support onboarding across every site. →</div>
     </div>
   </div>
   <div class="hero-scroll">
@@ -544,45 +339,40 @@ body.p-director .pnote-d{display:block}
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════ TRUST BAR -->
-<div class="trust-bar rv">
-  <div class="ti"><span class="ti-n">200+</span><span class="ti-l">Research institutions worldwide</span></div>
-  <div class="ti"><span class="ti-n">99.7%</span><span class="ti-l">Lot-to-lot consistency</span></div>
-  <div class="ti"><span class="ti-n">47</span><span class="ti-l">Validated configurations</span></div>
-  <div class="ti"><span class="ti-n">250+</span><span class="ti-l">Peer-reviewed publications</span></div>
-  <div class="ti"><span class="ti-n">ISO&nbsp;13485</span><span class="ti-l">Certified manufacturing</span></div>
-</div>
-
-<!-- ════════════════════════════════════════════════ A: THE CASE -->
+<!-- ════════════════════════════════════════════════ THE CASE -->
 <section id="section-case" class="section-case">
   <div class="case-inner">
-    <div class="case-stats-grid rl">
-      <div class="csb">
-        <span class="csb-n">99.7%</span>
-        <span class="csb-l">Lot-to-lot consistency — guaranteed & certified</span>
+    <div class="case-attrs-grid rl">
+      <div class="ca">
+        <span class="ca-icon">⬡</span>
+        <div class="ca-title">Fully Synthetic</div>
+        <div class="ca-desc">No donor sourcing. No IRB complexity. No cold chain dependency.</div>
       </div>
-      <div class="csb">
-        <span class="csb-n">47</span>
-        <span class="csb-l">Validated biomarker configurations in catalog</span>
+      <div class="ca">
+        <span class="ca-icon">◎</span>
+        <div class="ca-title">Custom to Specification</div>
+        <div class="ca-desc">Any surface marker, particle size, rigidity, or assay format. Your exact panel.</div>
       </div>
-      <div class="csb">
-        <span class="csb-n">&lt;2wk</span>
-        <span class="csb-l">Custom order fulfillment, spec to shipment</span>
+      <div class="ca">
+        <span class="ca-icon">≡</span>
+        <div class="ca-title">Lot-Identical Performance</div>
+        <div class="ca-desc">Every batch manufactured to the same specification. Run your gating templates unchanged.</div>
       </div>
-      <div class="csb">
-        <span class="csb-n">∞</span>
-        <span class="csb-l">Ambient shelf stability — no cold chain needed</span>
+      <div class="ca">
+        <span class="ca-icon">◈</span>
+        <div class="ca-title">Ambient Stable</div>
+        <div class="ca-desc">Ships and stores without cold chain. Designed for multi-site research programmes.</div>
       </div>
     </div>
     <div class="case-copy rr">
       <span class="label-tag">The science</span>
       <h2>Biological controls vary.<br><em>TruCytes® don't.</em></h2>
       <p>Traditional biomarker controls introduce inherent variability — donor variation, cold-chain degradation, ethical procurement barriers, and batch-to-batch inconsistency that inflates your error bars and slows your research.</p>
-      <p>TruCytes® are fully synthetic cell mimics engineered to exact specification. Every lot is manufactured to match your assay, verified by multi-parameter flow cytometry, and shipped with a Certificate of Analysis.</p>
+      <p>TruCytes® Custom Biomarker Controls are precision-engineered synthetic cell mimics that enhance consistency, accuracy, and scalability for your specific research needs. Every lot is manufactured to your specification and verified by multi-parameter flow cytometry before shipment.</p>
       <div class="case-ctas">
         <a href="#section-form" class="btn-primary">Get Technical Data Sheet</a>
-        <a href="#section-compare" class="link-arrow">
-          See assay compatibility
+        <a href="#section-config" class="link-arrow">
+          Build your configuration
           <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M0 4H12M12 4L9 1M12 4L9 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
       </div>
@@ -595,9 +385,9 @@ body.p-director .pnote-d{display:block}
   <div class="config-inner">
     <div class="config-head rv">
       <div>
-        <span class="label-tag">Customizable controls</span>
+        <span class="label-tag">Customizable controls for unmatched precision</span>
         <h2 class="section-title">Build your<br><em>exact specification</em></h2>
-        <p class="section-desc" style="font-size:15px">Select your requirements below — the live preview updates in real time. Don't see what you need? Request a custom configuration.</p>
+        <p class="section-desc" style="font-size:15px">Select your requirements — the live preview updates in real time. Hover any option to learn what it means for your assay.</p>
       </div>
       <div class="config-head-lead">
         <p>Get a quote for your selected configuration. Our scientists respond within 24 hours.</p>
@@ -612,49 +402,100 @@ body.p-director .pnote-d{display:block}
       <!-- LEFT: selection panel -->
       <div class="config-panel">
         <h4>Configure TruCytes®</h4>
+
+        <!-- Control Type -->
+        <div class="config-group">
+          <span class="config-group-label">Control Type</span>
+          <div class="ctrl-type" id="opt-type">
+            <button class="ctype-btn sel" onclick="selectCtrlType(this,'Standard Controls')">Standard Controls</button>
+            <button class="ctype-btn" onclick="selectCtrlType(this,'Functional Assay')">Functional Assay</button>
+          </div>
+        </div>
+
+        <!-- Surface Biomarkers -->
         <div class="config-group">
           <span class="config-group-label">Surface Biomarkers</span>
           <div class="config-options" id="opt-markers">
-            <button class="copt sel" data-group="markers" onclick="toggleOpt(this)">CD4</button>
-            <button class="copt sel" data-group="markers" onclick="toggleOpt(this)">CD8</button>
-            <button class="copt" data-group="markers" onclick="toggleOpt(this)">CD45</button>
-            <button class="copt" data-group="markers" onclick="toggleOpt(this)">CD3</button>
-            <button class="copt" data-group="markers" onclick="toggleOpt(this)">HER2</button>
-            <button class="copt" data-group="markers" onclick="toggleOpt(this)">PD-L1</button>
-            <button class="copt" data-group="markers" onclick="toggleOpt(this)">EpCAM</button>
-            <button class="copt" data-group="markers" onclick="toggleOpt(this)">CD19</button>
-            <button class="copt" data-group="markers" onclick="toggleOpt(this)">+ Custom</button>
+            <button class="copt sel" onclick="toggleOpt(this)" onmouseenter="showParamDesc('CD4')">CD4</button>
+            <button class="copt sel" onclick="toggleOpt(this)" onmouseenter="showParamDesc('CD8')">CD8</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('CD45')">CD45</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('CD3')">CD3</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('HER2')">HER2</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('PD-L1')">PD-L1</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('EpCAM')">EpCAM</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('CD19')">CD19</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('+ Custom')">+ Custom</button>
           </div>
         </div>
+
+        <!-- Assay Platform -->
         <div class="config-group">
           <span class="config-group-label">Assay Platform</span>
           <div class="config-options" id="opt-assay">
-            <button class="copt sel" data-group="assay" onclick="selectOne(this,'opt-assay')">Flow Cytometry</button>
-            <button class="copt" data-group="assay" onclick="selectOne(this,'opt-assay')">Digital Pathology</button>
-            <button class="copt" data-group="assay" onclick="selectOne(this,'opt-assay')">ELISA / Immunoassay</button>
-            <button class="copt" data-group="assay" onclick="selectOne(this,'opt-assay')">Lateral Flow</button>
-            <button class="copt" data-group="assay" onclick="selectOne(this,'opt-assay')">Microfluidics</button>
-            <button class="copt" data-group="assay" onclick="selectOne(this,'opt-assay')">NGS Compatible</button>
+            <button class="copt sel" onclick="selectOne(this,'opt-assay')" onmouseenter="showParamDesc('Flow Cytometry')">Flow Cytometry</button>
+            <button class="copt" onclick="selectOne(this,'opt-assay')" onmouseenter="showParamDesc('Digital Pathology')">Digital Pathology</button>
+            <button class="copt" onclick="selectOne(this,'opt-assay')" onmouseenter="showParamDesc('ELISA / Immunoassay')">ELISA / Immunoassay</button>
+            <button class="copt" onclick="selectOne(this,'opt-assay')" onmouseenter="showParamDesc('Lateral Flow')">Lateral Flow</button>
+            <button class="copt" onclick="selectOne(this,'opt-assay')" onmouseenter="showParamDesc('Microfluidics')">Microfluidics</button>
+            <button class="copt" onclick="selectOne(this,'opt-assay')" onmouseenter="showParamDesc('NGS Compatible')">NGS Compatible</button>
           </div>
         </div>
+
+        <div class="config-divider"></div>
+
+        <!-- Physical Properties -->
         <div class="config-group">
+          <span class="config-group-label">Physical Properties</span>
+
+          <span class="config-sub-label">Cell Size</span>
+          <div class="config-options" id="opt-size">
+            <button class="copt" onclick="selectOne(this,'opt-size')" onmouseenter="showParamDesc('2–5 µm')">2–5 µm</button>
+            <button class="copt sel" onclick="selectOne(this,'opt-size')" onmouseenter="showParamDesc('5–10 µm')">5–10 µm</button>
+            <button class="copt" onclick="selectOne(this,'opt-size')" onmouseenter="showParamDesc('10–15 µm')">10–15 µm</button>
+            <button class="copt" onclick="selectOne(this,'opt-size')" onmouseenter="showParamDesc('Custom range')">Custom range</button>
+          </div>
+
+          <span class="config-sub-label">Rigidity</span>
+          <div class="config-options" id="opt-rigidity">
+            <button class="copt" onclick="selectOne(this,'opt-rigidity')" onmouseenter="showParamDesc('Soft')">Soft</button>
+            <button class="copt sel" onclick="selectOne(this,'opt-rigidity')" onmouseenter="showParamDesc('Standard')">Standard</button>
+            <button class="copt" onclick="selectOne(this,'opt-rigidity')" onmouseenter="showParamDesc('Stiff')">Stiff</button>
+          </div>
+
+          <span class="config-sub-label">Granularity</span>
+          <div class="config-options" id="opt-granularity">
+            <button class="copt" onclick="selectOne(this,'opt-granularity')" onmouseenter="showParamDesc('Low SSC')">Low SSC</button>
+            <button class="copt sel" onclick="selectOne(this,'opt-granularity')" onmouseenter="showParamDesc('Standard SSC')">Standard SSC</button>
+            <button class="copt" onclick="selectOne(this,'opt-granularity')" onmouseenter="showParamDesc('High SSC')">High SSC</button>
+            <button class="copt" onclick="selectOne(this,'opt-granularity')" onmouseenter="showParamDesc('Custom SSC')">Custom SSC</button>
+          </div>
+        </div>
+
+        <div class="config-divider"></div>
+
+        <!-- Internal Properties -->
+        <div class="config-group">
+          <span class="config-group-label">Internal Properties</span>
+          <span class="config-sub-label">Embedded DNA</span>
+          <div class="config-options" id="opt-dna">
+            <button class="copt sel" onclick="selectOne(this,'opt-dna')" onmouseenter="showParamDesc('No DNA')">None</button>
+            <button class="copt" onclick="selectOne(this,'opt-dna')" onmouseenter="showParamDesc('Reference Sequence')">Reference Sequence</button>
+            <button class="copt" onclick="selectOne(this,'opt-dna')" onmouseenter="showParamDesc('Custom Sequence')">Custom Sequence</button>
+          </div>
+        </div>
+
+        <div class="config-divider"></div>
+
+        <!-- Fluorescence -->
+        <div class="config-group" style="margin-bottom:0">
           <span class="config-group-label">Fluorescence Profile</span>
           <div class="config-options" id="opt-fluor">
-            <button class="copt sel" data-group="fluor" onclick="toggleOpt(this)">FITC</button>
-            <button class="copt sel" data-group="fluor" onclick="toggleOpt(this)">PE</button>
-            <button class="copt" data-group="fluor" onclick="toggleOpt(this)">APC</button>
-            <button class="copt" data-group="fluor" onclick="toggleOpt(this)">BV421</button>
-            <button class="copt" data-group="fluor" onclick="toggleOpt(this)">PE-Cy7</button>
-            <button class="copt" data-group="fluor" onclick="toggleOpt(this)">Custom nm</button>
-          </div>
-        </div>
-        <div class="config-group">
-          <span class="config-group-label">Particle Size</span>
-          <div class="config-options" id="opt-size">
-            <button class="copt" data-group="size" onclick="selectOne(this,'opt-size')">2–5 µm</button>
-            <button class="copt sel" data-group="size" onclick="selectOne(this,'opt-size')">5–10 µm</button>
-            <button class="copt" data-group="size" onclick="selectOne(this,'opt-size')">10–15 µm</button>
-            <button class="copt" data-group="size" onclick="selectOne(this,'opt-size')">Custom range</button>
+            <button class="copt sel" onclick="toggleOpt(this)" onmouseenter="showParamDesc('FITC')">FITC</button>
+            <button class="copt sel" onclick="toggleOpt(this)" onmouseenter="showParamDesc('PE')">PE</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('APC')">APC</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('BV421')">BV421</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('PE-Cy7')">PE-Cy7</button>
+            <button class="copt" onclick="toggleOpt(this)" onmouseenter="showParamDesc('Custom nm')">Custom nm</button>
           </div>
         </div>
       </div>
@@ -670,14 +511,21 @@ body.p-director .pnote-d{display:block}
           <canvas id="cell-cv" width="340" height="200"></canvas>
         </div>
 
+        <!-- Parameter description panel -->
+        <div class="prop-desc" id="prop-desc">
+          <div class="pd-title" id="pd-title"></div>
+          <div class="pd-text" id="pd-text"></div>
+        </div>
+
         <table class="spec-table">
+          <tr><td>Control type</td><td id="spec-type">Standard Controls</td></tr>
           <tr><td>Surface markers</td><td id="spec-markers" class="spec-highlight">CD4, CD8</td></tr>
           <tr><td>Assay platform</td><td id="spec-assay">Flow Cytometry</td></tr>
+          <tr><td>Cell size</td><td id="spec-size">5–10 µm</td></tr>
+          <tr><td>Rigidity</td><td id="spec-rigidity">Standard</td></tr>
+          <tr><td>Granularity</td><td id="spec-granularity">Standard SSC</td></tr>
+          <tr><td>Embedded DNA</td><td id="spec-dna">None</td></tr>
           <tr><td>Fluorescence</td><td id="spec-fluor">FITC, PE</td></tr>
-          <tr><td>Particle size</td><td id="spec-size">5–10 µm</td></tr>
-          <tr><td>Lot-to-lot consistency</td><td class="spec-highlight">99.7% guaranteed</td></tr>
-          <tr><td>Lead time</td><td>&lt;2 weeks from sign-off</td></tr>
-          <tr><td>Shelf stability</td><td>18+ months ambient</td></tr>
         </table>
 
         <div class="config-cta-row">
@@ -689,149 +537,55 @@ body.p-director .pnote-d{display:block}
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════ SECTION 2: COMPARE + APPS -->
-<section id="section-compare" class="section-compare">
-  <div class="compare-inner">
-    <div class="compare-head-row rv">
-      <div>
-        <span class="label-tag">Downstream applications</span>
-        <h2 class="section-title">TruCytes® vs. every<br><em>alternative you're considering</em></h2>
-        <p class="section-desc" style="font-size:15px">Performance data across the assay formats your research depends on — compared transparently against biological and synthetic alternatives.</p>
-      </div>
-      <div class="inline-capture rv d2">
-        <p>Get the full performance comparison PDF — 28 assay formats, published data.</p>
-        <div class="ic-form">
-          <input type="email" placeholder="your@institution.edu" id="compare-email">
-          <button class="btn-navy" onclick="submitCompareLead()">Send PDF</button>
-        </div>
-      </div>
+<!-- ════════════════════════════════════════════════ SECTION 2: ANATOMY -->
+<section id="section-anatomy" class="section-anatomy">
+  <div class="anat-inner">
+    <div class="anat-head rv">
+      <span class="label-tag">Engineered for downstream applications</span>
+      <h2 class="section-title">Inside every<br><em>TruCyte® particle</em></h2>
+      <p class="section-desc">Three independently tunable engineering dimensions — each calibrated to your exact assay requirements. Click a property to explore it in the cell diagram.</p>
     </div>
 
-    <div class="rv d1">
-      <table class="compare-table">
-        <thead class="ct-head">
-          <tr>
-            <th>Performance criterion</th>
-            <th>TruCytes® Custom</th>
-            <th>Biological controls</th>
-            <th>Generic synthetic</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Lot-to-lot consistency</td>
-            <td class="ct-trucyte-col"><span class="ct-win">99.7% guaranteed, documented</span></td>
-            <td><span class="ct-lose">High donor variability</span></td>
-            <td><span class="ct-partial">Moderate (~92%)</span></td>
-          </tr>
-          <tr>
-            <td>Custom biomarker panels</td>
-            <td class="ct-trucyte-col"><span class="ct-win">Fully configurable, any panel</span></td>
-            <td><span class="ct-lose">Limited by donor availability</span></td>
-            <td><span class="ct-lose">Fixed catalog only</span></td>
-          </tr>
-          <tr>
-            <td>Shelf stability</td>
-            <td class="ct-trucyte-col"><span class="ct-win">18+ months, ambient temp</span></td>
-            <td><span class="ct-lose">Short-lived, cold chain required</span></td>
-            <td><span class="ct-partial">6–12 months, refrigerated</span></td>
-          </tr>
-          <tr>
-            <td>Ethical procurement</td>
-            <td class="ct-trucyte-col"><span class="ct-win">100% synthetic — zero donor risk</span></td>
-            <td><span class="ct-lose">Donor consent & IRB complexity</span></td>
-            <td><span class="ct-win">Synthetic — no donor concerns</span></td>
-          </tr>
-          <tr>
-            <td>Regulatory documentation</td>
-            <td class="ct-trucyte-col"><span class="ct-win">ISO 13485, CoA on every lot</span></td>
-            <td><span class="ct-partial">Variable, provider-dependent</span></td>
-            <td><span class="ct-partial">Basic CoA typically provided</span></td>
-          </tr>
-          <tr>
-            <td>Multi-site standardisation</td>
-            <td class="ct-trucyte-col"><span class="ct-win">Identical performance, any site</span></td>
-            <td><span class="ct-lose">Impractical at scale</span></td>
-            <td><span class="ct-partial">Possible with same catalog lot</span></td>
-          </tr>
-          <tr>
-            <td>Lead time for custom order</td>
-            <td class="ct-trucyte-col"><span class="ct-win">&lt;2 weeks from sign-off</span></td>
-            <td><span class="ct-lose">6–12 weeks (donation pipeline)</span></td>
-            <td><span class="ct-lose">Custom not available</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="anat-grid">
+      <!-- Cell anatomy diagram -->
+      <div class="anat-canvas-wrap rv">
+        <canvas id="anat-cv" width="400" height="400"></canvas>
+        <div class="anat-canvas-label" id="anat-label">Select a property to explore →</div>
+      </div>
 
-    <!-- Application tiles -->
-    <div style="margin-top:3px" class="rv d2">
-      <div class="app-tiles">
-        <div class="app-tile at-active">
-          <svg class="at-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="18" cy="18" r="13"/><circle cx="18" cy="18" r="6"/><circle cx="18" cy="18" r="2"/>
-            <line x1="18" y1="5" x2="18" y2="1"/><line x1="31" y1="18" x2="35" y2="18"/>
-          </svg>
-          <div class="at-name">Flow Cytometry</div>
-          <div class="at-desc">Multi-parameter validated. Drop-in replacement for biological controls. Run your existing protocols unchanged.</div>
-          <div class="at-tags"><span class="at-tag">Multi-colour</span><span class="at-tag">FSC/SSC</span><span class="at-tag">Spectral</span></div>
-          <a href="#section-form" class="at-link">Get protocol <svg width="12" height="6" viewBox="0 0 12 6" fill="none"><path d="M0 3H10M10 3L7.5 1M10 3L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <!-- Property cards -->
+      <div class="anat-props rv d2">
+
+        <div class="anat-prop active" onclick="setAnatProp('size',this)">
+          <div class="ap-header">
+            <span class="ap-dot"></span>
+            <span class="ap-name">Calibrated Cell Size &amp; Rigidity</span>
+            <span class="ap-badge">Cell Mechanics</span>
+          </div>
+          <p class="ap-desc">Accurate calibration of cell size and rigidity for cell mechanics assays. TruCytes® are manufactured to precise diameter specifications and tunable elastic modulus — from highly deformable red-blood-cell analogues to stiff apoptotic-body mimics.</p>
+          <p class="ap-sub">Relevant for: deformability cytometry · RT-DC · microfluidic squeeze assays · size calibration beads · FSC scatter gating</p>
         </div>
-        <div class="app-tile">
-          <svg class="at-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <path d="M6 30 C6 30, 13 14, 18 18 C23 22, 30 6, 30 6"/><circle cx="13" cy="21" r="3"/><circle cx="25" cy="13" r="3"/>
-            <rect x="8" y="30" width="20" height="3" rx="1"/>
-          </svg>
-          <div class="at-name">Digital Pathology</div>
-          <div class="at-desc">Calibrated size and staining intensity for IHC and multiplex imaging. Consistent across slide scanners and analysis platforms.</div>
-          <div class="at-tags"><span class="at-tag">IHC</span><span class="at-tag">IF</span><span class="at-tag">Multiplex</span></div>
-          <a href="#section-form" class="at-link">Get protocol <svg width="12" height="6" viewBox="0 0 12 6" fill="none"><path d="M0 3H10M10 3L7.5 1M10 3L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+
+        <div class="anat-prop" onclick="setAnatProp('granularity',this)">
+          <div class="ap-header">
+            <span class="ap-dot"></span>
+            <span class="ap-name">Tunable Granularity</span>
+            <span class="ap-badge">SSC Control</span>
+          </div>
+          <p class="ap-desc">Tunable granularity to match cell types and states for accurate characterization. Internal complexity is independently engineered to produce precise side-scatter (SSC) signals — from agranulocyte-low to granulocyte-high — enabling reliable gating across differential white blood cell panels.</p>
+          <p class="ap-sub">Relevant for: flow cytometry gating · leukocyte differential · hematology analyzer calibration · spectral unmixing reference populations</p>
         </div>
-        <div class="app-tile">
-          <svg class="at-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <rect x="4" y="10" width="28" height="16" rx="3"/>
-            <line x1="4" y1="18" x2="32" y2="18" stroke-dasharray="2 3"/>
-            <circle cx="11" cy="18" r="3" fill="currentColor" opacity=".25"/>
-            <circle cx="20" cy="18" r="3"/>
-            <circle cx="29" cy="14" r="2"/>
-          </svg>
-          <div class="at-name">Immunoassay / ELISA</div>
-          <div class="at-desc">Stable signal generation for plate-based assays. No matrix effect variability. Use as positive controls in 96 or 384-well formats.</div>
-          <div class="at-tags"><span class="at-tag">96-well</span><span class="at-tag">384-well</span><span class="at-tag">Lateral flow</span></div>
-          <a href="#section-form" class="at-link">Get protocol <svg width="12" height="6" viewBox="0 0 12 6" fill="none"><path d="M0 3H10M10 3L7.5 1M10 3L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+
+        <div class="anat-prop" onclick="setAnatProp('dna',this)">
+          <div class="ap-header">
+            <span class="ap-dot"></span>
+            <span class="ap-name">Embedded DNA</span>
+            <span class="ap-badge">Molecular Controls</span>
+          </div>
+          <p class="ap-desc">Embedded DNA for viability assessments, NGS, qPCR validations, and single-cell sequencing applications. Reference or custom nucleic acid sequences are encapsulated at defined copy number inside the particle core — sequence-verified before every shipment.</p>
+          <p class="ap-sub">Relevant for: NGS spike-in normalization · ddPCR standard curves · FISH controls · scRNA-seq QC · viability discrimination</p>
         </div>
-        <div class="app-tile">
-          <svg class="at-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <path d="M4 18 Q10 6 18 18 Q26 30 32 18"/><line x1="8" y1="28" x2="28" y2="28"/>
-            <circle cx="18" cy="18" r="3"/><circle cx="10" cy="18" r="2"/><circle cx="26" cy="18" r="2"/>
-          </svg>
-          <div class="at-name">Microfluidics</div>
-          <div class="at-desc">Precisely engineered deformability and surface properties for microfluidic chip applications, deformability cytometry, and lab-on-chip systems.</div>
-          <div class="at-tags"><span class="at-tag">RT-DC</span><span class="at-tag">Lab-on-chip</span><span class="at-tag">Acoustofluidics</span></div>
-          <a href="#section-form" class="at-link">Get protocol <svg width="12" height="6" viewBox="0 0 12 6" fill="none"><path d="M0 3H10M10 3L7.5 1M10 3L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-        </div>
-        <div class="app-tile">
-          <svg class="at-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <path d="M8 28 L14 12 L20 20 L26 8 L32 16"/><circle cx="14" cy="12" r="2.5"/><circle cx="26" cy="8" r="2.5"/>
-            <line x1="4" y1="28" x2="32" y2="28"/><line x1="4" y1="8" x2="4" y2="28"/>
-          </svg>
-          <div class="at-name">NGS / Molecular</div>
-          <div class="at-desc">Encapsulated DNA with defined copy number for PCR, NGS, and FISH controls. Sequence-verified before every shipment.</div>
-          <div class="at-tags"><span class="at-tag">ddPCR</span><span class="at-tag">NGS</span><span class="at-tag">FISH</span></div>
-          <a href="#section-form" class="at-link">Get protocol <svg width="12" height="6" viewBox="0 0 12 6" fill="none"><path d="M0 3H10M10 3L7.5 1M10 3L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-        </div>
-        <div class="app-tile">
-          <svg class="at-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="18" cy="18" r="12"/><circle cx="18" cy="18" r="5"/>
-            <line x1="18" y1="1" x2="18" y2="6"/><line x1="18" y1="30" x2="18" y2="35"/>
-            <line x1="1" y1="18" x2="6" y2="18"/><line x1="30" y1="18" x2="35" y2="18"/>
-            <line x1="5.5" y1="5.5" x2="9" y2="9"/><line x1="27" y1="27" x2="30.5" y2="30.5"/>
-          </svg>
-          <div class="at-name">Your Application</div>
-          <div class="at-desc">Don't see your workflow here? TruCytes® have been adapted for 47 validated configurations. Talk to a scientist about your specific requirements.</div>
-          <div class="at-tags"><span class="at-tag">Custom</span><span class="at-tag">Consultation included</span></div>
-          <a href="#section-form" class="at-link">Talk to a scientist <svg width="12" height="6" viewBox="0 0 12 6" fill="none"><path d="M0 3H10M10 3L7.5 1M10 3L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-        </div>
+
       </div>
     </div>
   </div>
@@ -841,7 +595,7 @@ body.p-director .pnote-d{display:block}
 <section id="section-journey" class="section-journey">
   <div class="journey-inner">
     <div class="journey-head rv">
-      <span class="label-tag">Your research journey</span>
+      <span class="label-tag">Expert-driven, white-glove approach</span>
       <h2 class="section-title">From first sample<br><em>to full production</em></h2>
       <p class="section-desc" style="margin:0 auto;text-align:center">Guided by Field Application Scientists at every stage. Start with zero commitment and scale at your own pace.</p>
     </div>
@@ -853,8 +607,8 @@ body.p-director .pnote-d{display:block}
         <div class="jstep done" id="jstep-1">
           <div class="jstep-dot">1</div>
           <div class="jstep-tag">Evaluation</div>
-          <div class="jstep-title">Free Sample Kit</div>
-          <p class="jstep-desc">Receive TruCytes® matched to your application at no cost. Run head-to-head against your existing controls. No commitment required.</p>
+          <div class="jstep-title">Explore TruCytes®</div>
+          <p class="jstep-desc">Begin with an easy, hassle-free evaluation kit. Expert consultation and onsite support from our Field Application Scientists. Feasibility assessments ensure downstream customization meets your specific requirements.</p>
           <a href="#section-form" class="jstep-cta">Request free kit</a>
         </div>
 
@@ -862,23 +616,23 @@ body.p-director .pnote-d{display:block}
           <div class="jstep-dot">2</div>
           <div class="jstep-tag">Customization</div>
           <div class="jstep-title">Define Your Spec</div>
-          <p class="jstep-desc">A dedicated Field Application Scientist works with you to define surface markers, fluorescence, size, and any special handling requirements.</p>
+          <p class="jstep-desc">Work with our team to finalize specifications for your Custom TruCytes®. Together we'll outline key milestones, deliver an optimized product, and prepare a tailored protocol — even across multiple sites.</p>
           <button class="jstep-cta" onclick="document.getElementById('section-form').scrollIntoView({behavior:'smooth'})">Talk to a scientist</button>
         </div>
 
         <div class="jstep" id="jstep-3">
           <div class="jstep-dot">3</div>
-          <div class="jstep-tag">Validation</div>
-          <div class="jstep-title">Pilot Batch &amp; QC</div>
-          <p class="jstep-desc">Pilot batch manufactured, full multi-parameter QC run, Certificate of Analysis provided — before any production commitment is made.</p>
+          <div class="jstep-tag">Scale-Up</div>
+          <div class="jstep-title">Verification &amp; Validation</div>
+          <p class="jstep-desc">We support the verification and validation process — both internally and externally — to set the stage for successful adoption. With dedicated guidance, you'll transition confidently into large-scale production.</p>
           <button class="jstep-cta ghost">Download example CoA</button>
         </div>
 
         <div class="jstep" id="jstep-4">
           <div class="jstep-dot">4</div>
           <div class="jstep-tag">Production</div>
-          <div class="jstep-title">Ongoing Supply</div>
-          <p class="jstep-desc">Seamless scale. Guaranteed lot-to-lot consistency. Standing order management. Dedicated account support for the life of your research program.</p>
+          <div class="jstep-title">Scalable Supply</div>
+          <p class="jstep-desc">Scalable Custom TruCytes® production finalized to your specification. Small batch or large-scale manufacturing — we're with you every step, offering performance check-ins and ongoing optimization.</p>
           <button class="jstep-cta ghost" onclick="document.getElementById('section-form').scrollIntoView({behavior:'smooth'})">Discuss volume pricing</button>
         </div>
 
@@ -888,65 +642,11 @@ body.p-director .pnote-d{display:block}
     <div class="journey-strip rv d2">
       <div class="jstrip-copy">
         <h3>Ready to start? Your evaluation kit is free.</h3>
-        <p>No credit card, no sales call, no commitment. A Field Application Scientist will email you within 2 business days with a sample matched to your exact application.</p>
+        <p>No credit card, no sales call, no commitment. A Field Application Scientist will contact you within two business days with a sample matched to your exact application.</p>
       </div>
       <div class="jstrip-actions">
         <a href="#section-form" class="btn-primary" style="padding:14px 28px">Request Evaluation Kit</a>
-        <a href="#section-compare" class="btn-ghost" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.65)">View applications</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════ PROOF -->
-<section id="section-proof" class="section-proof">
-  <div class="proof-inner">
-    <div class="proof-grid rv">
-      <div class="proof-quote-block">
-        <span class="pqb-label">Researcher testimonial</span>
-        <blockquote class="pqb-q">
-          "Switching to TruCytes® removed the single biggest source of variability in our multi-site flow cytometry study. Lot-to-lot performance is genuinely remarkable — we haven't had a failed QC run in eighteen months."
-        </blockquote>
-        <div class="pqb-attr">
-          <strong>Dr. Sarah Chen, PhD</strong>
-          <span>Principal Investigator, Dept. of Immunology · Stanford Medicine</span>
-        </div>
-        <div style="margin-top:28px">
-          <a href="#section-form" class="link-arrow" style="color:rgba(255,255,255,.5)">
-            Request a case study pack
-            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M0 4H12M12 4L9 1M12 4L9 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="proof-stats-block">
-        <div class="psb">
-          <span class="psb-n">250+</span>
-          <span class="psb-l">Peer-reviewed publications citing TruCytes®</span>
-        </div>
-        <div class="psb">
-          <span class="psb-n">18mo</span>
-          <span class="psb-l">Ambient shelf stability — no cold chain</span>
-        </div>
-        <div class="psb">
-          <span class="psb-n">34</span>
-          <span class="psb-l">Countries actively supplied to date</span>
-        </div>
-        <div class="psb">
-          <span class="psb-n">99.7%</span>
-          <span class="psb-l">Lot-to-lot consistency — all configurations</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="proof-logos rv d2">
-      <p>Used at institutions including</p>
-      <div class="logos-row">
-        <span class="logo-pill">Stanford Medicine</span>
-        <span class="logo-pill">MIT</span>
-        <span class="logo-pill">Karolinska Institutet</span>
-        <span class="logo-pill">Oxford Biomedical</span>
-        <span class="logo-pill">Roche Diagnostics</span>
-        <span class="logo-pill">Novartis Institutes</span>
+        <a href="#section-config" class="btn-ghost" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.65)">Configure yours</a>
       </div>
     </div>
   </div>
@@ -985,6 +685,7 @@ body.p-director .pnote-d{display:block}
               <option>Microfluidics / Lab-on-Chip</option>
               <option>Next-Generation Sequencing</option>
               <option>Deformability Cytometry</option>
+              <option>Functional / Potency Assays</option>
               <option>Other / Multiple</option>
             </select>
           </div>
@@ -1026,8 +727,8 @@ body.p-director .pnote-d{display:block}
 <div class="sticky-bar" id="sticky-bar">
   <div class="sb-copy">Ready to eliminate variability? <span>Your evaluation kit is free.</span></div>
   <div class="sb-actions">
-    <button class="sb-dismiss" onclick="document.getElementById('sticky-bar').classList.remove('show')">✕</button>
-    <a href="#section-form" class="btn-ghost" style="padding:9px 18px;font-size:12px">Learn more</a>
+    <button class="sb-dismiss" onclick="document.getElementById('sticky-bar').classList.remove('show');stickyDismissed=true">✕</button>
+    <a href="#section-config" class="btn-ghost" style="padding:9px 18px;font-size:12px">Configure</a>
     <a href="#section-form" class="btn-primary" style="padding:10px 20px;font-size:12px">Request Sample →</a>
   </div>
 </div>
@@ -1074,61 +775,101 @@ body.p-director .pnote-d{display:block}
   init();frame();window.addEventListener('resize',init);
 })();
 
-/* ─── CELL SCHEMATIC CANVAS ──────────────────────────────────────────────── */
+/* ─── CONFIGURATOR CELL CANVAS ───────────────────────────────────────────── */
 (function(){
   const cv=document.getElementById('cell-cv');
   if(!cv)return;
   const cx=cv.getContext('2d');
-  let markers=['CD4','CD8'],fluors=['FITC','PE'],ph=0;
+  let markers=['CD4','CD8'],fluors=['FITC','PE'],granState='Standard SSC',dnaState='None',rigState='Standard';
+  let ph=0;
 
-  window.updateCellCanvas=function(m,f){markers=m;fluors=f;};
+  window.updateCellCanvas=function(m,f,gran,dna,rig){
+    markers=m;fluors=f;
+    if(gran)granState=gran;
+    if(dna)dnaState=dna;
+    if(rig)rigState=rig;
+  };
 
-  const colors={'FITC':'#22C55E','PE':'#F59E0B','APC':'#EF4444','BV421':'#8B5CF6','PE-Cy7':'#EC4899','Custom nm':'#06B6D4'};
+  const fluorColors={'FITC':'#22C55E','PE':'#F59E0B','APC':'#EF4444','BV421':'#8B5CF6','PE-Cy7':'#EC4899','Custom nm':'#06B6D4'};
+
+  // Granule dot positions for configurator canvas (relative to cell center)
+  const granDots=[{dx:-22,dy:-15,r:2.5},{dx:15,dy:-20,r:2},{dx:-8,dy:18,r:2.5},{dx:20,dy:8,r:2},{dx:-18,dy:8,r:2},{dx:5,dy:-8,r:2}];
 
   function frame(){
     ph+=.012;
     cx.clearRect(0,0,cv.width,cv.height);
-    const W=cv.width,H=cv.height,cx0=W/2,cy0=H/2,R=62;
+    const W=cv.width,H=cv.height,cx0=W/2,cy0=H/2;
+    const R=55;
+    const rigJitter = rigState==='Soft'?6:rigState==='Stiff'?1.5:3.5;
+    const rigWidth  = rigState==='Stiff'?3:rigState==='Soft'?.8:1.5;
 
-    /* outer cell membrane */
+    /* cell membrane */
     cx.beginPath();
     for(let a=0;a<Math.PI*2;a+=.05){
-      const jitter=R+Math.sin(a*3+ph)*3+Math.cos(a*5+ph*.7)*2;
-      const x=cx0+jitter*Math.cos(a),y=cy0+jitter*Math.sin(a);
-      a===0?cx.moveTo(x,y):cx.lineTo(x,y);
+      const j=R+Math.sin(a*3+ph)*rigJitter+Math.cos(a*5+ph*.7)*rigJitter*.6;
+      const x=cx0+j*Math.cos(a),y=cy0+j*Math.sin(a);
+      a<.06?cx.moveTo(x,y):cx.lineTo(x,y);
     }
     cx.closePath();
     cx.fillStyle='rgba(232,97,10,.06)';cx.fill();
-    cx.strokeStyle='rgba(232,97,10,.45)';cx.lineWidth=1.5;cx.stroke();
+    cx.strokeStyle='rgba(232,97,10,.5)';cx.lineWidth=rigWidth;cx.stroke();
 
     /* nucleus */
-    cx.beginPath();cx.arc(cx0+3,cy0-2,24,0,6.283);
-    cx.fillStyle='rgba(13,27,62,.08)';cx.fill();
-    cx.strokeStyle='rgba(13,27,62,.25)';cx.lineWidth=1;cx.stroke();
+    const nR=18;
+    cx.beginPath();cx.ellipse(cx0,cy0,nR,nR*.88,0,0,Math.PI*2);
+    cx.fillStyle='rgba(13,27,62,.1)';cx.fill();
+    cx.strokeStyle='rgba(13,27,62,.3)';cx.lineWidth=1;cx.stroke();
 
-    /* surface markers — dots placed around perimeter */
-    const markerCount=markers.length;
+    /* DNA helix inside nucleus */
+    const hasDNA=dnaState!=='None';
+    const dnaOp=hasDNA?.9:.12;
+    const helixSpeed=hasDNA?ph*2.5:ph;
+    const span=nR*.85,amp=nR*.28;
+    cx.beginPath();
+    for(let t=-span;t<=span;t+=1.5){const x=cx0+t,y=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed)*amp;t<=-span+1.5?cx.moveTo(x,y):cx.lineTo(x,y)}
+    cx.strokeStyle=`rgba(13,27,62,${dnaOp*.9})`;cx.lineWidth=hasDNA?1.5:1;cx.stroke();
+    cx.beginPath();
+    for(let t=-span;t<=span;t+=1.5){const x=cx0+t,y=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed+Math.PI)*amp;t<=-span+1.5?cx.moveTo(x,y):cx.lineTo(x,y)}
+    cx.strokeStyle=`rgba(232,97,10,${dnaOp*.9})`;cx.lineWidth=hasDNA?1.5:1;cx.stroke();
+    if(hasDNA){
+      for(let t=-span+8;t<=span-8;t+=12){
+        const y1=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed)*amp;
+        const y2=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed+Math.PI)*amp;
+        cx.beginPath();cx.moveTo(cx0+t,y1);cx.lineTo(cx0+t,y2);
+        cx.strokeStyle='rgba(80,80,130,.4)';cx.lineWidth=.7;cx.stroke();
+      }
+    }
+
+    /* granules */
+    const granMult=granState==='Low SSC'?.3:granState==='High SSC'?1:granState==='Standard SSC'?.65:.5;
+    granDots.forEach((g,i)=>{
+      const pulse=granMult*(Math.sin(ph*1.8+i*.9)*.25+.75);
+      cx.beginPath();cx.arc(cx0+g.dx,cy0+g.dy,g.r,0,6.283);
+      cx.fillStyle=`rgba(34,197,94,${pulse})`;cx.fill();
+    });
+
+    /* surface markers */
     markers.forEach((m,i)=>{
-      const spread=markerCount>1?(Math.PI*2/markerCount)*i:0;
-      for(let k=0;k<6;k++){
-        const ang=spread+(Math.PI*2/6)*k+ph*.15;
-        const dist=R+6+Math.sin(ph+k)*.5;
+      const spread=markers.length>1?(Math.PI*2/markers.length)*i:0;
+      for(let k=0;k<5;k++){
+        const ang=spread+(Math.PI*2/5)*k+ph*.15;
+        const dist=R+6+Math.sin(ph+k)*.4;
         const mx=cx0+dist*Math.cos(ang),my=cy0+dist*Math.sin(ang);
         const fc=fluors[i%fluors.length];
-        cx.beginPath();cx.arc(mx,my,4.5,0,6.283);
-        cx.fillStyle=colors[fc]||'#E8610A';cx.fill();
-        cx.strokeStyle='rgba(255,255,255,.7)';cx.lineWidth=1;cx.stroke();
+        cx.beginPath();cx.arc(mx,my,4,0,6.283);
+        cx.fillStyle=fluorColors[fc]||'#E8610A';cx.fill();
+        cx.strokeStyle='rgba(255,255,255,.75)';cx.lineWidth=.8;cx.stroke();
       }
     });
 
     /* legend */
-    let lx=12,ly=12;
+    let ly=10;
     markers.forEach((m,i)=>{
       const fc=fluors[i%fluors.length];
-      cx.beginPath();cx.arc(lx+5,ly+5,4.5,0,6.283);cx.fillStyle=colors[fc]||'#E8610A';cx.fill();
-      cx.font='600 10px "Plus Jakarta Sans",sans-serif';cx.fillStyle='rgba(17,17,24,.7)';
-      cx.fillText(m+' / '+(fc||'FITC'),lx+14,ly+9);
-      ly+=18;
+      cx.beginPath();cx.arc(10,ly+5,4,0,6.283);cx.fillStyle=fluorColors[fc]||'#E8610A';cx.fill();
+      cx.font='600 9px "Plus Jakarta Sans",sans-serif';cx.fillStyle='rgba(17,17,24,.65)';
+      cx.fillText(m+'/'+(fc||'FITC'),18,ly+9);
+      ly+=17;
     });
 
     requestAnimationFrame(frame);
@@ -1136,39 +877,247 @@ body.p-director .pnote-d{display:block}
   frame();
 })();
 
-/* ─── CONFIGURATOR LOGIC ─────────────────────────────────────────────────── */
-function toggleOpt(el){
-  el.classList.toggle('sel');
-  updateConfigOutput();
+/* ─── ANATOMY CANVAS ─────────────────────────────────────────────────────── */
+(function(){
+  const cv=document.getElementById('anat-cv');
+  if(!cv)return;
+  const cx=cv.getContext('2d');
+  let anatProp='size',ph=0;
+  const W=cv.width,H=cv.height,cx0=W/2,cy0=H/2,R=130;
+  const nRx=50,nRy=44;
+
+  // Granule dot positions (relative to cell center, all within cell body, outside nucleus)
+  const granDots=[
+    {dx:-80,dy:-58,r:5},{dx:70,dy:-65,r:4},{dx:-30,dy:-95,r:5},
+    {dx:95,dy:-25,r:4},{dx:-105,dy:25,r:5},{dx:60,dy:80,r:4},
+    {dx:-70,dy:80,r:4},{dx:22,dy:-115,r:5},{dx:-100,dy:-45,r:4},
+    {dx:110,dy:45,r:4},{dx:-52,dy:100,r:5},{dx:80,dy:100,r:4}
+  ];
+
+  // 12 surface marker angles evenly spaced
+  const mAngles=Array.from({length:12},(_,i)=>i*Math.PI*2/12);
+
+  window.setAnatProp=function(prop){anatProp=prop};
+
+  function frame(){
+    ph+=.012;
+    cx.clearRect(0,0,W,H);
+
+    const isSize=anatProp==='size';
+    const isGran=anatProp==='granularity';
+    const isDNA=anatProp==='dna';
+
+    /* cell membrane */
+    cx.beginPath();
+    for(let a=0;a<Math.PI*2;a+=.04){
+      const j=R+Math.sin(a*3+ph)*4+Math.cos(a*5+ph*.7)*3;
+      const x=cx0+j*Math.cos(a),y=cy0+j*Math.sin(a);
+      a<.05?cx.moveTo(x,y):cx.lineTo(x,y);
+    }
+    cx.closePath();
+    cx.fillStyle=isSize?'rgba(232,97,10,.1)':'rgba(232,97,10,.04)';
+    cx.fill();
+    cx.strokeStyle=isSize?'rgba(232,97,10,.85)':'rgba(232,97,10,.3)';
+    cx.lineWidth=isSize?2.5:1.5;
+    cx.stroke();
+
+    /* size calibration visual */
+    if(isSize){
+      const arrowY=cy0+R+28;
+      cx.strokeStyle='rgba(232,97,10,.45)';cx.lineWidth=1;
+      cx.beginPath();cx.moveTo(cx0-R,arrowY);cx.lineTo(cx0+R,arrowY);cx.stroke();
+      [[cx0-R,-1],[cx0+R,1]].forEach(([ax,dir])=>{
+        cx.beginPath();cx.moveTo(ax,arrowY);cx.lineTo(ax+dir*8,arrowY-5);cx.moveTo(ax,arrowY);cx.lineTo(ax+dir*8,arrowY+5);cx.stroke();
+        cx.beginPath();cx.moveTo(ax,arrowY-7);cx.lineTo(ax,arrowY+7);cx.stroke();
+      });
+      cx.font='600 11px "Plus Jakarta Sans",sans-serif';
+      cx.fillStyle='rgba(232,97,10,.65)';cx.textAlign='center';
+      cx.fillText('Calibrated diameter',cx0,arrowY+18);
+      cx.fillStyle='rgba(232,97,10,.45)';cx.font='500 10px "Plus Jakarta Sans",sans-serif';
+      cx.fillText('Membrane rigidity: tunable elastic modulus',cx0,cy0+8);
+    }
+
+    /* granules */
+    granDots.forEach((g,i)=>{
+      const pulse=isGran?(Math.sin(ph*2+i*.7)*.35+.65):.2;
+      const r=isGran?g.r*(1+Math.sin(ph*2+i)*.18):g.r;
+      cx.beginPath();cx.arc(cx0+g.dx,cy0+g.dy,r,0,6.283);
+      cx.fillStyle=isGran?`rgba(34,197,94,${pulse})`:'rgba(34,197,94,.18)';
+      cx.fill();
+      if(isGran){cx.strokeStyle=`rgba(34,197,94,${pulse*.5})`;cx.lineWidth=.8;cx.stroke()}
+    });
+
+    /* nucleus */
+    cx.beginPath();cx.ellipse(cx0,cy0,nRx,nRy,0,0,Math.PI*2);
+    cx.fillStyle=isDNA?'rgba(13,27,62,.18)':'rgba(13,27,62,.07)';
+    cx.fill();
+    cx.strokeStyle=isDNA?'rgba(13,27,62,.65)':'rgba(13,27,62,.2)';
+    cx.lineWidth=isDNA?2:1;
+    cx.stroke();
+
+    /* DNA helix */
+    const dnaOp=isDNA?1:.15;
+    const helixSpeed=isDNA?ph*2.8:ph;
+    const span=nRx*.82,amp=nRy*.32;
+    cx.beginPath();
+    for(let t=-span;t<=span;t+=2){
+      const x=cx0+t,y=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed)*amp;
+      t<=-span+2?cx.moveTo(x,y):cx.lineTo(x,y);
+    }
+    cx.strokeStyle=`rgba(13,27,62,${dnaOp*.9})`;cx.lineWidth=isDNA?2:1;cx.stroke();
+    cx.beginPath();
+    for(let t=-span;t<=span;t+=2){
+      const x=cx0+t,y=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed+Math.PI)*amp;
+      t<=-span+2?cx.moveTo(x,y):cx.lineTo(x,y);
+    }
+    cx.strokeStyle=`rgba(232,97,10,${dnaOp*.9})`;cx.lineWidth=isDNA?2:1;cx.stroke();
+    if(isDNA){
+      for(let t=-span+12;t<=span-12;t+=18){
+        const y1=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed)*amp;
+        const y2=cy0+Math.sin((t/span)*Math.PI*2+helixSpeed+Math.PI)*amp;
+        cx.beginPath();cx.moveTo(cx0+t,y1);cx.lineTo(cx0+t,y2);
+        cx.strokeStyle='rgba(80,80,130,.45)';cx.lineWidth=.8;cx.stroke();
+      }
+    }
+
+    /* surface marker dots */
+    mAngles.forEach(a=>{
+      const j=R+Math.sin(a*3+ph)*4+Math.cos(a*5+ph*.7)*3;
+      cx.beginPath();cx.arc(cx0+(j+8)*Math.cos(a),cy0+(j+8)*Math.sin(a),4,0,6.283);
+      cx.fillStyle='rgba(232,97,10,.6)';cx.fill();
+      cx.strokeStyle='rgba(255,255,255,.75)';cx.lineWidth=1;cx.stroke();
+    });
+
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ─── ANATOMY CARD INTERACTION ───────────────────────────────────────────── */
+function setAnatProp(prop, el) {
+  document.querySelectorAll('.anat-prop').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  window.setAnatProp(prop);
+  const labels={
+    size:'Exploring: Calibrated Cell Size & Rigidity',
+    granularity:'Exploring: Tunable Granularity — watch the internal dots',
+    dna:'Exploring: Embedded DNA — helix animating inside nucleus'
+  };
+  document.getElementById('anat-label').textContent=labels[prop]||'Select a property to explore →';
 }
+
+/* ─── PARAM DESCRIPTIONS ─────────────────────────────────────────────────── */
+const paramDesc = {
+  // Control type
+  'Standard Controls':{title:'Standard Biomarker Controls',desc:'Engineered for stable, precise surface antigen expression used in flow cytometry, imaging, and immunoassay platforms. Each particle is manufactured to your specific marker panel.'},
+  'Functional Assay':{title:'Functional Assay Controls',desc:'Designed for potency testing and precise measurement of biological activity. These mimics simulate functional cell responses — enabling reliable, reproducible results in therapeutic development and quality control workflows.'},
+  // Surface markers
+  'CD4':{title:'CD4 Surface Marker',desc:'A co-receptor expressed on T-helper lymphocytes, monocytes, and macrophages. Critical for HIV tropism studies, T-cell subset enumeration, and immunotherapy response monitoring.'},
+  'CD8':{title:'CD8 Surface Marker',desc:'Marks cytotoxic T lymphocytes. Essential for cancer immunology, viral clearance assays, CAR-T cell therapy development, and multiparameter immune profiling.'},
+  'CD45':{title:'CD45 Surface Marker',desc:'Pan-leukocyte marker expressed on all nucleated hematopoietic cells. Used as a gating backbone for whole blood panels and leukocyte differential counts.'},
+  'CD3':{title:'CD3 Surface Marker',desc:'Pan-T cell marker, component of the T cell receptor complex. Standard in T cell enumeration, immunodeficiency diagnosis, and transplant monitoring panels.'},
+  'HER2':{title:'HER2 Surface Marker',desc:'Receptor tyrosine kinase overexpressed in ~25% of breast cancers. TruCytes® with HER2 serve as positive controls for HER2 scoring in IHC, FISH, and flow cytometry.'},
+  'PD-L1':{title:'PD-L1 Surface Marker',desc:'Immune checkpoint ligand upregulated in many tumors. Controls expressing PD-L1 are critical for standardising companion diagnostic assays in checkpoint inhibitor therapy.'},
+  'EpCAM':{title:'EpCAM Surface Marker',desc:'Epithelial cell adhesion molecule used in circulating tumor cell (CTC) capture and epithelial lineage studies. Enables consistent CTC detection assay standardization.'},
+  'CD19':{title:'CD19 Surface Marker',desc:'Pan-B cell marker. Used in B cell quantification, lymphoma/leukemia diagnosis, and as a target in CAR-T therapy quality controls and release testing.'},
+  '+ Custom':{title:'Custom Surface Marker',desc:'Request expression of any target antigen not listed. Our scientists will assess feasibility and provide a conjugation protocol optimized for your detection system.'},
+  // Assay platform
+  'Flow Cytometry':{title:'Flow Cytometry Platform',desc:'TruCytes® are validated across single-laser through spectral flow configurations. Drop-in replacement for biological controls — run your existing gating templates unchanged.'},
+  'Digital Pathology':{title:'Digital Pathology Platform',desc:'Calibrated size and staining intensity for IHC, multiplex immunofluorescence, and whole-slide imaging. Consistent signal across slide scanners and analysis platforms.'},
+  'ELISA / Immunoassay':{title:'ELISA & Immunoassay Platform',desc:'Stable signal generation for plate-based assays with no matrix effect variability. Use as quantitative positive controls in 96-well, 384-well, and lateral flow formats.'},
+  'Lateral Flow':{title:'Lateral Flow Platform',desc:'Engineered for consistent migration velocity and controlled signal intensity on nitrocellulose membranes. Critical for POC diagnostic assay development and lot release testing.'},
+  'Microfluidics':{title:'Microfluidics Platform',desc:'Precisely defined deformability and surface charge for lab-on-chip applications, acoustic cytometry, and real-time deformability cytometry (RT-DC).'},
+  'NGS Compatible':{title:'NGS-Compatible Controls',desc:'Embedded reference sequences at defined copy number for NGS spike-in normalization, single-cell sequencing QC, and qPCR standard curves. Sequence-verified before shipment.'},
+  // Cell size
+  '2–5 µm':{title:'2–5 µm Particle Size',desc:'Mimics platelet-sized particles and small microparticles. Used in platelet function assays, microparticle studies, and small-cell analog controls for specialized flow cytometry.'},
+  '5–10 µm':{title:'5–10 µm Particle Size',desc:'The most common range, approximating lymphocyte and monocyte diameter. Compatible with standard flow cytometer focusing optics without protocol modification.'},
+  '10–15 µm':{title:'10–15 µm Particle Size',desc:'Mimics large cells such as granulocytes, epithelial cells, or activated lymphoblasts. Useful for imaging flow cytometry and microfluidic sorting optimization.'},
+  'Custom range':{title:'Custom Size Range',desc:'Specify any diameter from 1–25 µm with ±5% tolerance. Our manufacturing process supports precise size distribution control for specialized cell mimic requirements.'},
+  // Rigidity
+  'Soft':{title:'Soft Rigidity',desc:'Low elastic modulus — replicates highly deformable cells such as red blood cells, circulating tumor cells, and activated T lymphocytes. Optimized for deformability cytometry and microfluidic squeeze assays.'},
+  'Standard':{title:'Standard Rigidity',desc:'Approximates typical leukocyte stiffness. Compatible with all standard flow cytometry, immunoassay, and imaging protocols without requiring modified handling procedures.'},
+  'Stiff':{title:'Stiff Rigidity',desc:'High elastic modulus — replicates necrotic cells, apoptotic bodies, or calcified particles. Used in sorting efficiency studies, acoustic actuation assays, and mechanical threshold calibration.'},
+  // Granularity
+  'Low SSC':{title:'Low Granularity (Low SSC)',desc:'Minimal internal complexity, producing low side-scatter signals matching lymphocytes and agranulocytes. Ideal as the low-SSC reference population in differential white blood cell panels.'},
+  'Standard SSC':{title:'Standard Granularity (Standard SSC)',desc:'Internal complexity calibrated to produce monocyte-equivalent SSC signals. The most versatile granularity setting for general-purpose multiparameter flow cytometry controls.'},
+  'High SSC':{title:'High Granularity (High SSC)',desc:'High side-scatter replicating granulocytes (neutrophils, eosinophils, basophils). Critical for granulocyte gating controls and automated hematology analyzer calibration.'},
+  'Custom SSC':{title:'Custom Granularity',desc:'Specify your target SSC channel value and our scientists will engineer the internal granule density to match. Useful for instrument-specific SSC calibration requirements.'},
+  // Embedded DNA
+  'No DNA':{title:'No Embedded DNA',desc:'Standard phenotypic control — optimized for surface marker expression without an internal nucleic acid payload. Appropriate for all non-genomic assay formats.'},
+  'Reference Sequence':{title:'Reference Sequence DNA',desc:'Embedded reference DNA at a defined copy number for viability discrimination, NGS spike-in controls, qPCR standard curves, and single-cell sequencing applications.'},
+  'Custom Sequence':{title:'Custom DNA Sequence',desc:'Submit your target sequence for synthesis and encapsulation at your specified copy number. Every lot is sequence-verified by NGS before shipment.'},
+  // Fluorescence
+  'FITC':{title:'FITC Fluorescence',desc:'Fluorescein isothiocyanate — 488 nm excitation, emission ~519 nm. The most widely supported fluorochrome in legacy flow cytometry protocols. High brightness, suitable for single and multi-color panels.'},
+  'PE':{title:'PE Fluorescence',desc:'Phycoerythrin — 488 nm excitation, emission ~578 nm. Exceptional brightness, ideal as a secondary marker in 2–4 colour panels. High signal-to-noise for low-expression targets.'},
+  'APC':{title:'APC Fluorescence',desc:'Allophycocyanin — red laser excitation, emission ~660 nm. Excellent for multi-color panels as it is spectrally distinct from FITC/PE. High brightness, stable signal.'},
+  'BV421':{title:'BV421 Fluorescence',desc:'Brilliant Violet 421 — 405 nm violet laser, emission ~421 nm. Exceptional brightness for violet channel. Extends panel capacity without increasing green or red laser channels.'},
+  'PE-Cy7':{title:'PE-Cy7 Fluorescence',desc:'Tandem dye — 488 nm excitation, emission ~785 nm (near-infrared). Allows simultaneous use with PE in the same panel for high-complexity multiparameter assays.'},
+  'Custom nm':{title:'Custom Emission Wavelength',desc:'Request any emission peak from 400–800 nm for specialized spectral flow or imaging systems. Our optical chemistry team will select or synthesize the appropriate fluorochrome.'},
+};
+
+function showParamDesc(key){
+  const d=paramDesc[key];
+  if(!d)return;
+  document.getElementById('pd-title').textContent=d.title;
+  document.getElementById('pd-text').textContent=d.desc;
+  document.getElementById('prop-desc').classList.add('visible');
+}
+
+/* ─── CONFIGURATOR LOGIC ─────────────────────────────────────────────────── */
+function toggleOpt(el){el.classList.toggle('sel');updateConfigOutput()}
 function selectOne(el,groupId){
   document.querySelectorAll('#'+groupId+' .copt').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');updateConfigOutput();
+}
+function selectCtrlType(el,key){
+  document.querySelectorAll('.ctype-btn').forEach(b=>b.classList.remove('sel'));
   el.classList.add('sel');
+  showParamDesc(key);
   updateConfigOutput();
 }
 function getSelected(groupId){
   return Array.from(document.querySelectorAll('#'+groupId+' .copt.sel')).map(b=>b.textContent.trim());
+}
+function getCtrlType(){
+  const sel=document.querySelector('.ctype-btn.sel');
+  return sel?sel.textContent.trim():'Standard Controls';
 }
 function updateConfigOutput(){
   const markers=getSelected('opt-markers');
   const assay=getSelected('opt-assay');
   const fluor=getSelected('opt-fluor');
   const size=getSelected('opt-size');
+  const rigidity=getSelected('opt-rigidity');
+  const granularity=getSelected('opt-granularity');
+  const dna=getSelected('opt-dna');
+  const ctrlType=getCtrlType();
 
+  document.getElementById('spec-type').textContent=ctrlType;
   document.getElementById('spec-markers').textContent=markers.length?markers.join(', '):'None selected';
   document.getElementById('spec-assay').textContent=assay.length?assay[0]:'Not selected';
-  document.getElementById('spec-fluor').textContent=fluor.length?fluor.join(', '):'None selected';
   document.getElementById('spec-size').textContent=size.length?size[0]:'Not selected';
+  document.getElementById('spec-rigidity').textContent=rigidity.length?rigidity[0]:'Not selected';
+  document.getElementById('spec-granularity').textContent=granularity.length?granularity[0]:'Not selected';
+  document.getElementById('spec-dna').textContent=dna.length?dna[0]:'None';
+  document.getElementById('spec-fluor').textContent=fluor.length?fluor.join(', '):'None selected';
 
-  const isCustom=markers.includes('+ Custom')||fluor.includes('Custom nm')||size.includes('Custom range');
+  const isCustom=markers.includes('+ Custom')||fluor.includes('Custom nm')||size.includes('Custom range')||dna.includes('Custom Sequence')||granularity.includes('Custom SSC');
   const badge=document.getElementById('config-badge');
   badge.textContent=isCustom?'Custom quote required':'Ready to order';
   badge.className='config-badge'+(isCustom?' pending':'');
 
-  const title=markers.length?'TruCytes® — '+markers.slice(0,3).join('/')+'…':'TruCytes® Custom';
+  const title=markers.length?'TruCytes® — '+markers.slice(0,3).join('/')+(markers.length>3?'…':''):'TruCytes® Custom';
   document.getElementById('config-title').textContent=title;
 
-  if(window.updateCellCanvas) window.updateCellCanvas(markers.length?markers:['—'],fluor.length?fluor:['FITC']);
+  if(window.updateCellCanvas){
+    window.updateCellCanvas(
+      markers.length?markers:['—'],
+      fluor.length?fluor:['FITC'],
+      granularity.length?granularity[0]:'Standard SSC',
+      dna.length?dna[0]:'None',
+      rigidity.length?rigidity[0]:'Standard'
+    );
+  }
 }
 
 function submitConfigLead(){
@@ -1177,34 +1126,18 @@ function submitConfigLead(){
   const btn=event.currentTarget;
   btn.textContent='Quote requested ✓';btn.style.background='#1A6B4A';btn.disabled=true;
 }
-function submitCompareLead(){
-  const em=document.getElementById('compare-email').value;
-  if(!em)return;
-  const btn=event.currentTarget;
-  btn.textContent='Sent ✓';btn.style.background='#1A6B4A';btn.disabled=true;
-}
 
-/* ─── NAV SCROLL ─────────────────────────────────────────────────────────── */
+/* ─── NAV + SCROLL ───────────────────────────────────────────────────────── */
 const nav=document.getElementById('nav');
-const heroH=document.querySelector('.hero');
+const heroEl=document.querySelector('.hero');
 const stickyBar=document.getElementById('sticky-bar');
 let stickyDismissed=false;
 
 window.addEventListener('scroll',()=>{
   const scrolled=window.scrollY;
-  const heroBottom=heroH?heroH.offsetHeight:600;
-
-  if(scrolled>heroBottom*.15){
-    nav.classList.add('light');
-  } else {
-    nav.classList.remove('light');
-  }
-
-  if(!stickyDismissed && scrolled>heroBottom*.7){
-    stickyBar.classList.add('show');
-  }
-
-  /* journey line fill */
+  const heroBottom=heroEl?heroEl.offsetHeight:600;
+  nav.classList.toggle('light',scrolled>heroBottom*.15);
+  if(!stickyDismissed&&scrolled>heroBottom*.7)stickyBar.classList.add('show');
   const jSection=document.getElementById('section-journey');
   if(jSection){
     const jRect=jSection.getBoundingClientRect();
@@ -1212,8 +1145,6 @@ window.addEventListener('scroll',()=>{
     document.getElementById('jline').style.width=(progress*100)+'%';
   }
 });
-
-document.getElementById('sticky-bar').querySelector('.sb-dismiss').addEventListener('click',()=>{stickyDismissed=true});
 
 /* ─── REVEAL OBSERVER ────────────────────────────────────────────────────── */
 const obs=new IntersectionObserver(entries=>{
@@ -1227,16 +1158,14 @@ function routeTo(persona,target,el){
   el.classList.add('on');
   document.body.className='p-'+persona;
   const t=document.querySelector(target);
-  if(t) setTimeout(()=>t.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  if(t)setTimeout(()=>t.scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
 /* ─── FORM SUBMIT ────────────────────────────────────────────────────────── */
 document.getElementById('main-form').addEventListener('submit',function(e){
   e.preventDefault();
   const btn=this.querySelector('button[type=submit]');
-  btn.textContent='Request confirmed ✓';
-  btn.style.background='#1A6B4A';
-  btn.disabled=true;
+  btn.textContent='Request confirmed ✓';btn.style.background='#1A6B4A';btn.disabled=true;
   this.querySelectorAll('input,select').forEach(i=>{i.disabled=true;i.style.opacity='.55'});
 });
 </script>

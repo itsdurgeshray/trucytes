@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --or:#E8610A; --or-dk:#C54B07; --or-bg:rgba(232,97,10,.08); --or-bd:rgba(232,97,10,.22);
+  --or:#E8610A; --or-dk:#C54B07; --or-bg:rgba(232,97,10,.09); --or-bd:rgba(232,97,10,.25);
   --nv:#0D1B3E; --nv2:#172451;
-  --wh:#FFF; --off:#F6F4F0; --warm:#EFECE7;
+  --wh:#FFF; --off:#F5F3EF; --warm:#EFECE7;
   --tx:#0F0E0D; --t2:#5C5956; --t3:#A09D99;
   --bd:#E2DDD7; --bd2:#CBC6BF;
   --gr:#13935A; --gr-bg:rgba(19,147,90,.1);
+  --hbg:#090B0F;
   --d:'Plus Jakarta Sans',sans-serif;
   --b:'Geist','Plus Jakarta Sans',sans-serif;
   --ease:cubic-bezier(.25,.46,.45,.94);
-  --spring:cubic-bezier(.34,1.56,.64,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
@@ -27,178 +27,232 @@ a{text-decoration:none;color:inherit}
 button{cursor:pointer;border:none;background:none;font-family:var(--b)}
 input,select,textarea{font-family:var(--b)}
 
-/* ── NAV ──────────────────────────────────────────────────────── */
-.nav{height:56px;display:flex;align-items:center;padding:0 40px;position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
-.n-logo{display:flex;align-items:center;gap:8px;font-family:var(--d);font-size:15px;font-weight:800;letter-spacing:-.03em;color:var(--tx)}
-.n-mark{width:26px;height:26px;background:var(--nv);border-radius:7px;display:flex;align-items:center;justify-content:center}
-.n-mark svg{width:14px;height:14px}
+/* ── PROMO BAR ───────────────────────────────────────────── */
+.promo{background:#0A0A0A;padding:9px 24px;text-align:center;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.04em}
+.promo strong{color:rgba(255,255,255,.92)}
+.promo a{color:var(--or);margin-left:8px;font-weight:700}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+.nav{height:60px;display:flex;align-items:center;padding:0 48px;position:sticky;top:0;z-index:300;background:var(--wh);border-bottom:1px solid var(--bd)}
+.n-logo{display:flex;align-items:center;gap:9px;font-family:var(--d);font-size:16px;font-weight:800;letter-spacing:-.03em;color:var(--tx)}
+.n-mark{width:28px;height:28px;background:var(--nv);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.n-mark svg{width:15px;height:15px}
 .n-logo span{color:var(--or)}
-.n-links{display:flex;align-items:center;margin-left:28px;gap:2px;flex:1}
-.nl{font-size:13px;font-weight:500;color:var(--t3);padding:5px 12px;border-radius:100px;transition:color .15s,background .15s}
-.nl:hover{color:var(--tx);background:var(--off)}
-.nl.on{color:var(--tx);font-weight:600}
-.n-r{margin-left:auto}
-.n-cta{font-family:var(--d);font-size:13px;font-weight:700;color:var(--wh);background:var(--or);padding:7px 16px;border-radius:100px;transition:background .15s,transform .15s}
+.n-links{display:flex;align-items:center;position:absolute;left:50%;transform:translateX(-50%);gap:2px}
+.nl{font-size:13px;font-weight:500;color:var(--t2);padding:5px 13px;border-radius:100px;transition:color .15s,background .15s}
+.nl:hover,.nl.on{color:var(--tx);background:var(--off)}
+.nl.on{font-weight:600}
+.n-r{margin-left:auto;display:flex;align-items:center;gap:10px}
+.n-ghost{font-size:13px;font-weight:500;color:var(--t2);padding:7px 14px;border-radius:100px;border:1px solid var(--bd);transition:all .15s}
+.n-ghost:hover{border-color:var(--bd2);color:var(--tx)}
+.n-cta{font-family:var(--d);font-size:13px;font-weight:700;color:var(--wh);background:var(--or);padding:8px 18px;border-radius:100px;transition:background .15s,transform .15s}
 .n-cta:hover{background:var(--or-dk);transform:translateY(-1px)}
 
-/* ── HERO — compact, two-col ─────────────────────────────────── */
+/* ── HERO — compact dark, call-forward ──────────────────── */
+/* Deliberately NOT full-viewport — bottom edge is visible, form is within reach */
 .hero{
-  padding:52px 40px 44px;
-  display:grid;grid-template-columns:1fr auto;gap:48px;
-  align-items:center;max-width:1100px;margin:0 auto;
+  background:var(--hbg);
+  position:relative;
+  padding:72px 48px 80px;
+  overflow:hidden;
 }
-.hero-l{}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t3);margin-bottom:14px}
-.hero-tag::before{content:'';width:14px;height:1.5px;background:var(--or);flex-shrink:0}
-.hero-h{font-family:var(--d);font-size:clamp(36px,4vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.08;color:var(--tx);margin-bottom:10px}
-.hero-h em{font-style:italic;font-weight:300;color:var(--t2)}
-.hero-sub{font-size:15px;color:var(--t2);line-height:1.7;max-width:400px}
-.hero-r{display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0}
+#hero-cv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-glow{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 55% 65% at 8% 55%,rgba(232,97,10,.07) 0%,transparent 55%),
+             radial-gradient(ellipse 40% 50% at 88% 15%,rgba(30,60,160,.06) 0%,transparent 50%)}
+
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1140px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center;
+}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:18px}
+.hero-eyebrow::before{content:'';width:18px;height:1.5px;background:var(--or);flex-shrink:0}
+.hero-h{font-family:var(--d);font-size:clamp(38px,4.5vw,58px);font-weight:800;letter-spacing:-.04em;line-height:1.06;color:#fff;margin-bottom:16px}
+.hero-h em{font-style:italic;font-weight:300;color:rgba(255,255,255,.5)}
+.hero-sub{font-size:15px;line-height:1.78;color:rgba(255,255,255,.48);max-width:440px}
+
+/* Call block — right col in hero */
+.call-block{
+  flex-shrink:0;
+  display:flex;flex-direction:column;align-items:stretch;gap:0;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;overflow:hidden;
+  width:256px;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(12px);
+}
+.cb-top{padding:20px 22px 16px;position:relative;overflow:hidden}
+.cb-top::after{content:'';position:absolute;bottom:-50px;right:-50px;width:140px;height:140px;background:radial-gradient(circle,rgba(232,97,10,.16) 0%,transparent 65%);pointer-events:none}
+.cb-eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:12px}
 .call-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--d);font-size:16px;font-weight:800;letter-spacing:-.01em;
-  color:var(--wh);background:var(--nv);
-  padding:16px 28px;border-radius:100px;white-space:nowrap;
-  box-shadow:0 4px 24px rgba(13,27,62,.2);
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--d);font-size:15px;font-weight:800;letter-spacing:-.015em;
+  color:var(--wh);background:var(--or);
+  padding:14px 18px;border-radius:10px;
+  box-shadow:0 4px 20px rgba(232,97,10,.35);
   transition:background .18s,transform .18s,box-shadow .18s;
+  position:relative;z-index:1;
 }
-.call-btn:hover{background:var(--nv2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(13,27,62,.26)}
-.call-btn svg{width:17px;height:17px;flex-shrink:0}
-.avail-line{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--t3);white-space:nowrap}
-.av-dot{width:7px;height:7px;border-radius:50%;background:var(--t3);flex-shrink:0;transition:background .3s}
-.av-dot.live{background:var(--gr);animation:blink 2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.45}}
-.hero-or-link{font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px}
-.hero-or-link::before,.hero-or-link::after{content:'';width:16px;height:1px;background:var(--bd)}
+.call-btn:hover{background:var(--or-dk);transform:translateY(-1px);box-shadow:0 8px 28px rgba(232,97,10,.45)}
+.call-btn svg{width:15px;height:15px;flex-shrink:0}
+.avail-row{display:flex;align-items:center;gap:6px;margin-top:10px;position:relative;z-index:1}
+.av-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0}
+.av-dot.live{background:#4ade80;animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.avail-txt{font-size:11.5px;color:rgba(255,255,255,.35)}
+.cb-bottom{padding:13px 22px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2)}
+.cb-hours{font-size:11.5px;color:rgba(255,255,255,.28);text-align:center}
 
-/* ── DIVIDER LINE ─────────────────────────────────────────────── */
-.page-divider{height:1px;background:var(--bd);max-width:1100px;margin:0 auto}
+/* Scroll nudge at bottom of hero */
+.hero-nudge{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  display:flex;align-items:center;justify-content:center;
+  padding:16px 0;
+  background:linear-gradient(transparent,rgba(9,11,15,.7));
+}
+.nudge-link{display:flex;align-items:center;gap:7px;font-size:11.5px;color:rgba(255,255,255,.3);transition:color .2s}
+.nudge-link:hover{color:rgba(255,255,255,.6)}
+.nudge-link svg{width:14px;height:14px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
-/* ── LOGO MARQUEE — right after hero ─────────────────────────── */
-.logos{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);overflow:hidden;position:relative}
-.logos::before,.logos::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
-.logos::before{left:0;background:linear-gradient(90deg,var(--wh),transparent)}
-.logos::after{right:0;background:linear-gradient(270deg,var(--wh),transparent)}
-.logos-label{text-align:center;padding:14px 0 0;font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--t3)}
-.marquee-track{display:flex;align-items:center;width:max-content;animation:scroll 28s linear infinite;padding:14px 0}
-.marquee-track:hover{animation-play-state:paused}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.logo-item{display:flex;align-items:center;justify-content:center;padding:0 40px;border-right:1px solid var(--bd);height:40px;flex-shrink:0}
-.logo-item:last-child{border-right:none}
-.logo-txt{font-size:12px;font-weight:700;letter-spacing:.07em;color:#C4BFB9;white-space:nowrap}
-.logo-txt.lg{font-size:14px;letter-spacing:.12em}
-.logo-txt.si{font-style:italic;letter-spacing:.02em}
-.logo-txt.sm{font-size:11px;letter-spacing:.04em}
+/* ── FORM SECTION — light, directly below hero ───────────── */
+.form-sec{
+  background:var(--wh);
+  padding:64px 48px 80px;
+  border-bottom:1px solid var(--bd);
+}
+.form-sec-inner{
+  max-width:1140px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;
+}
 
-/* ── MAIN CONTENT GRID ─────────────────────────────────────────── */
-.main{max-width:1100px;margin:0 auto;padding:48px 40px 80px;display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:start}
+/* Boxed form card */
+.form-card{
+  border:1px solid var(--bd);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 2px 24px rgba(0,0,0,.06),0 1px 4px rgba(0,0,0,.04);
+}
 
-/* ── FORM SIDE ────────────────────────────────────────────────── */
-.form-side{}
-.fs-heading{font-family:var(--d);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:18px;display:flex;align-items:center;gap:10px}
-.fs-heading::after{content:'';flex:1;height:1px;background:var(--bd)}
-
-/* Pills */
-.pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
-.pill{font-family:var(--d);font-size:12.5px;font-weight:600;color:var(--t2);padding:8px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--wh);transition:color .18s,border-color .18s,background .18s}
-.pill:hover{color:var(--or);border-color:var(--or-bd);background:var(--or-bg)}
+/* Pills header inside card */
+.fc-pills-head{
+  padding:20px 24px 18px;
+  background:var(--off);
+  border-bottom:1px solid var(--bd);
+}
+.fc-pills-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-family:var(--d);font-size:12px;font-weight:600;color:var(--t2);padding:7px 15px;border-radius:100px;border:1.5px solid var(--bd);background:var(--wh);transition:all .18s}
+.pill:hover{color:var(--tx);border-color:var(--bd2);transform:translateY(-1px)}
 .pill.on{color:var(--or);border-color:var(--or);background:var(--or-bg);font-weight:700}
 
-/* Adaptive form title */
-.form-ttl{font-family:var(--d);font-size:22px;font-weight:700;letter-spacing:-.025em;color:var(--tx);margin-bottom:4px;transition:opacity .2s}
-.form-stl{font-size:13px;color:var(--t2);margin-bottom:28px;transition:opacity .2s}
+/* Card body */
+.fc-body{padding:24px 24px 20px}
+.intent-head{min-height:56px;margin-bottom:22px}
+.intent-h{font-family:var(--d);font-size:17px;font-weight:700;letter-spacing:-.02em;color:var(--tx);margin-bottom:5px}
+.intent-s{font-size:12.5px;color:var(--t3);line-height:1.65}
 
 /* Fields */
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
-.fld{position:relative;margin-bottom:26px}
-.fld label{position:absolute;top:12px;left:0;font-size:14px;color:var(--t3);pointer-events:none;transition:top .2s var(--ease),font-size .2s var(--ease),color .2s var(--ease),font-weight .2s var(--ease),letter-spacing .2s}
-.fld.up label,.fld.fc label{top:-10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
-.fld input,.fld select,.fld textarea{width:100%;background:transparent;border:none;border-bottom:1.5px solid var(--bd);border-radius:0;padding:11px 0 8px;font-size:14.5px;font-weight:500;color:var(--tx);outline:none;-webkit-appearance:none;transition:border-color .2s}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.fld{position:relative;margin-bottom:22px}
+.fld label{position:absolute;top:11px;left:0;font-size:13.5px;color:var(--t3);pointer-events:none;transition:top .2s var(--ease),font-size .2s var(--ease),color .2s var(--ease),letter-spacing .2s}
+.fld.up label,.fld.fc label{top:-9px;font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--or)}
+.fld input,.fld select,.fld textarea{width:100%;background:transparent;border:none;border-bottom:1.5px solid var(--bd);border-radius:0;padding:10px 0 7px;font-size:14px;font-weight:500;color:var(--tx);outline:none;-webkit-appearance:none;transition:border-color .2s}
 .fld select{cursor:pointer}
-.fld textarea{resize:none;line-height:1.68}
+.fld textarea{resize:none;line-height:1.7}
 .fld input:focus,.fld select:focus,.fld textarea:focus{border-bottom-color:var(--or)}
 .fld::after{content:'';position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--or);border-radius:1px;transition:width .25s var(--ease);pointer-events:none}
 .fld.fc::after{width:100%}
-.fld-hint{font-size:11px;color:var(--t3);margin-top:4px}
-.fld-cond{overflow:hidden;max-height:0;opacity:0;transition:max-height .36s var(--ease),opacity .26s ease .04s;pointer-events:none}
-.fld-cond.open{max-height:110px;opacity:1;pointer-events:auto}
+.fld-hint{font-size:10.5px;color:var(--t3);margin-top:3px}
 
-/* Pre-fill note */
-.prefill-note{display:none;align-items:center;gap:5px;font-size:11px;color:var(--or);margin-top:4px;opacity:.8}
+/* Conditional */
+.fld-cond{overflow:hidden;max-height:0;opacity:0;transition:max-height .32s var(--ease),opacity .22s ease .04s;pointer-events:none}
+.fld-cond.open{max-height:100px;opacity:1;pointer-events:auto}
+
+/* Message — progressive */
+.msg-wrap{overflow:hidden;max-height:0;opacity:0;transition:max-height .42s var(--ease),opacity .28s ease .08s;pointer-events:none}
+.msg-wrap.open{max-height:280px;opacity:1;pointer-events:auto}
+.prefill-note{display:none;align-items:center;gap:5px;font-size:10.5px;color:var(--or);margin-top:4px;opacity:.8}
 .prefill-note.show{display:flex}
 
-/* Submit */
-.f-hr{height:1px;background:var(--bd);margin:2px 0 24px}
-.btn-send{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--or);color:var(--wh);font-family:var(--d);font-size:15px;font-weight:800;letter-spacing:.01em;padding:16px 24px;border-radius:100px;box-shadow:0 4px 20px rgba(232,97,10,.24);transition:background .16s,transform .15s,box-shadow .16s;margin-bottom:11px}
-.btn-send:hover{background:var(--or-dk);transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,97,10,.32)}
+/* Submit — progressive */
+.submit-wrap{overflow:hidden;max-height:0;opacity:0;transition:max-height .32s var(--ease),opacity .22s ease .1s;pointer-events:none}
+.submit-wrap.open{max-height:120px;opacity:1;pointer-events:auto}
+.f-hr{height:1px;background:var(--bd);margin:4px 0 18px}
+.btn-send{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--or);color:var(--wh);font-family:var(--d);font-size:14px;font-weight:800;letter-spacing:.01em;padding:15px 20px;border-radius:100px;box-shadow:0 4px 18px rgba(232,97,10,.22);transition:background .16s,transform .15s,box-shadow .16s;margin-bottom:10px}
+.btn-send:hover{background:var(--or-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,97,10,.3)}
 .btn-send:active{transform:none}
-.btn-send svg{width:14px;height:14px;transition:transform .2s}
+.btn-send svg{width:13px;height:13px;transition:transform .2s}
 .btn-send:hover svg{transform:translateX(4px)}
-.privacy{text-align:center;font-size:11px;color:var(--t3);line-height:1.65}
-.privacy a{color:var(--t2);border-bottom:1px solid var(--bd);transition:color .15s}
+.fc-privacy{text-align:center;font-size:10.5px;color:var(--t3);line-height:1.65}
+.fc-privacy a{color:var(--t2);border-bottom:1px solid var(--bd);transition:color .15s}
 
 /* Success */
-.form-success{display:none;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:56px 0}
-.si-ring{width:52px;height:52px;border-radius:50%;background:var(--gr-bg);border:2px solid rgba(19,147,90,.2);display:flex;align-items:center;justify-content:center}
-.si-ring svg{width:22px;height:22px;color:var(--gr)}
-.si-h{font-family:var(--d);font-size:21px;font-weight:700;letter-spacing:-.025em;color:var(--tx)}
-.si-p{font-size:13px;color:var(--t2);max-width:320px;line-height:1.7}
+.form-success{display:none;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:44px 24px}
+.si-ring{width:48px;height:48px;border-radius:50%;background:var(--gr-bg);border:2px solid rgba(19,147,90,.2);display:flex;align-items:center;justify-content:center}
+.si-ring svg{width:20px;height:20px;color:var(--gr)}
+.si-h{font-family:var(--d);font-size:19px;font-weight:700;letter-spacing:-.025em;color:var(--tx)}
+.si-p{font-size:13px;color:var(--t2);max-width:280px;line-height:1.75}
+.si-note{font-size:11px;color:var(--t3)}
 
-/* ── PROOF SIDE — sticky alongside form ──────────────────────── */
-.proof-side{position:sticky;top:72px;display:flex;flex-direction:column;gap:20px}
+/* ── SIDEBAR — vertical timeline + testimonial ───────────── */
+.proof-col{display:flex;flex-direction:column;gap:24px;position:sticky;top:80px}
+
+/* Vertical timeline */
+.tl-card{border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+.tl-card-head{padding:14px 18px;background:var(--off);border-bottom:1px solid var(--bd)}
+.tl-card-lbl{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--t3)}
+.tl-steps{display:flex;flex-direction:column}
+.tl-step{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;position:relative}
+.tl-step:not(:last-child){border-bottom:1px solid var(--bd)}
+.tl-step:not(:last-child)::after{
+  content:'';position:absolute;
+  left:calc(18px + 13px);/* left padding + half node width */
+  top:44px;bottom:-1px;
+  width:1px;background:var(--bd);
+}
+.tl-node{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--d);font-size:10px;font-weight:800;
+  border:1.5px solid var(--bd);color:var(--t3);background:var(--wh);
+  position:relative;z-index:1;
+}
+.tl-step:first-child .tl-node{background:var(--or);border-color:var(--or);color:var(--wh);box-shadow:0 2px 10px rgba(232,97,10,.3)}
+.tl-body{}
+.tl-title{font-family:var(--d);font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px;letter-spacing:-.01em}
+.tl-desc{font-size:11.5px;color:var(--t3);line-height:1.6}
+.tl-badge{display:inline-block;margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.05em;color:rgba(232,97,10,.75);padding:2px 8px;border-radius:100px;background:var(--or-bg);border:1px solid var(--or-bd)}
 
 /* Testimonial card */
-.tcard{background:var(--nv);border-radius:16px;padding:28px;overflow:hidden;position:relative}
-.tcard::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(232,97,10,.12) 0%,transparent 65%);pointer-events:none}
-.tcard-quote{font-family:var(--d);font-size:48px;font-weight:800;line-height:.5;color:var(--or);opacity:.5;display:block;margin-bottom:14px;letter-spacing:-.04em}
-.tcard-text{font-family:var(--d);font-size:15px;font-weight:400;font-style:italic;line-height:1.65;color:rgba(255,255,255,.82);margin-bottom:20px;position:relative;z-index:1}
-.tcard-text strong{font-style:normal;font-weight:700;color:var(--wh)}
-.tcard-rule{width:28px;height:2px;background:var(--or);margin-bottom:14px}
-.tcard-name{font-family:var(--d);font-size:13px;font-weight:700;color:var(--wh);margin-bottom:3px;letter-spacing:-.01em}
-.tcard-title{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5}
-.tcard-badge{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:4px 10px;border:1px solid rgba(255,255,255,.1);border-radius:100px}
+.tcard{background:var(--nv);border-radius:16px;padding:26px;overflow:hidden;position:relative}
+.tcard::before{content:'';position:absolute;top:-50px;right:-50px;width:160px;height:160px;background:radial-gradient(circle,rgba(232,97,10,.12) 0%,transparent 65%);pointer-events:none}
+.tcard-q{font-family:var(--d);font-size:14px;font-weight:400;font-style:italic;line-height:1.7;color:rgba(255,255,255,.78);margin-bottom:18px;position:relative;z-index:1}
+.tcard-q::before{content:'\201C';font-size:32px;font-weight:800;line-height:.6;color:var(--or);opacity:.5;display:block;margin-bottom:10px;font-style:normal}
+.tcard-q strong{font-style:normal;font-weight:700;color:var(--wh)}
+.tcard-rule{width:24px;height:2px;background:var(--or);margin-bottom:12px}
+.tcard-name{font-family:var(--d);font-size:12.5px;font-weight:700;color:var(--wh);margin-bottom:3px}
+.tcard-role{font-size:11px;color:rgba(255,255,255,.4);line-height:1.5}
 
-/* Stats block */
-.stats-block{background:var(--off);border:1px solid var(--bd);border-radius:14px;padding:20px 22px;display:grid;grid-template-columns:1fr 1fr;gap:14px 10px}
-.stat-item{}
-.stat-n{font-family:var(--d);font-size:24px;font-weight:800;letter-spacing:-.04em;color:var(--tx);display:block;margin-bottom:2px}
-.stat-n span{color:var(--or)}
-.stat-lbl{font-size:11px;color:var(--t3);line-height:1.4}
-
-/* Proof logos — compact list below stats */
-.proof-logos{display:flex;flex-direction:column;gap:0}
-.pl-label{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
-.pl-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.pl-item{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}
-.pl-item:nth-child(odd){padding-right:12px;border-right:1px solid var(--bd)}
-.pl-item:nth-child(even){padding-left:12px}
-.pl-item:nth-last-child(-n+2){border-bottom:none}
-.pl-name{font-family:var(--d);font-size:11.5px;font-weight:700;color:var(--t2);letter-spacing:-.01em}
-
-/* ── FOOTER ──────────────────────────────────────────────────── */
-.footer{border-top:1px solid var(--bd);padding:22px 40px;background:var(--warm)}
-.footer-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.f-logo{display:flex;align-items:center;gap:7px;font-family:var(--d);font-size:14px;font-weight:800;letter-spacing:-.03em;color:var(--tx)}
-.f-lmark{width:22px;height:22px;background:var(--nv);border-radius:5px;display:flex;align-items:center;justify-content:center}
-.f-lmark svg{width:12px;height:12px}
-.f-logo span{color:var(--or)}
-.f-links{display:flex;gap:2px}
-.f-link{font-size:12px;color:var(--t3);padding:4px 9px;border-radius:100px;transition:color .15s,background .15s}
-.f-link:hover{color:var(--t2);background:var(--bd)}
-.f-copy{font-size:11.5px;color:var(--t3)}
-
-/* ── ANIMATIONS ──────────────────────────────────────────────── */
-@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.hero-tag{animation:up .45s .04s var(--ease) both}
-.hero-h{animation:up .55s .1s var(--ease) both}
-.hero-sub{animation:up .45s .18s var(--ease) both}
-.hero-r{animation:up .5s .14s var(--ease) both}
-.rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+/* ── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero-eyebrow{animation:up .5s .05s var(--ease) both}
+.hero-h{animation:up .6s .12s var(--ease) both}
+.hero-sub{animation:up .5s .2s var(--ease) both}
+.call-block{animation:up .55s .16s var(--ease) both}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
 .rv.in{opacity:1;transform:none}
-.rv.d1{transition-delay:.06s}.rv.d2{transition-delay:.12s}.rv.d3{transition-delay:.18s}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}
 </style>
 </head>
 <body>
+
+<!-- PROMO -->
+<div class="promo">
+  <strong>Save 20%</strong> on all Cell Mimics — use code <strong>CONTROL20</strong> at checkout.
+  <a href="#">Shop now →</a>
+</div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -207,258 +261,305 @@ input,select,textarea{font-family:var(--b)}
     Slingshot<span>Bio</span>
   </a>
   <div class="n-links">
-    <a class="nl" href="/">Products</a>
-    <a class="nl" href="/">Science</a>
-    <a class="nl" href="/">Applications</a>
-    <a class="nl" href="/">Resources</a>
-    <a class="nl" href="/">About</a>
-    <a class="nl on" href="/contact">Contact</a>
+    <a class="nl" href="#">Products</a>
+    <a class="nl" href="#">Industries</a>
+    <a class="nl" href="#">Resources</a>
+    <a class="nl" href="#">Technology</a>
+    <a class="nl" href="#">Company</a>
+    <a class="nl on" href="#">Contact Us</a>
   </div>
-  <div class="n-r"><a class="n-cta" href="#form">Request Eval Kit</a></div>
+  <div class="n-r">
+    <a class="n-ghost" href="#">Log in</a>
+    <a class="n-cta" href="#">Shop Now</a>
+  </div>
 </nav>
 
-<!-- HERO — compact, call is the primary action -->
-<div style="border-bottom:1px solid var(--bd)">
-  <div class="hero">
+<!-- HERO — compact dark, call-forward, no form -->
+<section class="hero">
+  <canvas id="hero-cv"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
     <div class="hero-l">
-      <div class="hero-tag">Contact us</div>
-      <h1 class="hero-h">Talk to our<br><em>science</em> team.</h1>
-      <p class="hero-sub">Every inquiry is reviewed by a Field Application Scientist — not a ticketing queue.</p>
+      <div class="hero-eyebrow">Get in touch</div>
+      <h1 class="hero-h">Get answers from the<br><em>scientists</em> who built it.</h1>
+      <p class="hero-sub">No ticketing queues. Every inquiry is personally handled by a Field Application Scientist with domain expertise in your assay.</p>
     </div>
-    <div class="hero-r">
-      <a class="call-btn" href="tel:+16175550173">
-        <svg fill="none" viewBox="0 0 20 20"><path d="M3.5 4c0-.28.22-.5.5-.5h2.77a.5.5 0 01.49.39l.9 4.5a.5.5 0 01-.27.55l-1.62.81A9.5 9.5 0 0010.25 13.73l.81-1.62a.5.5 0 01.55-.27l4.5.9a.5.5 0 01.39.49V16a.5.5 0 01-.5.5C8.54 16.5 3.5 11.46 3.5 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>
-        Call +1 (617) 555‑0173
-      </a>
-      <div class="avail-line">
-        <span class="av-dot" id="avDot"></span>
-        <span id="avTxt">Checking…</span>
+    <div class="call-block">
+      <div class="cb-top">
+        <div class="cb-eyebrow">Prefer to speak directly?</div>
+        <a class="call-btn" href="tel:+15107706806">
+          <svg fill="none" viewBox="0 0 20 20"><path d="M3.5 4c0-.28.22-.5.5-.5h2.77a.5.5 0 01.49.39l.9 4.5a.5.5 0 01-.27.55l-1.62.81A9.5 9.5 0 0010.25 13.73l.81-1.62a.5.5 0 01.55-.27l4.5.9a.5.5 0 01.39.49V16a.5.5 0 01-.5.5C8.54 16.5 3.5 11.46 3.5 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>
+          +1 (510) 770‑6806
+        </a>
+        <div class="avail-row">
+          <span class="av-dot" id="avDot"></span>
+          <span class="avail-txt" id="avTxt">Checking availability…</span>
+        </div>
       </div>
-      <a class="hero-or-link" href="#form">or send a message</a>
-    </div>
-  </div>
-</div>
-
-<!-- LOGO MARQUEE — immediately after hero -->
-<div class="logos rv">
-  <div class="logos-label">Trusted by leading research &amp; pharmaceutical organisations</div>
-  <div class="marquee-track">
-    <!-- Set A -->
-    <div class="logo-item"><span class="logo-txt">✦ Agilent</span></div>
-    <div class="logo-item"><span class="logo-txt lg">AMGEN</span></div>
-    <div class="logo-item"><span class="logo-txt">BAYER</span></div>
-    <div class="logo-item"><span class="logo-txt lg" style="letter-spacing:.15em">BD</span></div>
-    <div class="logo-item"><span class="logo-txt sm">Beckman Coulter</span></div>
-    <div class="logo-item"><span class="logo-txt">BioLegend</span></div>
-    <div class="logo-item"><span class="logo-txt">MERCK</span></div>
-    <div class="logo-item"><span class="logo-txt sm">Thermo Fisher</span></div>
-    <div class="logo-item"><span class="logo-txt si">Mayo Clinic</span></div>
-    <div class="logo-item"><span class="logo-txt sm">Stanford Medicine</span></div>
-    <div class="logo-item"><span class="logo-txt lg" style="letter-spacing:.15em">NIH</span></div>
-    <div class="logo-item"><span class="logo-txt">Illumina</span></div>
-    <!-- Set B — duplicate for seamless loop -->
-    <div class="logo-item"><span class="logo-txt">✦ Agilent</span></div>
-    <div class="logo-item"><span class="logo-txt lg">AMGEN</span></div>
-    <div class="logo-item"><span class="logo-txt">BAYER</span></div>
-    <div class="logo-item"><span class="logo-txt lg" style="letter-spacing:.15em">BD</span></div>
-    <div class="logo-item"><span class="logo-txt sm">Beckman Coulter</span></div>
-    <div class="logo-item"><span class="logo-txt">BioLegend</span></div>
-    <div class="logo-item"><span class="logo-txt">MERCK</span></div>
-    <div class="logo-item"><span class="logo-txt sm">Thermo Fisher</span></div>
-    <div class="logo-item"><span class="logo-txt si">Mayo Clinic</span></div>
-    <div class="logo-item"><span class="logo-txt sm">Stanford Medicine</span></div>
-    <div class="logo-item"><span class="logo-txt lg" style="letter-spacing:.15em">NIH</span></div>
-    <div class="logo-item"><span class="logo-txt">Illumina</span></div>
-  </div>
-</div>
-
-<!-- MAIN: FORM + STICKY PROOF -->
-<div class="main" id="form">
-
-  <!-- FORM -->
-  <div class="form-side rv">
-    <div class="fs-heading">Send a message</div>
-
-    <div class="pills">
-      <button class="pill" data-k="eval"    onclick="pick(this)">Evaluation Kit</button>
-      <button class="pill" data-k="support" onclick="pick(this)">Technical Support</button>
-      <button class="pill" data-k="sales"   onclick="pick(this)">Sales &amp; Pricing</button>
-      <button class="pill" data-k="partner" onclick="pick(this)">Partnership</button>
-    </div>
-
-    <div class="form-ttl" id="fT">What can we help with?</div>
-    <p class="form-stl" id="fS">Fill in the details and a scientist will personally follow up within 2 business days.</p>
-
-    <div id="formBody">
-      <form id="theForm" novalidate onsubmit="send(event)">
-
-        <div class="f-row">
-          <div class="fld" id="w-fn"><label>First name</label><input type="text" name="first" autocomplete="given-name" required></div>
-          <div class="fld" id="w-ln"><label>Last name</label><input type="text" name="last" autocomplete="family-name" required></div>
-        </div>
-        <div class="fld" id="w-em">
-          <label>Work email</label>
-          <input type="email" name="email" autocomplete="email" required>
-          <div class="fld-hint">Use your institutional or company email</div>
-        </div>
-        <div class="f-row">
-          <div class="fld" id="w-co"><label>Institution / company</label><input type="text" name="company" required></div>
-          <div class="fld" id="w-ro"><label>Role / title</label><input type="text" name="role"></div>
-        </div>
-
-        <div class="fld-cond" id="c-eval">
-          <div class="fld" id="w-ins"><label>Primary flow cytometer</label>
-            <select name="instrument"><option value="" disabled selected> </option>
-              <option>BD FACSCanto / FACSAria</option><option>BD LSRFortessa / Symphony</option>
-              <option>Beckman Coulter CytoFLEX</option><option>Beckman Coulter DxFLEX</option>
-              <option>Sony MA900 / SH800</option><option>Thermo Fisher Attune NxT</option>
-              <option>Other / not sure</option>
-            </select>
-          </div>
-        </div>
-        <div class="fld-cond" id="c-support">
-          <div class="fld" id="w-iss"><label>Issue type</label>
-            <select name="issue"><option value="" disabled selected> </option>
-              <option>TruCytes® — scatter or population issue</option>
-              <option>pFCG® Cell Mimics — gating question</option>
-              <option>Protocol / staining optimization</option>
-              <option>Software / data analysis</option><option>Other</option>
-            </select>
-          </div>
-        </div>
-        <div class="fld-cond" id="c-sales">
-          <div class="fld" id="w-vol"><label>Estimated annual volume</label>
-            <select name="volume"><option value="" disabled selected> </option>
-              <option>1–10 kits / year</option><option>11–50 kits / year</option>
-              <option>51–200 kits / year</option><option>200+ kits / year</option><option>Not sure yet</option>
-            </select>
-          </div>
-        </div>
-        <div class="fld-cond" id="c-partner">
-          <div class="fld" id="w-pt"><label>Partnership type</label>
-            <select name="ptype"><option value="" disabled selected> </option>
-              <option>Authorized distributor</option><option>OEM / white-label licensing</option>
-              <option>Research collaboration</option><option>Academic licensing</option><option>Other</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="fld" id="w-ms">
-          <label>Message</label>
-          <textarea name="message" id="msgTA" rows="5" required></textarea>
-          <div class="prefill-note" id="prefillNote">
-            <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.25" stroke="currentColor" stroke-width="1.2"/><path d="M5 3v2.5M5 7v.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-            Pre-filled from your selection — edit freely
-          </div>
-        </div>
-
-        <div class="f-hr"></div>
-        <button class="btn-send" type="submit" id="sendBtn">
-          <svg fill="none" viewBox="0 0 16 16"><path d="M2.5 13.5l11-5.5-11-5.5v4l8 1.5-8 1.5v4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          <span id="sendLbl">Send message</span>
-        </button>
-        <p class="privacy">We won't share your information. <a href="/privacy">Privacy Policy</a> · <a href="/unsubscribe">Unsubscribe anytime</a>.</p>
-      </form>
-    </div>
-
-    <div class="form-success" id="fSuccess">
-      <div class="si-ring"><svg fill="none" viewBox="0 0 22 22"><path d="M4 11l5 5 9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="si-h">Message received.</div>
-      <p class="si-p">A Field Application Scientist will personally follow up within 2 business days. Check your inbox.</p>
+      <div class="cb-bottom">
+        <div class="cb-hours">Mon–Fri · 9am – 5pm PT</div>
+      </div>
     </div>
   </div>
 
-  <!-- PROOF — sticky, always visible alongside form -->
-  <aside class="proof-side rv d1">
+  <!-- Scroll nudge — makes the fold visible, invites scroll -->
+  <div class="hero-nudge">
+    <a class="nudge-link" href="#form">
+      <span>Or send a message</span>
+      <svg fill="none" viewBox="0 0 14 14"><path d="M7 2v10M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
 
-    <!-- Testimonial -->
-    <div class="tcard">
-      <span class="tcard-quote">"</span>
-      <p class="tcard-text">TruCytes® set a new benchmark for our facility. <strong>Instrument setup time dropped 35%</strong> — operators spend that time on science, not troubleshooting QC runs.</p>
-      <div class="tcard-rule"></div>
-      <div class="tcard-name">Dr. Sarah L. Chen, PhD</div>
-      <div class="tcard-title">Flow Cytometry Core Director<br>Stanford Medicine</div>
-      <span class="tcard-badge">BD LSRFortessa X-20</span>
+<!-- FORM SECTION — immediately below hero, white surface -->
+<section class="form-sec" id="form">
+  <div class="form-sec-inner">
+
+    <!-- BOXED FORM CARD -->
+    <div class="form-card rv">
+
+      <!-- Pills — top of card, sets intent before any field -->
+      <div class="fc-pills-head">
+        <div class="fc-pills-label">I'm reaching out about</div>
+        <div class="pills">
+          <button type="button" class="pill" data-k="eval"    onclick="pick(this)">Evaluation Kit</button>
+          <button type="button" class="pill" data-k="support" onclick="pick(this)">Technical Support</button>
+          <button type="button" class="pill" data-k="sales"   onclick="pick(this)">Pricing &amp; Quotes</button>
+          <button type="button" class="pill" data-k="partner" onclick="pick(this)">Partnership</button>
+        </div>
+      </div>
+
+      <!-- Form body -->
+      <div class="fc-body">
+        <div class="intent-head">
+          <div class="intent-h" id="fT">How can we help?</div>
+          <p class="intent-s" id="fS">Select a reason above — we'll tailor the form and pre-fill your message.</p>
+        </div>
+
+        <div id="formBody">
+          <form id="theForm" novalidate onsubmit="send(event)">
+
+            <div class="f-row">
+              <div class="fld"><label>First name</label><input type="text" name="first" autocomplete="given-name" required></div>
+              <div class="fld"><label>Last name</label><input type="text" name="last" autocomplete="family-name" required></div>
+            </div>
+            <div class="fld">
+              <label>Work email</label>
+              <input type="email" name="email" autocomplete="email" required>
+              <div class="fld-hint">Institutional or company email preferred</div>
+            </div>
+            <div class="fld">
+              <label>Institution / company</label>
+              <input type="text" name="company" autocomplete="organization" required>
+            </div>
+
+            <!-- Conditional fields -->
+            <div class="fld-cond" id="c-eval">
+              <div class="fld"><label>Primary flow cytometer</label>
+                <select name="instrument"><option value="" disabled selected> </option>
+                  <option>BD FACSCanto / FACSAria</option>
+                  <option>BD LSRFortessa / Symphony</option>
+                  <option>Beckman Coulter CytoFLEX</option>
+                  <option>Beckman Coulter DxFLEX</option>
+                  <option>Sony MA900 / SH800</option>
+                  <option>Thermo Fisher Attune NxT</option>
+                  <option>Other / not sure</option>
+                </select>
+              </div>
+            </div>
+            <div class="fld-cond" id="c-support">
+              <div class="fld"><label>What's the issue?</label>
+                <select name="issue"><option value="" disabled selected> </option>
+                  <option>TruCytes® — scatter or population issue</option>
+                  <option>pFCG® Cell Mimics — gating question</option>
+                  <option>Protocol / staining optimization</option>
+                  <option>Software / data analysis</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="fld-cond" id="c-sales">
+              <div class="fld"><label>Estimated annual volume</label>
+                <select name="volume"><option value="" disabled selected> </option>
+                  <option>1–10 kits / year</option>
+                  <option>11–50 kits / year</option>
+                  <option>51–200 kits / year</option>
+                  <option>200+ kits / year</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="fld-cond" id="c-partner">
+              <div class="fld"><label>Type of partnership</label>
+                <select name="ptype"><option value="" disabled selected> </option>
+                  <option>Authorized distributor</option>
+                  <option>OEM / white-label licensing</option>
+                  <option>Research collaboration</option>
+                  <option>Academic licensing</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message — revealed after pill pick -->
+            <div class="msg-wrap" id="msgWrap">
+              <div class="fld" id="w-ms">
+                <label>Message</label>
+                <textarea name="message" id="msgTA" rows="4" required></textarea>
+                <div class="prefill-note" id="prefillNote">
+                  <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.25" stroke="currentColor" stroke-width="1.2"/><path d="M5 3v2.5M5 7v.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                  Pre-filled from your selection — edit freely
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit — revealed after pill pick -->
+            <div class="submit-wrap" id="submitWrap">
+              <div class="f-hr"></div>
+              <button class="btn-send" type="submit" id="sendBtn">
+                <svg fill="none" viewBox="0 0 16 16"><path d="M2.5 13.5l11-5.5-11-5.5v4l8 1.5-8 1.5v4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                <span id="sendLbl">Send message</span>
+              </button>
+              <p class="fc-privacy">We keep your data private. <a href="/privacy">Privacy Policy</a> · <a href="#">Unsubscribe anytime</a>.</p>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Success -->
+        <div class="form-success" id="fSuccess">
+          <div class="si-ring"><svg fill="none" viewBox="0 0 22 22"><path d="M4 11l5 5 9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="si-h">You're in good hands.</div>
+          <p class="si-p">A Field Application Scientist will personally review your message and follow up within one business day.</p>
+          <p class="si-note">Keep an eye on your inbox — including spam.</p>
+        </div>
+      </div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-block rv d2">
-      <div class="stat-item">
-        <span class="stat-n">200<span>+</span></span>
-        <span class="stat-lbl">Institutions worldwide</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-n">98<span>%</span></span>
-        <span class="stat-lbl">Eval-to-order rate</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-n">&lt;2</span>
-        <span class="stat-lbl">Day median response</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-n">6<span>+</span></span>
-        <span class="stat-lbl">Years validated</span>
-      </div>
-    </div>
+    <!-- SIDEBAR — timeline + testimonial, sticky -->
+    <aside class="proof-col rv d1">
 
-    <!-- Compact logo list -->
-    <div class="proof-logos rv d3">
-      <div class="pl-label">Also trusted by</div>
-      <div class="pl-grid">
-        <div class="pl-item"><span class="pl-name">Mayo Clinic</span></div>
-        <div class="pl-item"><span class="pl-name">NIH / NCI</span></div>
-        <div class="pl-item"><span class="pl-name">Amgen</span></div>
-        <div class="pl-item"><span class="pl-name">Baylor COM</span></div>
-        <div class="pl-item"><span class="pl-name">Illumina</span></div>
-        <div class="pl-item"><span class="pl-name">Thermo Fisher</span></div>
+      <!-- What happens next — vertical timeline -->
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-card-lbl">What happens next</div>
+        </div>
+        <div class="tl-steps">
+          <div class="tl-step">
+            <div class="tl-node">01</div>
+            <div class="tl-body">
+              <div class="tl-title">Message received</div>
+              <div class="tl-desc">Lands directly with the team — no bots, no ticketing, no auto-routing.</div>
+              <span class="tl-badge">Immediate</span>
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-node">02</div>
+            <div class="tl-body">
+              <div class="tl-title">Scientist takes ownership</div>
+              <div class="tl-desc">A Field Application Scientist with relevant domain expertise is assigned to your inquiry.</div>
+              <span class="tl-badge">Within hours</span>
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-node">03</div>
+            <div class="tl-body">
+              <div class="tl-title">You hear back</div>
+              <div class="tl-desc">A personal, substantive response — not a template. Urgent? Call us directly.</div>
+              <span class="tl-badge">1 business day</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-  </aside>
-</div>
+      <!-- Testimonial -->
+      <div class="tcard rv d2">
+        <p class="tcard-q">TruCytes® set a new benchmark for our facility. <strong>Instrument setup time dropped 35%</strong> — operators spend that time on science, not troubleshooting QC runs.</p>
+        <div class="tcard-rule"></div>
+        <div class="tcard-name">Dr. Sarah L. Chen, PhD</div>
+        <div class="tcard-role">Flow Cytometry Core Director<br>Stanford Medicine</div>
+      </div>
+
+    </aside>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-in">
-    <div class="f-logo">
-      <div class="f-lmark"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10.5L6 3.5L10 10.5" stroke="#E8610A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="3.5" r="1.4" fill="#E8610A"/></svg></div>
-      Slingshot<span>Bio</span>
+<footer style="border-top:1px solid var(--bd);padding:22px 48px;background:var(--warm)">
+  <div style="max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="/" style="display:flex;align-items:center;gap:7px;font-family:var(--d);font-size:14px;font-weight:800;letter-spacing:-.03em;color:var(--tx)">
+      <div style="width:22px;height:22px;background:var(--nv);border-radius:5px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 12 12" fill="none" style="width:12px;height:12px"><path d="M2 10.5L6 3.5L10 10.5" stroke="#E8610A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="3.5" r="1.4" fill="#E8610A"/></svg></div>
+      Slingshot<span style="color:var(--or)">Bio</span>
+    </a>
+    <div style="display:flex;gap:2px">
+      <a href="#" style="font-size:12px;color:var(--t3);padding:4px 9px;border-radius:100px">Privacy</a>
+      <a href="#" style="font-size:12px;color:var(--t3);padding:4px 9px;border-radius:100px">Terms</a>
+      <a href="#" style="font-size:12px;color:var(--t3);padding:4px 9px;border-radius:100px">ISO 13485</a>
+      <a href="#" style="font-size:12px;color:var(--t3);padding:4px 9px;border-radius:100px">Careers</a>
     </div>
-    <div class="f-links">
-      <a class="f-link" href="/">Privacy</a>
-      <a class="f-link" href="/">Terms</a>
-      <a class="f-link" href="/">ISO 13485</a>
-      <a class="f-link" href="/">Careers</a>
-    </div>
-    <span class="f-copy">© 2026 SlinghotBio, Inc.</span>
+    <span style="font-size:11.5px;color:var(--t3)">© 2026 SlinghotBio, Inc.</span>
   </div>
 </footer>
 
 <script>
-/* ── AVAILABILITY ──────────────────────────────────────── */
+/* ── HERO CANVAS ───────────────────────────────────── */
+(function(){
+  const cv=document.getElementById('hero-cv');
+  const cx=cv.getContext('2d');let pts=[];
+  function resize(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight}
+  class P{
+    constructor(){this.init(true)}
+    init(full){
+      this.x=full?Math.random()*cv.width:Math.random()<.5?-20:cv.width+20;
+      this.y=Math.random()*cv.height;this.r=Math.random()*2.5+.4;
+      this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;
+      this.a=Math.random()*.2+.04;this.ph=Math.random()*Math.PI*2;
+      this.ps=Math.random()*.01+.003;this.hi=Math.random()<.06;
+    }
+    tick(){
+      this.x+=this.vx;this.y+=this.vy;this.ph+=this.ps;
+      if(this.x<-40||this.x>cv.width+40||this.y<-40||this.y>cv.height+40){this.init(false);this.x=Math.random()*cv.width;this.y=Math.random()*cv.height}
+    }
+    draw(){
+      const r=this.r+Math.sin(this.ph)*.35;
+      cx.beginPath();cx.arc(this.x,this.y,r,0,6.283);
+      cx.strokeStyle=this.hi?`rgba(232,97,10,${this.a+.06})`:`rgba(255,255,255,${this.a})`;
+      cx.fillStyle=this.hi?`rgba(232,97,10,${this.a*.15})`:`rgba(255,255,255,${this.a*.08})`;
+      cx.lineWidth=.5;cx.fill();cx.stroke();
+    }
+  }
+  function conns(){for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle=`rgba(255,255,255,${.02*(1-d/90)})`;cx.lineWidth=.3;cx.stroke()}}}
+  function init(){resize();pts=[];const n=Math.floor(cv.width*cv.height/11000);for(let i=0;i<n;i++)pts.push(new P())}
+  function frame(){cx.clearRect(0,0,cv.width,cv.height);conns();pts.forEach(p=>{p.tick();p.draw()});requestAnimationFrame(frame)}
+  init();frame();window.addEventListener('resize',init);
+})();
+
+/* ── AVAILABILITY ──────────────────────────────────── */
 (function(){
   function chk(){
     const pt=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Los_Angeles'}));
     const h=pt.getHours(),d=pt.getDay(),live=d>=1&&d<=5&&h>=9&&h<17;
     const dot=document.getElementById('avDot'),txt=document.getElementById('avTxt');
     dot.className='av-dot'+(live?' live':'');
-    txt.textContent=live?'Available now':(d===0||d===6)?'Back Monday':h<9?'Available at 9am PT':'Back tomorrow';
+    txt.textContent=live?'Available now':
+      (d===0||d===6)?'Back Monday 9am PT':h<9?'Available from 9am PT':'Back tomorrow 9am PT';
   }
   chk();setInterval(chk,60000);
 })();
 
-/* ── INTENT PILLS + PRE-FILL ───────────────────────────── */
+/* ── INTENT CONFIG ─────────────────────────────────── */
 const cfg={
-  eval:{t:'Request an Evaluation Kit',s:'Tell us your instrument — we\'ll tailor the protocol and ship the right particles.',lbl:'Request evaluation kit →',
-    msg:`Hi,\n\nI'd like to request an evaluation kit for TruCytes® particles. We run flow cytometry at [your institution] and want to assess feasibility for [your workflow].\n\nCould you share available evaluation protocols and advise on next steps?\n\nThanks,\n[Your name]`},
-  support:{t:'Technical Support',s:'Describe your setup and the issue — a Field Application Scientist will troubleshoot with you.',lbl:'Send support request →',
-    msg:`Hi,\n\nI need technical support with TruCytes® / pFCG® Cell Mimics.\n\n- Instrument: [your flow cytometer]\n- Issue: [describe what you're seeing]\n- Steps tried: [any troubleshooting already done]\n\nAny guidance would be greatly appreciated.\n\nThanks,\n[Your name]`},
-  sales:{t:'Sales & Pricing Inquiry',s:'Share your usage estimate — we\'ll send a formal quotation within 1 business day.',lbl:'Get a quote →',
+  eval:{t:'Request an Evaluation Kit',s:'Tell us your instrument — we\'ll match the right particle panel and ship it.',lbl:'Request evaluation kit →',
+    msg:`Hi,\n\nI'd like to request an evaluation kit for TruCytes® particles. We run flow cytometry at [your institution] and are assessing feasibility for [your workflow].\n\nCould you advise on available evaluation protocols and next steps?\n\nThanks,\n[Your name]`},
+  support:{t:'Get Technical Support',s:'Describe your setup and the issue — a scientist will troubleshoot directly with you.',lbl:'Send support request →',
+    msg:`Hi,\n\nI need technical support with TruCytes® / pFCG® Cell Mimics.\n\n- Instrument: [your flow cytometer]\n- Issue: [describe what you're seeing]\n- Steps tried: [any troubleshooting already done]\n\nAny guidance appreciated.\n\nThanks,\n[Your name]`},
+  sales:{t:'Pricing & Volume Quotes',s:'Share your usage estimate — we\'ll send a formal quotation within 1 business day.',lbl:'Request a quote →',
     msg:`Hi,\n\nWe're interested in pricing for TruCytes® particles. Our estimated usage is approximately [X kits/year].\n\nCould you send a formal quotation, or set up a call to discuss volume pricing and institutional agreements?\n\nThanks,\n[Your name]`},
-  partner:{t:'Partnership & Distribution',s:'Tell us about your organisation and the type of agreement you have in mind.',lbl:'Start the conversation →',
-    msg:`Hi,\n\nWe're interested in exploring a [distribution / OEM / research collaboration] with SlinghotBio.\n\nAbout us: [brief description of your organisation and reach].\n\nWe'd love to set up an initial conversation — could you point us to the right contact?\n\nThanks,\n[Your name]`}
+  partner:{t:'Explore a Partnership',s:'Tell us about your organisation and the type of agreement you have in mind.',lbl:'Start the conversation →',
+    msg:`Hi,\n\nWe're interested in exploring a [distribution / OEM / research collaboration] with SlinghotBio.\n\nAbout us: [brief description of your organisation and geographic reach].\n\nWe'd love an initial conversation — could you connect us with the right person?\n\nThanks,\n[Your name]`}
 };
 
+/* ── PILL PICK ──────────────────────────────────────── */
 function pick(btn){
   document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));
   btn.classList.add('on');
@@ -466,35 +567,32 @@ function pick(btn){
   document.getElementById('fT').textContent=c.t;
   document.getElementById('fS').textContent=c.s;
   document.getElementById('sendLbl').textContent=c.lbl;
-  // Pre-fill message
-  const ta=document.getElementById('msgTA');
-  ta.value=c.msg;
-  ta.style.height='auto';ta.style.height=ta.scrollHeight+'px';
-  document.getElementById('w-ms').classList.add('up');
-  document.getElementById('prefillNote').classList.add('show');
-  // Conditionals
   ['eval','support','sales','partner'].forEach(i=>document.getElementById('c-'+i).classList.remove('open'));
   document.getElementById('c-'+k).classList.add('open');
+  const ta=document.getElementById('msgTA');
+  ta.value=c.msg;ta.style.height='auto';ta.style.height=ta.scrollHeight+'px';
+  document.getElementById('w-ms').classList.add('up');
+  document.getElementById('prefillNote').classList.add('show');
+  document.getElementById('msgWrap').classList.add('open');
+  document.getElementById('submitWrap').classList.add('open');
   setTimeout(initFL,40);
 }
 
-/* ── FLOATING LABELS ────────────────────────────────────── */
+/* ── FLOATING LABELS ────────────────────────────────── */
 function initFL(){
   document.querySelectorAll('.fld input,.fld select,.fld textarea').forEach(el=>{
-    const w=el.closest('.fld');
-    if(!w||w._fl)return;w._fl=true;
+    const w=el.closest('.fld');if(!w||w._fl)return;w._fl=true;
     const sync=()=>w.classList.toggle('up',el.value.length>0||(el.tagName==='SELECT'&&!!el.value));
     el.addEventListener('focus',()=>w.classList.add('fc'));
     el.addEventListener('blur',()=>{w.classList.remove('fc');sync()});
-    el.addEventListener('input',sync);el.addEventListener('change',sync);
-    sync();
+    el.addEventListener('input',sync);el.addEventListener('change',sync);sync();
   });
   const ta=document.getElementById('msgTA');
   if(ta&&!ta._ag){ta._ag=true;ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'});}
 }
 initFL();
 
-/* ── SUBMIT ─────────────────────────────────────────────── */
+/* ── SUBMIT ─────────────────────────────────────────── */
 function send(e){
   e.preventDefault();
   const b=document.getElementById('sendBtn');
@@ -503,7 +601,7 @@ function send(e){
   setTimeout(()=>{document.getElementById('formBody').style.display='none';document.getElementById('fSuccess').style.display='flex';},800);
 }
 
-/* ── SCROLL REVEAL ──────────────────────────────────────── */
+/* ── SCROLL REVEAL ──────────────────────────────────── */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.06,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>

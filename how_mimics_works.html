@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Mimics Work | Slingshot Bio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist-sans">
+    <style>
+        :root {
+            --orange: #F76A00;
+            --black: #0D0C0C;
+            --gray-mid: #555350;
+            --gray-light: #DEDCDA;
+            --gray-dark: #333130;
+            --bg: #F6F5F3;
+            --white: #FFFFFF;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'Geist Sans', 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.025em
+        }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 48px
+        }
+
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: var(--orange);
+            z-index: 200;
+            transition: width .08s linear
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 60px;
+            background: rgba(246, 245, 243, .92);
+            backdrop-filter: blur(16px) saturate(1.4);
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 48px
+        }
+
+        .nav-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--black);
+            text-decoration: none;
+            letter-spacing: -.04em
+        }
+
+        .nav-logo em {
+            color: var(--orange);
+            font-style: normal
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-mid);
+            text-decoration: none;
+            transition: color .2s
+        }
+
+        .nav-links a:hover {
+            color: var(--black)
+        }
+
+        .nav-cta {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: #fff;
+            background: var(--orange);
+            padding: 8px 18px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: opacity .2s
+        }
+
+        .nav-cta:hover {
+            opacity: .85
+        }
+
+        /* BUTTONS */
+        .btn-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--black);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: background .2s, transform .15s
+        }
+
+        .btn-dark:hover {
+            background: var(--gray-dark);
+            transform: translateY(-1px)
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 13.5px;
+            color: var(--gray-mid);
+            text-decoration: none;
+            transition: color .2s
+        }
+
+        .btn-ghost:hover {
+            color: var(--black)
+        }
+
+        .btn-ghost::after {
+            content: ' →'
+        }
+
+        .btn-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 15px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: opacity .2s, transform .15s
+        }
+
+        .btn-orange:hover {
+            opacity: .88;
+            transform: translateY(-1px)
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 14px
+        }
+
+        .eyebrow::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--orange);
+            flex-shrink: 0
+        }
+
+        .eyebrow.muted {
+            color: rgba(255, 255, 255, .3)
+        }
+
+        .eyebrow.muted::before {
+            background: rgba(255, 255, 255, .2)
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .65s cubic-bezier(.22, .61, .36, 1), transform .65s cubic-bezier(.22, .61, .36, 1)
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .rd1 {
+            transition-delay: .07s
+        }
+
+        .rd2 {
+            transition-delay: .14s
+        }
+
+        .rd3 {
+            transition-delay: .21s
+        }
+
+        .rd4 {
+            transition-delay: .28s
+        }
+
+        .rd5 {
+            transition-delay: .35s
+        }
+
+        .rd6 {
+            transition-delay: .42s
+        }
+
+        /* ════════════ 01 HERO ════════════ */
+        .hero {
+            padding: 148px 0 96px;
+            overflow: hidden
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 28px
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--orange)
+        }
+
+        .hero h1 {
+            font-size: clamp(46px, 5.8vw, 76px);
+            font-weight: 800;
+            line-height: 1.03;
+            color: var(--black);
+            margin-bottom: 12px
+        }
+
+        .hero-accent {
+            display: block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(16px, 1.8vw, 21px);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--orange);
+            margin-bottom: 32px;
+            line-height: 1.4
+        }
+
+        .hero-body {
+            font-size: 15.5px;
+            line-height: 1.78;
+            color: var(--gray-mid);
+            max-width: 500px;
+            margin-bottom: 44px
+        }
+
+        .hero-body strong {
+            color: var(--black);
+            font-weight: 500
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px
+        }
+
+        .diagram-wrap {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center
+        }
+
+        .diagram-wrap svg {
+            width: 100%;
+            max-width: 500px;
+            height: auto
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(22px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .fu {
+            opacity: 0;
+            animation: fadeUp .7s cubic-bezier(.22, .61, .36, 1) forwards
+        }
+
+        .d1 {
+            animation-delay: .08s
+        }
+
+        .d2 {
+            animation-delay: .18s
+        }
+
+        .d3 {
+            animation-delay: .30s
+        }
+
+        .d4 {
+            animation-delay: .44s
+        }
+
+        .d5 {
+            animation-delay: .58s
+        }
+
+        /* ════════════ 02 VIDEO ════════════ */
+        .video-section {
+            background: var(--black);
+            padding: 100px 0
+        }
+
+        .video-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            margin-bottom: 52px
+        }
+
+        .video-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, .07);
+            color: rgba(255, 255, 255, .4);
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 100px;
+            letter-spacing: .02em
+        }
+
+        .video-frame {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #111;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .07)
+        }
+
+        .video-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block
+        }
+
+        /* ════════════ 03 WHY — AUTO-PLAY CAROUSEL ════════════ */
+        .why-section {
+            padding: 100px 0;
+            background: var(--bg)
+        }
+
+        .why-intro {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 64px;
+            align-items: start;
+            margin-bottom: 64px
+        }
+
+        .why-intro-left h2 {
+            font-size: clamp(34px, 4vw, 54px);
+            font-weight: 800;
+            line-height: 1.08;
+            color: var(--black);
+            margin-bottom: 16px
+        }
+
+        .why-intro-right {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding-top: 2px
+        }
+
+        .why-intro-right p {
+            font-size: 15px;
+            color: var(--gray-mid);
+            line-height: 1.8
+        }
+
+        .why-intro-right p strong {
+            color: var(--black);
+            font-weight: 500
+        }
+
+        /* Indicator tabs */
+        .why-indicators {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: var(--gray-light);
+            border: 1px solid var(--gray-light);
+            border-bottom: none;
+            border-radius: 14px 14px 0 0;
+            overflow: hidden;
+        }
+
+        .why-ind {
+            background: var(--bg);
+            padding: 20px 20px 0;
+            cursor: pointer;
+            position: relative;
+            transition: background .2s;
+        }
+
+        .why-ind:hover {
+            background: var(--white)
+        }
+
+        .why-ind.active {
+            background: var(--white)
+        }
+
+        .why-ind-num {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            color: var(--gray-light);
+            margin-bottom: 5px;
+            transition: color .2s;
+        }
+
+        .why-ind.active .why-ind-num,
+        .why-ind:hover .why-ind-num {
+            color: var(--orange)
+        }
+
+        .why-ind-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-mid);
+            line-height: 1.35;
+            padding-bottom: 18px;
+            transition: color .2s;
+        }
+
+        .why-ind.active .why-ind-title {
+            color: var(--black)
+        }
+
+        /* Progress bar bottom of each indicator */
+        .why-ind-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-light);
+            overflow: hidden;
+        }
+
+        .why-ind-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--orange)
+        }
+
+        .why-ind.active .why-ind-fill {
+            animation: fillBar 5s linear forwards
+        }
+
+        @keyframes fillBar {
+            from {
+                width: 0%
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        /* Content panel */
+        .why-panel-wrap {
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-top: none;
+            border-radius: 0 0 14px 14px;
+            overflow: hidden;
+        }
+
+        .why-cpanel {
+            display: none;
+            grid-template-columns: 1fr 180px;
+            gap: 64px;
+            align-items: center;
+            padding: 52px 56px;
+        }
+
+        .why-cpanel.active {
+            display: grid;
+            animation: cpIn .4s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        @keyframes cpIn {
+            from {
+                opacity: 0;
+                transform: translateX(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        .why-cpanel-eyebrow {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 12px;
+        }
+
+        .why-cpanel h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(20px, 2.2vw, 28px);
+            font-weight: 800;
+            color: var(--black);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .why-cpanel p {
+            font-size: 15px;
+            color: var(--gray-mid);
+            line-height: 1.82;
+            max-width: 560px
+        }
+
+        .why-cpanel-vis svg {
+            width: 160px;
+            height: 160px;
+            opacity: .13
+        }
+
+        /* ════════════ 04 CUSTOM CONTROLS ════════════ */
+        .custom-section {
+            background: var(--black);
+            padding: 100px 0
+        }
+
+        .custom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start
+        }
+
+        .custom-grid h2 {
+            font-size: clamp(28px, 3.2vw, 44px);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.14;
+            margin-bottom: 24px
+        }
+
+        .custom-grid p {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, .42);
+            line-height: 1.8;
+            margin-bottom: 14px
+        }
+
+        .custom-grid p strong {
+            color: rgba(255, 255, 255, .76);
+            font-weight: 400
+        }
+
+        .custom-tagline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            font-style: italic;
+            color: rgba(255, 255, 255, .48);
+            margin-bottom: 36px
+        }
+
+        .custom-stats {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 14px;
+            overflow: hidden
+        }
+
+        .custom-stat {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            padding: 28px 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            align-items: start
+        }
+
+        .custom-stat:last-child {
+            border-bottom: none
+        }
+
+        .custom-stat-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -.04em;
+            line-height: 1;
+            white-space: nowrap
+        }
+
+        .custom-stat-num .accent {
+            color: var(--orange)
+        }
+
+        .custom-stat-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .7);
+            margin-bottom: 3px
+        }
+
+        .custom-stat-desc {
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, .28);
+            line-height: 1.55
+        }
+
+        /* ════════════ 05 PRODUCTS ════════════ */
+        .products-section {
+            padding: 100px 0;
+            background: var(--bg)
+        }
+
+        .products-header {
+            margin-bottom: 56px
+        }
+
+        .products-header h2 {
+            font-size: clamp(32px, 3.8vw, 52px);
+            font-weight: 800;
+            line-height: 1.08;
+            color: var(--black)
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 14px;
+            padding: 36px 32px;
+            transition: border-color .2s, transform .2s, box-shadow .2s;
+            position: relative
+        }
+
+        .product-card:hover {
+            border-color: rgba(247, 106, 0, .3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(13, 12, 12, .06)
+        }
+
+        .product-icon {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 24px;
+            display: block
+        }
+
+        .product-tag {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 8px
+        }
+
+        .product-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--black);
+            letter-spacing: -.03em;
+            margin-bottom: 12px;
+            line-height: 1.1
+        }
+
+        .product-desc {
+            font-size: 13.5px;
+            color: var(--gray-mid);
+            line-height: 1.72
+        }
+
+        .product-card.featured {
+            background: #fff9f5;
+            border-color: rgba(247, 106, 0, .25)
+        }
+
+        .product-card.featured:hover {
+            border-color: var(--orange);
+            box-shadow: 0 8px 32px rgba(247, 106, 0, .1)
+        }
+
+        .product-card.featured .product-tag {
+            color: var(--orange)
+        }
+
+        .product-card.featured .product-name {
+            color: var(--orange)
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--orange);
+            text-decoration: none;
+            margin-top: 16px;
+            padding-bottom: 1px;
+            border-bottom: 1px solid rgba(247, 106, 0, .3);
+            transition: border-color .2s
+        }
+
+        .product-link:hover {
+            border-color: var(--orange)
+        }
+
+        /* ════════════ 06 CLOSING CTA ════════════ */
+        .closing-section {
+            background: var(--black);
+            padding: 140px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .closing-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(247, 106, 0, .09) 0%, transparent 68%);
+            pointer-events: none
+        }
+
+        .closing-section>* {
+            position: relative;
+            z-index: 1
+        }
+
+        .closing-section h2 {
+            font-size: clamp(40px, 5.5vw, 68px);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.07;
+            max-width: 780px;
+            margin: 0 auto 20px;
+            letter-spacing: -.03em
+        }
+
+        .closing-section h2 em {
+            color: var(--orange);
+            font-style: italic
+        }
+
+        .closing-section .sub {
+            font-size: 16px;
+            color: rgba(255, 255, 255, .35);
+            margin-bottom: 52px
+        }
+
+        .btn-closing {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--orange);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            padding: 20px 52px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: opacity .2s, transform .15s
+        }
+
+        .btn-closing:hover {
+            opacity: .9;
+            transform: translateY(-2px)
+        }
+
+        .closing-trust {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 28px
+        }
+
+        .closing-trust span {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .2);
+            letter-spacing: .03em;
+            padding: 0 20px
+        }
+
+        .closing-trust span+span {
+            border-left: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, .05);
+            padding: 36px 0
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .footer-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: rgba(255, 255, 255, .28);
+            letter-spacing: -.03em
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .18)
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:960px) {
+            .hero-grid {
+                grid-template-columns: 1fr
+            }
+
+            .diagram-wrap {
+                display: none
+            }
+
+            .video-header {
+                grid-template-columns: 1fr;
+                gap: 24px
+            }
+
+            .why-intro {
+                grid-template-columns: 1fr;
+                gap: 40px
+            }
+
+            .why-indicators {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .why-cpanel {
+                grid-template-columns: 1fr
+            }
+
+            .why-cpanel-vis {
+                display: none
+            }
+
+            .custom-grid {
+                grid-template-columns: 1fr;
+                gap: 56px
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:640px) {
+            .container {
+                padding: 0 24px
+            }
+
+            .nav-inner {
+                padding: 0 24px
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .hero {
+                padding: 120px 0 64px
+            }
+
+            .why-indicators {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .why-cpanel {
+                padding: 32px 24px
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr
+            }
+
+            .closing-section {
+                padding: 100px 24px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="progress"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Slingshot<em>Bio</em></a>
+            <ul class="nav-links">
+                <li><a href="#video">How It's Made</a></li>
+                <li><a href="#why">Why Mimics</a></li>
+                <li><a href="#products">Products</a></li>
+            </ul>
+            <a href="/contact" class="nav-cta">Request Sample →</a>
+        </div>
+    </nav>
+
+    <!-- ════════════════════════════════
+     01 — HERO
+════════════════════════════════ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-eyebrow fu d1">How Cell Mimics Work</div>
+                    <h1 class="fu d2">Built to behave<br>like a cell.</h1>
+                    <span class="hero-accent fu d3">Not a bead. Not a donor. Not an animal.</span>
+                    <p class="hero-body fu d4">A polystyrene bead is to a cell what a tennis ball is to a tomato — wrong
+                        refractive index, wrong scatter, wrong surface. Donor cells are reproducible until the donor
+                        goes home. Animal cells aren't human. <strong>We engineered a particle that behaves like a cell
+                            in the flow cytometer and keeps behaving that way for up to three years, same lot.</strong>
+                    </p>
+                    <div class="hero-actions fu d5">
+                        <a href="#video" class="btn-dark">See it engineered ↓</a>
+                        <a href="/contact" class="btn-ghost">Request a sample</a>
+                    </div>
+                </div>
+                <div class="diagram-wrap fu d3">
+                    <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="gO" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#DEDCDA" stop-opacity=".25" />
+                                <stop offset="100%" stop-color="#DEDCDA" stop-opacity="0" />
+                            </radialGradient>
+                            <radialGradient id="gM" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#555350" stop-opacity=".14" />
+                                <stop offset="100%" stop-color="#555350" stop-opacity=".02" />
+                            </radialGradient>
+                            <radialGradient id="gC" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#F76A00" stop-opacity=".28" />
+                                <stop offset="100%" stop-color="#F76A00" stop-opacity=".04" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="280" cy="280" r="210" fill="url(#gO)" stroke="#DEDCDA" stroke-width="1" />
+                        <g fill="#F76A00">
+                            <circle cx="280" cy="70" r="4.5" />
+                            <circle cx="339" cy="80" r="3.5" opacity=".6" />
+                            <circle cx="221" cy="80" r="3.5" opacity=".6" />
+                            <circle cx="432" cy="148" r="4.5" />
+                            <circle cx="462" cy="210" r="3.5" opacity=".6" />
+                            <circle cx="408" cy="118" r="3.5" opacity=".6" />
+                            <circle cx="490" cy="280" r="4.5" />
+                            <circle cx="487" cy="238" r="3" opacity=".5" />
+                            <circle cx="487" cy="322" r="3" opacity=".5" />
+                            <circle cx="432" cy="412" r="4.5" />
+                            <circle cx="462" cy="350" r="3.5" opacity=".6" />
+                            <circle cx="408" cy="442" r="3.5" opacity=".6" />
+                            <circle cx="280" cy="490" r="4.5" />
+                            <circle cx="339" cy="480" r="3.5" opacity=".6" />
+                            <circle cx="221" cy="480" r="3.5" opacity=".6" />
+                            <circle cx="128" cy="412" r="4.5" />
+                            <circle cx="98" cy="350" r="3.5" opacity=".6" />
+                            <circle cx="152" cy="442" r="3.5" opacity=".6" />
+                            <circle cx="70" cy="280" r="4.5" />
+                            <circle cx="73" cy="238" r="3" opacity=".5" />
+                            <circle cx="73" cy="322" r="3" opacity=".5" />
+                            <circle cx="128" cy="148" r="4.5" />
+                            <circle cx="98" cy="210" r="3.5" opacity=".6" />
+                            <circle cx="152" cy="118" r="3.5" opacity=".6" />
+                        </g>
+                        <circle cx="280" cy="280" r="158" fill="url(#gM)" stroke="#555350" stroke-width="1"
+                            stroke-dasharray="5 8" opacity=".55" />
+                        <g opacity=".75">
+                            <circle cx="195" cy="228" r="5.5" fill="#F76A00" />
+                            <circle cx="355" cy="205" r="4" fill="#F76A00" opacity=".55" />
+                            <circle cx="388" cy="322" r="6" fill="#F76A00" />
+                            <circle cx="215" cy="338" r="4.5" fill="#F76A00" opacity=".7" />
+                            <circle cx="310" cy="375" r="5" fill="#F76A00" opacity=".45" />
+                            <circle cx="175" cy="290" r="3.5" fill="#F76A00" opacity=".8" />
+                            <circle cx="362" cy="258" r="4" fill="#F76A00" opacity=".55" />
+                            <circle cx="248" cy="190" r="3" fill="#F76A00" opacity=".65" />
+                        </g>
+                        <circle cx="280" cy="280" r="100" fill="url(#gC)" stroke="#F76A00" stroke-width="1.5" />
+                        <text x="280" y="272" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif"
+                            font-size="11" font-weight="700" fill="#F76A00" letter-spacing="2.5">POLYMER</text>
+                        <text x="280" y="290" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif"
+                            font-size="11" font-weight="700" fill="#F76A00" letter-spacing="2.5">CORE</text>
+                        <circle cx="280" cy="280" r="5" fill="#F76A00" opacity=".3" />
+                        <circle cx="352" cy="103" r="2.5" fill="#F76A00" />
+                        <line x1="352" y1="103" x2="422" y2="64" stroke="#DEDCDA" stroke-width="1" />
+                        <line x1="422" y1="64" x2="512" y2="64" stroke="#DEDCDA" stroke-width="1" />
+                        <text x="518" y="58" font-family="sans-serif" font-size="11.5" fill="#555350"
+                            font-weight="500">Tunable surface</text><text x="518" y="74" font-family="sans-serif"
+                            font-size="11.5" fill="#888683">antigen epitopes</text>
+                        <circle cx="437" cy="280" r="2.5" fill="#F76A00" />
+                        <line x1="437" y1="280" x2="516" y2="280" stroke="#DEDCDA" stroke-width="1" />
+                        <text x="522" y="275" font-family="sans-serif" font-size="11.5" fill="#555350"
+                            font-weight="500">Calibrated</text><text x="522" y="291" font-family="sans-serif"
+                            font-size="11.5" fill="#888683">fluorescence</text>
+                        <circle cx="383" cy="388" r="2.5" fill="#F76A00" />
+                        <line x1="383" y1="388" x2="422" y2="432" stroke="#DEDCDA" stroke-width="1" />
+                        <line x1="422" y1="432" x2="512" y2="432" stroke="#DEDCDA" stroke-width="1" />
+                        <text x="518" y="426" font-family="sans-serif" font-size="11.5" fill="#555350"
+                            font-weight="500">Matched refractive</text><text x="518" y="442" font-family="sans-serif"
+                            font-size="11.5" fill="#888683">index &amp; scatter</text>
+                        <circle cx="208" cy="103" r="2.5" fill="#F76A00" />
+                        <line x1="208" y1="103" x2="140" y2="64" stroke="#DEDCDA" stroke-width="1" />
+                        <line x1="140" y1="64" x2="48" y2="64" stroke="#DEDCDA" stroke-width="1" />
+                        <text x="42" y="58" font-family="sans-serif" font-size="11.5" fill="#555350" text-anchor="end"
+                            font-weight="500">Shelf stable</text><text x="42" y="74" font-family="sans-serif"
+                            font-size="11.5" fill="#888683" text-anchor="end">up to 3 years</text>
+                        <circle cx="122" cy="280" r="2.5" fill="#F76A00" />
+                        <line x1="122" y1="280" x2="48" y2="280" stroke="#DEDCDA" stroke-width="1" />
+                        <text x="42" y="275" font-family="sans-serif" font-size="11.5" fill="#555350" text-anchor="end"
+                            font-weight="500">ISO 9001:2015</text><text x="42" y="291" font-family="sans-serif"
+                            font-size="11.5" fill="#888683" text-anchor="end">manufactured</text>
+                        <circle cx="177" cy="388" r="2.5" fill="#F76A00" />
+                        <line x1="177" y1="388" x2="140" y2="432" stroke="#DEDCDA" stroke-width="1" />
+                        <line x1="140" y1="432" x2="48" y2="432" stroke="#DEDCDA" stroke-width="1" />
+                        <text x="42" y="426" font-family="sans-serif" font-size="11.5" fill="#555350" text-anchor="end"
+                            font-weight="500">On-demand,</text><text x="42" y="442" font-family="sans-serif"
+                            font-size="11.5" fill="#888683" text-anchor="end">at scale</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     02 — HOW A MIMIC IS ENGINEERED
+════════════════════════════════ -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <div class="video-header">
+                <div>
+                    <div class="eyebrow muted">The engineering</div>
+                    <h2
+                        style="font-size:clamp(32px,3.8vw,52px);font-weight:800;line-height:1.08;color:#fff;letter-spacing:-.03em;">
+                        How a Mimic<br>is Engineered</h2>
+                </div>
+                <div>
+                    <p style="font-size:15px;color:rgba(255,255,255,.4);line-height:1.75;">See the full manufacturing
+                        process — from polymer core to calibrated, shelf-stable cell control — in under three minutes.
+                    </p>
+                    <div class="video-tags">
+                        <span class="tag">▶ ~3 min</span>&nbsp;
+                        <span class="tag">Manufacturing process</span>&nbsp;
+                        <span class="tag">ISO 9001:2015</span>
+                    </div>
+                </div>
+            </div>
+            <div class="video-frame reveal">
+                <iframe src="https://www.youtube.com/embed/N7WwGjPxTcI" allowfullscreen loading="lazy"
+                    title="How a Cell Mimic is Engineered — Slingshot Bio"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     03 — WHY CELL MIMICS REPLACE CELLS
+     Auto-play carousel — no interaction needed
+════════════════════════════════ -->
+    <section class="why-section" id="why">
+        <div class="container">
+
+            <div class="why-intro">
+                <div class="why-intro-left">
+                    <div class="eyebrow">The science</div>
+                    <h2>Why Cell Mimics<br>Replace Cells</h2>
+                </div>
+                <div class="why-intro-right reveal">
+                    <p>Through the intersection of biochemistry, polymer chemistry and high-precision manufacturing,
+                        Slingshot has created synthetic cell mimics that behave similarly to real cells — the world's
+                        first on-demand, synthetic cell design platform to address the industry's reliance on
+                        biologically-derived cellular controls.</p>
+                    <p>The result matches the <strong>optical, fluorescence and biochemical features</strong> of
+                        biological cells without sacrificing performance or consistency. Shelf stable, on-demand, at
+                        scale.</p>
+                </div>
+            </div>
+
+            <!-- Carousel -->
+            <div class="reveal" id="whyCarousel">
+
+                <!-- Indicator tabs with auto-fill progress bars -->
+                <div class="why-indicators">
+                    <div class="why-ind active" onclick="jumpTo(0)">
+                        <div class="why-ind-num">01</div>
+                        <div class="why-ind-title">Assay Development</div>
+                        <div class="why-ind-bar">
+                            <div class="why-ind-fill"></div>
+                        </div>
+                    </div>
+                    <div class="why-ind" onclick="jumpTo(1)">
+                        <div class="why-ind-num">02</div>
+                        <div class="why-ind-title">Laboratory Diagnostics</div>
+                        <div class="why-ind-bar">
+                            <div class="why-ind-fill"></div>
+                        </div>
+                    </div>
+                    <div class="why-ind" onclick="jumpTo(2)">
+                        <div class="why-ind-num">03</div>
+                        <div class="why-ind-title">Adoptive Cell Therapy</div>
+                        <div class="why-ind-bar">
+                            <div class="why-ind-fill"></div>
+                        </div>
+                    </div>
+                    <div class="why-ind" onclick="jumpTo(3)">
+                        <div class="why-ind-num">04</div>
+                        <div class="why-ind-title">Drug Development</div>
+                        <div class="why-ind-bar">
+                            <div class="why-ind-fill"></div>
+                        </div>
+                    </div>
+                    <div class="why-ind" onclick="jumpTo(4)">
+                        <div class="why-ind-num">05</div>
+                        <div class="why-ind-title">Instrument Performance</div>
+                        <div class="why-ind-bar">
+                            <div class="why-ind-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content panels -->
+                <div class="why-panel-wrap">
+
+                    <div class="why-cpanel active">
+                        <div>
+                            <div class="why-cpanel-eyebrow">Application 01</div>
+                            <h3>Assay Development</h3>
+                            <p>Engineer custom controls for biomarker assays, immune monitoring, and novel endpoints.
+                                Standardize assays from translational research through pivotal trials, reduce operator
+                                variability, and enable clean transfers between research and GLP/GCP environments.</p>
+                        </div>
+                        <div class="why-cpanel-vis">
+                            <svg viewBox="0 0 160 160" fill="none">
+                                <rect x="10" y="10" width="140" height="140" rx="8" stroke="#F76A00"
+                                    stroke-width="2.5" />
+                                <g fill="#F76A00">
+                                    <circle cx="38" cy="38" r="8" />
+                                    <circle cx="64" cy="38" r="8" />
+                                    <circle cx="90" cy="38" r="8" />
+                                    <circle cx="116" cy="38" r="8" />
+                                    <circle cx="38" cy="64" r="8" />
+                                    <circle cx="64" cy="64" r="8" />
+                                    <circle cx="90" cy="64" r="8" />
+                                    <circle cx="116" cy="64" r="8" />
+                                    <circle cx="38" cy="90" r="8" />
+                                    <circle cx="64" cy="90" r="8" />
+                                    <circle cx="90" cy="90" r="8" />
+                                    <circle cx="116" cy="90" r="8" />
+                                    <circle cx="38" cy="116" r="8" />
+                                    <circle cx="64" cy="116" r="8" />
+                                    <circle cx="90" cy="116" r="8" />
+                                    <circle cx="116" cy="116" r="8" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="why-cpanel">
+                        <div>
+                            <div class="why-cpanel-eyebrow">Application 02</div>
+                            <h3>Laboratory Diagnostics</h3>
+                            <p>Match biomarker expression to specific disease states, including rare and emerging
+                                indications where commercial reference material doesn't exist. Tune antigen density to
+                                model disease severity — not just presence.</p>
+                        </div>
+                        <div class="why-cpanel-vis">
+                            <svg viewBox="0 0 160 160" fill="none">
+                                <circle cx="68" cy="68" r="48" stroke="#F76A00" stroke-width="2.5" />
+                                <circle cx="68" cy="68" r="28" stroke="#F76A00" stroke-width="1.5" />
+                                <circle cx="68" cy="68" r="10" fill="#F76A00" />
+                                <line x1="106" y1="106" x2="148" y2="148" stroke="#F76A00" stroke-width="5"
+                                    stroke-linecap="round" />
+                                <circle cx="50" cy="54" r="5" fill="#F76A00" opacity=".5" />
+                                <circle cx="82" cy="48" r="5" fill="#F76A00" opacity=".7" />
+                                <circle cx="88" cy="82" r="5" fill="#F76A00" opacity=".4" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="why-cpanel">
+                        <div>
+                            <div class="why-cpanel-eyebrow">Application 03</div>
+                            <h3>Adoptive Cell Therapy</h3>
+                            <p>Validate potency, identity, and purity endpoints with custom controls for CAR-T
+                                enumeration, transgene expression, and viral vector characterization. Build the controls
+                                cell therapy manufacturing needs, even when no commercial reference exists.</p>
+                        </div>
+                        <div class="why-cpanel-vis">
+                            <svg viewBox="0 0 160 160" fill="none">
+                                <circle cx="72" cy="90" r="44" stroke="#F76A00" stroke-width="2.5" fill="#F76A00"
+                                    fill-opacity=".05" />
+                                <line x1="72" y1="46" x2="72" y2="20" stroke="#F76A00" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                                <line x1="72" y1="20" x2="58" y2="6" stroke="#F76A00" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                                <line x1="72" y1="20" x2="86" y2="6" stroke="#F76A00" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                                <line x1="110" y1="62" x2="134" y2="46" stroke="#F76A00" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                                <line x1="134" y1="46" x2="126" y2="30" stroke="#F76A00" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                                <line x1="134" y1="46" x2="150" y2="40" stroke="#F76A00" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                                <path d="M52 90 L66 104 L92 78" stroke="#F76A00" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="why-cpanel">
+                        <div>
+                            <div class="why-cpanel-eyebrow">Application 04</div>
+                            <h3>Drug Development</h3>
+                            <p>Cut variability, cost, and timeline risk across the development pipeline. Stable,
+                                reproducible reagents reduce complex workflows historically needed to normalize data for
+                                clinical trials — so multi-site studies stay consistent from Phase 1 to approval.</p>
+                        </div>
+                        <div class="why-cpanel-vis">
+                            <svg viewBox="0 0 160 160" fill="none">
+                                <line x1="16" y1="80" x2="144" y2="80" stroke="#F76A00" stroke-width="1.5"
+                                    opacity=".2" />
+                                <circle cx="32" cy="80" r="14" fill="#F76A00" opacity=".25" stroke="#F76A00"
+                                    stroke-width="2" />
+                                <circle cx="74" cy="80" r="14" fill="#F76A00" opacity=".5" stroke="#F76A00"
+                                    stroke-width="2" />
+                                <circle cx="116" cy="80" r="14" fill="#F76A00" opacity=".85" stroke="#F76A00"
+                                    stroke-width="2" /><text x="32" y="116" text-anchor="middle"
+                                    font-family="'Plus Jakarta Sans',sans-serif" font-size="13" fill="#F76A00"
+                                    opacity=".5" font-weight="700">Ph1</text><text x="74" y="116" text-anchor="middle"
+                                    font-family="'Plus Jakarta Sans',sans-serif" font-size="13" fill="#F76A00"
+                                    opacity=".7" font-weight="700">Ph2</text><text x="116" y="116" text-anchor="middle"
+                                    font-family="'Plus Jakarta Sans',sans-serif" font-size="13" fill="#F76A00"
+                                    font-weight="700">NDA</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="why-cpanel">
+                        <div>
+                            <div class="why-cpanel-eyebrow">Application 05</div>
+                            <h3>Cell Analysis Instrument Performance</h3>
+                            <p>Calibration, compensation, and unmixing controls engineered for cross-platform
+                                consistency. Tech errors become immediately visible as peaks stand out against a stable
+                                baseline — enabling targeted training and site integration QC.</p>
+                        </div>
+                        <div class="why-cpanel-vis">
+                            <svg viewBox="0 0 160 160" fill="none">
+                                <line x1="14" y1="128" x2="146" y2="128" stroke="#F76A00" stroke-width="1.5"
+                                    opacity=".2" stroke-linecap="round" />
+                                <line x1="14" y1="128" x2="14" y2="24" stroke="#F76A00" stroke-width="1.5" opacity=".2"
+                                    stroke-linecap="round" />
+                                <path
+                                    d="M14 128 L30 128 Q36 128 40 116 Q44 104 48 88 Q52 72 56 60 Q60 48 64 48 Q68 48 72 60 Q76 72 80 88 Q84 104 88 116 Q92 128 100 128 Q108 128 112 108 Q116 88 120 72 Q124 56 128 56 Q132 56 136 72 Q140 88 144 108 L146 128"
+                                    stroke="#F76A00" stroke-width="2" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="64" cy="48" r="6" fill="#F76A00" />
+                                <circle cx="128" cy="56" r="6" fill="#F76A00" opacity=".55" />
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     04 — CUSTOM CONTROLS IN WEEKS, NOT MONTHS
+════════════════════════════════ -->
+    <section class="custom-section" id="custom">
+        <div class="container">
+            <div class="custom-grid">
+                <div class="reveal">
+                    <div class="eyebrow muted">Complete customization</div>
+                    <h2>Custom Controls<br>in Weeks,<br>Not Months</h2>
+                    <p>Sourcing donor cells for a custom QC standard takes months. Sourcing, qualifying, and
+                        re-qualifying every time the donor pool turns over takes longer.</p>
+                    <p><strong>We engineer custom mimics to your specification under ISO 9001:2015 — same scatter, same
+                            fluorescence, same antigen density, every lot, for up to three years.</strong></p>
+                    <p class="custom-tagline">Tell us what cell the assay needs. We'll build it.</p>
+                    <a href="/contact" class="btn-orange">Learn More →</a>
+                </div>
+                <div class="reveal rd2">
+                    <div class="custom-stats">
+                        <div class="custom-stat">
+                            <div class="custom-stat-num">2–4<span class="accent">wk</span></div>
+                            <div>
+                                <div class="custom-stat-title">Engineering turnaround</div>
+                                <div class="custom-stat-desc">From specification to delivery. Donor cell sourcing takes
+                                    3–6 months.</div>
+                            </div>
+                        </div>
+                        <div class="custom-stat">
+                            <div class="custom-stat-num">3<span class="accent">yr</span></div>
+                            <div>
+                                <div class="custom-stat-title">Shelf life, same lot</div>
+                                <div class="custom-stat-desc">No re-qualification when the donor pool changes.
+                                    Guaranteed stability.</div>
+                            </div>
+                        </div>
+                        <div class="custom-stat">
+                            <div class="custom-stat-num" style="font-size:20px;padding-top:6px;">ISO<span
+                                    class="accent"> ✦</span></div>
+                            <div>
+                                <div class="custom-stat-title">9001:2015 certified</div>
+                                <div class="custom-stat-desc">Same scatter, same fluorescence, every lot.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     05 — THE SLINGSHOT PRODUCT FAMILY
+════════════════════════════════ -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="products-header">
+                <div class="eyebrow">The platform</div>
+                <h2>The Slingshot<br>Product Family</h2>
+            </div>
+            <div class="products-grid">
+
+                <div class="product-card reveal rd1">
+                    <svg class="product-icon" viewBox="0 0 44 44" fill="none">
+                        <path d="M4 30 Q12 14 22 22 Q32 30 40 14" stroke="#F76A00" stroke-width="1.5" fill="none"
+                            stroke-linecap="round" />
+                        <line x1="10" y1="23" x2="10" y2="15" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="10" y1="15" x2="7" y2="10" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="10" y1="15" x2="13" y2="10" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="22" y1="22" x2="22" y2="13" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="22" y1="13" x2="19" y2="8" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="22" y1="13" x2="25" y2="8" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="34" y1="19" x2="34" y2="11" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="34" y1="11" x2="31" y2="6" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="34" y1="11" x2="37" y2="6" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M4 34 Q12 18 22 26 Q32 34 40 18" stroke="#F76A00" stroke-width="1" fill="none"
+                            stroke-linecap="round" opacity=".3" />
+                    </svg>
+                    <span class="product-tag">Immunophenotyping</span>
+                    <div class="product-name">PhenoCytes</div>
+                    <p class="product-desc">Biomarker and immunophenotyping controls. Engineered surface antigen
+                        epitopes with quantitatively tunable density. TBNK and CD34+ off the shelf.</p>
+                </div>
+
+                <div class="product-card reveal rd2">
+                    <svg class="product-icon" viewBox="0 0 44 44" fill="none">
+                        <circle cx="22" cy="22" r="4" fill="#F76A00" />
+                        <circle cx="22" cy="22" r="9" stroke="#F76A00" stroke-width="1.5" fill="none" />
+                        <circle cx="22" cy="22" r="15" stroke="#F76A00" stroke-width="1" fill="none" opacity=".5" />
+                        <circle cx="22" cy="22" r="20" stroke="#F76A00" stroke-width=".5" fill="none" opacity=".2" />
+                        <line x1="22" y1="2" x2="22" y2="6" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="38" y1="22" x2="34" y2="22" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="22" y1="42" x2="22" y2="38" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="6" y1="22" x2="10" y2="22" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                    </svg>
+                    <span class="product-tag">Functional Assays</span>
+                    <div class="product-name">StimCytes</div>
+                    <p class="product-desc">Functional controls for cell activation and stimulation workflows.</p>
+                </div>
+
+                <div class="product-card reveal rd3">
+                    <svg class="product-icon" viewBox="0 0 44 44" fill="none">
+                        <line x1="6" y1="36" x2="38" y2="36" stroke="#F76A00" stroke-width="1" opacity=".25"
+                            stroke-linecap="round" />
+                        <line x1="10" y1="36" x2="10" y2="33" stroke="#F76A00" stroke-width="1" opacity=".4"
+                            stroke-linecap="round" />
+                        <line x1="18" y1="36" x2="18" y2="33" stroke="#F76A00" stroke-width="1" opacity=".4"
+                            stroke-linecap="round" />
+                        <line x1="26" y1="36" x2="26" y2="33" stroke="#F76A00" stroke-width="1" opacity=".4"
+                            stroke-linecap="round" />
+                        <line x1="34" y1="36" x2="34" y2="33" stroke="#F76A00" stroke-width="1" opacity=".4"
+                            stroke-linecap="round" />
+                        <circle cx="10" cy="28" r="2.5" fill="#F76A00" opacity=".3" />
+                        <circle cx="18" cy="28" r="2.5" fill="#F76A00" opacity=".5" />
+                        <circle cx="18" cy="21" r="2.5" fill="#F76A00" opacity=".5" />
+                        <circle cx="26" cy="28" r="2.5" fill="#F76A00" opacity=".7" />
+                        <circle cx="26" cy="21" r="2.5" fill="#F76A00" opacity=".7" />
+                        <circle cx="26" cy="14" r="2.5" fill="#F76A00" opacity=".7" />
+                        <circle cx="34" cy="28" r="2.5" fill="#F76A00" />
+                        <circle cx="34" cy="21" r="2.5" fill="#F76A00" />
+                        <circle cx="34" cy="14" r="2.5" fill="#F76A00" />
+                        <circle cx="34" cy="7" r="2.5" fill="#F76A00" />
+                    </svg>
+                    <span class="product-tag">Quantitation</span>
+                    <div class="product-name">QuantCytes</div>
+                    <p class="product-desc">Quantitative antigen density standards. Defined epitope counts per particle
+                        for biomarker quantitation.</p>
+                </div>
+
+                <div class="product-card reveal rd4">
+                    <svg class="product-icon" viewBox="0 0 44 44" fill="none">
+                        <line x1="4" y1="36" x2="4" y2="10" stroke="#F76A00" stroke-width="1.5" stroke-linecap="round"
+                            opacity=".4" />
+                        <line x1="4" y1="36" x2="18" y2="36" stroke="#F76A00" stroke-width="1.5" stroke-linecap="round"
+                            opacity=".4" />
+                        <circle cx="9" cy="28" r="2" fill="#F76A00" opacity=".5" />
+                        <circle cx="11" cy="24" r="2.5" fill="#F76A00" opacity=".8" />
+                        <circle cx="13" cy="21" r="2" fill="#F76A00" opacity=".5" />
+                        <circle cx="8" cy="23" r="1.5" fill="#F76A00" opacity=".4" />
+                        <line x1="20" y1="22" x2="24" y2="22" stroke="#F76A00" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="20" y1="20" x2="20" y2="24" stroke="#F76A00" stroke-width="1"
+                            stroke-linecap="round" />
+                        <line x1="24" y1="20" x2="24" y2="24" stroke="#F76A00" stroke-width="1"
+                            stroke-linecap="round" />
+                        <line x1="26" y1="36" x2="26" y2="10" stroke="#F76A00" stroke-width="1.5" stroke-linecap="round"
+                            opacity=".4" />
+                        <line x1="26" y1="36" x2="40" y2="36" stroke="#F76A00" stroke-width="1.5" stroke-linecap="round"
+                            opacity=".4" />
+                        <circle cx="31" cy="28" r="2" fill="#F76A00" opacity=".5" />
+                        <circle cx="33" cy="24" r="2.5" fill="#F76A00" opacity=".8" />
+                        <circle cx="35" cy="21" r="2" fill="#F76A00" opacity=".5" />
+                        <circle cx="30" cy="23" r="1.5" fill="#F76A00" opacity=".4" />
+                    </svg>
+                    <span class="product-tag">Scatter Calibration</span>
+                    <div class="product-name">ScatterBridge</div>
+                    <p class="product-desc">Scatter calibration across instruments. Same particle, same signal, every
+                        cytometer.</p>
+                </div>
+
+                <div class="product-card reveal rd5">
+                    <svg class="product-icon" viewBox="0 0 44 44" fill="none">
+                        <line x1="4" y1="34" x2="40" y2="34" stroke="#F76A00" stroke-width="1" opacity=".2"
+                            stroke-linecap="round" />
+                        <path
+                            d="M4 34 L8 34 Q10 34 11 30 Q12 26 13 24 Q14 22 15 18 Q16 14 17 14 Q18 14 19 18 Q20 22 21 26 Q22 30 23 32 Q24 34 26 34 Q28 34 29 30 Q30 26 31 22 Q32 18 33 18 Q34 18 35 22 Q36 26 37 30 Q38 34 40 34"
+                            stroke="#F76A00" stroke-width="1.5" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="17" cy="14" r="3" fill="#F76A00" />
+                        <circle cx="33" cy="18" r="2.5" fill="#F76A00" opacity=".5" />
+                    </svg>
+                    <span class="product-tag">Instrument QC</span>
+                    <div class="product-name">FlowCytes</div>
+                    <p class="product-desc">Instrument standardization, compensation, and spectral unmixing controls.
+                    </p>
+                </div>
+
+                <div class="product-card featured reveal rd6">
+                    <svg class="product-icon" viewBox="0 0 44 44" fill="none">
+                        <circle cx="22" cy="22" r="18" stroke="#F76A00" stroke-width="1.5" fill="none" />
+                        <line x1="22" y1="4" x2="22" y2="8" stroke="#F76A00" stroke-width="2" stroke-linecap="round" />
+                        <line x1="40" y1="22" x2="36" y2="22" stroke="#F76A00" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="22" y1="40" x2="22" y2="36" stroke="#F76A00" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="4" y1="22" x2="8" y2="22" stroke="#F76A00" stroke-width="2" stroke-linecap="round" />
+                        <circle cx="22" cy="22" r="9" stroke="#F76A00" stroke-width="1" fill="none" opacity=".4" />
+                        <circle cx="22" cy="22" r="3.5" fill="#F76A00" />
+                    </svg>
+                    <span class="product-tag">Custom</span>
+                    <div class="product-name">TruCytes®</div>
+                    <p class="product-desc">Custom controls. Engineered to your specification in weeks, not months.</p>
+                    <a href="/contact" class="product-link">Build yours →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+     06 — CLOSING CTA
+════════════════════════════════ -->
+    <section class="closing-section">
+        <div class="eyebrow muted reveal" style="justify-content:center;">Get started</div>
+        <h2 class="reveal rd1">What cell mimic<br>do you need,<br>or <em>instrument calibrated?</em></h2>
+        <p class="sub reveal rd2">We can show you how it's done.</p>
+        <a href="/contact" class="btn-closing reveal rd3">Let's Talk →</a>
+        <div class="closing-trust reveal rd4">
+            <span>ISO 9001:2015</span>
+            <span>Custom in weeks</span>
+            <span>3-year shelf life</span>
+            <span>Same-lot guarantee</span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <span class="footer-logo">SlingshotBio</span>
+                <span class="footer-copy">© 2024 Slingshot Biosciences · Not plastic. Not a person. Not an
+                    animal.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+            document.getElementById('progress').style.width = p + '%';
+        }, { passive: true });
+
+        // Scroll reveal
+        const ro = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+        // ── Auto-play carousel ──
+        const DURATION = 5000;
+        let current = 0, timer = null, paused = false;
+
+        const inds = () => document.querySelectorAll('.why-ind');
+        const panels = () => document.querySelectorAll('.why-cpanel');
+        const carousel = document.getElementById('whyCarousel');
+
+        function activate(n) {
+            inds().forEach((el, i) => {
+                el.classList.remove('active');
+                // Force animation restart by toggling the fill element
+                const fill = el.querySelector('.why-ind-fill');
+                fill.style.animation = 'none';
+                void fill.offsetWidth; // reflow
+                fill.style.animation = '';
+            });
+            panels().forEach((el, i) => el.classList.toggle('active', i === n));
+            inds()[n].classList.add('active');
+            current = n;
+        }
+
+        function next() {
+            activate((current + 1) % 5);
+        }
+
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => { if (!paused) next(); }, DURATION);
+        }
+
+        // Jump on click — restarts timer from that slide
+        function jumpTo(n) {
+            activate(n);
+            startTimer();
+        }
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => { paused = true; });
+        carousel.addEventListener('mouseleave', () => { paused = false; });
+
+        // Start
+        startTimer();
+    </script>
+</body>
+
+</html>

@@ -346,6 +346,53 @@
     /* TruCytes overlay + badge */
     .pcard-trucytes .pcard-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom right,rgba(247,106,0,.2),rgba(247,106,0,.06));pointer-events:none;z-index:1}
     .pcard-trucytes-badge{position:absolute;top:14px;right:14px;z-index:2;background:var(--orange);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px}
+
+    /* ── OPTION STRIPS ── */
+    .opt-strip{padding:14px 48px;display:flex;align-items:center;gap:14px;background:#F0EDEA;border-top:1px solid var(--gray-light)}
+    .opt-pill{width:24px;height:24px;border-radius:50%;background:var(--black);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+    .opt-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-mid)}
+    .opt-label em{color:var(--black);font-style:normal}
+
+    /* ── A: BENTO ABSORPTION ── */
+    .why-intro-tile{
+      grid-column:span 6;
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:48px;
+      padding:40px 36px;
+      background:var(--bg);
+    }
+    .why-intro-tile::before{display:none}
+    .wit-left{display:flex;flex-direction:column;gap:6px;padding-top:2px}
+    .wit-left .eyebrow{margin-bottom:0}
+    .wit-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:rgba(13,12,12,.18);line-height:1.3;letter-spacing:-.01em;margin-top:8px}
+    .wit-right{display:flex;flex-direction:column}
+    .wit-p{font-size:13px;color:var(--gray-mid);line-height:1.8;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid rgba(222,220,218,.55)}
+    .wit-p:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+
+    /* ── B: AMBIENT OPACITY ── */
+    .why-ambient{opacity:.28;transition:opacity .6s cubic-bezier(.22,.61,.36,1)}
+    .why-ambient:hover{opacity:.92}
+
+    /* ── C: DE-MATERIALISED ── */
+    .why-ghost p.why-para,
+    .why-ghost p.why-para-bridge{
+      font-size:12px!important;
+      font-weight:300!important;
+      color:rgba(85,83,80,.42)!important;
+      line-height:1.7!important;
+      border-bottom:none!important;
+      padding-bottom:0!important;
+      margin-bottom:9px!important;
+      letter-spacing:.01em;
+    }
+    .why-ghost p em.why-including{color:rgba(247,106,0,.4)!important}
+    .why-ghost p:last-child{margin-bottom:0!important}
+
+    @media(max-width:960px){
+      .why-intro-tile{grid-template-columns:1fr;gap:24px}
+      .opt-strip{padding:14px 24px}
+    }
   </style>
 </head>
 <body>
@@ -448,56 +495,154 @@
   </div>
 </section>
 
-<!-- ════ 03 WHY CELL MIMICS REPLACE CELLS ════ -->
-<section class="why-section" id="why">
+<!-- ════ 03-A: BENTO ABSORPTION ════ -->
+<div class="opt-strip">
+  <span class="opt-pill">A</span>
+  <span class="opt-label">Copy absorbed into bento as intro tile</span>
+</div>
+<section class="why-section" id="why-a">
   <div class="container">
-
-    <div class="why-head">
-      <div class="why-head-left">
-        <div class="eyebrow">The science</div>
-        <h2>Why Cell Mimics<br>Replace Cells</h2>
-      </div>
-      <div class="why-head-right reveal">
-        <p class="why-para">Through the intersection of biochemistry, polymer chemistry and high-precision manufacturing, we have created synthetic cell mimics that behave similarly to real cells. The Slingshot platform is the world&rsquo;s first on demand, synthetic cell design platform to address the industry&rsquo;s reliance on and limitations around biologically-derived cellular controls.</p>
-        <p class="why-para">This breakthrough technology creates synthetic cell mimics that match the optical, fluorescence and biochemical features of biological cells. The result is the ideal cell control, achieved without sacrificing performance or consistency.</p>
-        <p class="why-para-bridge">Synthetic cell mimics are shelf stable and can be created on-demand and at scale. Slingshot&rsquo;s technology decreases costs, shortens development timelines and increases accessibility to cell-like controls. Our cutting-edge technology platform can be used in a range of applications <em class="why-including">including:</em></p>
-      </div>
+    <div style="margin-bottom:32px" class="reveal">
+      <div class="eyebrow">The science</div>
+      <h2 style="font-size:clamp(34px,4vw,54px);font-weight:800;line-height:1.08;color:var(--black)">Why Cell Mimics<br>Replace Cells</h2>
     </div>
-
     <div class="why-bento reveal">
-
+      <div class="why-item why-intro-tile">
+        <div class="wit-left">
+          <div class="eyebrow">Background</div>
+          <div class="wit-label">The platform<br>in full</div>
+        </div>
+        <div class="wit-right">
+          <p class="wit-p">Through the intersection of biochemistry, polymer chemistry and high-precision manufacturing, we have created synthetic cell mimics that behave similarly to real cells. The Slingshot platform is the world&rsquo;s first on demand, synthetic cell design platform to address the industry&rsquo;s reliance on and limitations around biologically-derived cellular controls.</p>
+          <p class="wit-p">This breakthrough technology creates synthetic cell mimics that match the optical, fluorescence and biochemical features of biological cells. The result is the ideal cell control, achieved without sacrificing performance or consistency.</p>
+          <p class="wit-p">Synthetic cell mimics are shelf stable and can be created on-demand and at scale. Slingshot&rsquo;s technology decreases costs, shortens development timelines and increases accessibility to cell-like controls. Our cutting-edge technology platform can be used in a range of applications <em class="why-including">including:</em></p>
+        </div>
+      </div>
+      
       <div class="why-item">
         <div class="why-item-n">01 &mdash; Assay Development</div>
         <div class="why-item-title">Standardize across every stage of development</div>
         <p class="why-item-desc">Engineer custom controls for biomarker assays, immune monitoring, and novel endpoints. Move assays from translational research through pivotal trials without operator variability or lot-to-lot drift.</p>
       </div>
-
       <div class="why-item">
         <div class="why-item-n">02 &mdash; Laboratory Diagnostics</div>
         <div class="why-item-title">Model any disease state, not just common ones</div>
         <p class="why-item-desc">Match biomarker expression to specific disease states, including rare and emerging indications where commercial reference material doesn&rsquo;t exist. Tune antigen density to model severity &mdash; not just presence.</p>
       </div>
-
       <div class="why-item">
         <div class="why-item-n">03 &mdash; Adoptive Cell Therapy</div>
         <div class="why-item-title">Controls cell therapy manufacturing actually needs</div>
         <p class="why-item-desc">Validate CAR-T potency, identity, and purity endpoints with custom controls for enumeration, transgene expression, and viral vector characterization &mdash; even when no commercial reference exists.</p>
       </div>
-
       <div class="why-item">
         <div class="why-item-n">04 &mdash; Drug Development</div>
         <div class="why-item-title">Consistent data from Phase 1 through approval</div>
         <p class="why-item-desc">Stable, reproducible reagents reduce complex normalisation workflows historically required for multi-site clinical trials. Phase 1 to NDA: same signal, same control, same lot.</p>
       </div>
-
       <div class="why-item">
         <div class="why-item-n">05 &mdash; Instrument Performance</div>
         <div class="why-item-title">Tech errors visible against a stable baseline</div>
         <p class="why-item-desc">Calibration, compensation, and unmixing controls for cross-platform consistency. Instrument drift stands out immediately when your reference is a synthetic standard, not a variable biological.</p>
       </div>
-
     </div>
+  </div>
+</section>
 
+<!-- ════ 03-B: AMBIENT OPACITY ════ -->
+<div class="opt-strip">
+  <span class="opt-pill">B</span>
+  <span class="opt-label">Ambient — <em>hover the text to read</em></span>
+</div>
+<section class="why-section" id="why-b">
+  <div class="container">
+    <div class="why-head">
+      <div class="why-head-left reveal">
+        <div class="eyebrow">The science</div>
+        <h2>Why Cell Mimics<br>Replace Cells</h2>
+      </div>
+      <div class="why-head-right why-ambient">
+        <p class="why-para">Through the intersection of biochemistry, polymer chemistry and high-precision manufacturing, we have created synthetic cell mimics that behave similarly to real cells. The Slingshot platform is the world&rsquo;s first on demand, synthetic cell design platform to address the industry&rsquo;s reliance on and limitations around biologically-derived cellular controls.</p>
+        <p class="why-para">This breakthrough technology creates synthetic cell mimics that match the optical, fluorescence and biochemical features of biological cells. The result is the ideal cell control, achieved without sacrificing performance or consistency.</p>
+        <p class="why-para-bridge">Synthetic cell mimics are shelf stable and can be created on-demand and at scale. Slingshot&rsquo;s technology decreases costs, shortens development timelines and increases accessibility to cell-like controls. Our cutting-edge technology platform can be used in a range of applications <em class="why-including">including:</em></p>
+      </div>
+    </div>
+    <div class="why-bento reveal">
+      
+      <div class="why-item">
+        <div class="why-item-n">01 &mdash; Assay Development</div>
+        <div class="why-item-title">Standardize across every stage of development</div>
+        <p class="why-item-desc">Engineer custom controls for biomarker assays, immune monitoring, and novel endpoints. Move assays from translational research through pivotal trials without operator variability or lot-to-lot drift.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">02 &mdash; Laboratory Diagnostics</div>
+        <div class="why-item-title">Model any disease state, not just common ones</div>
+        <p class="why-item-desc">Match biomarker expression to specific disease states, including rare and emerging indications where commercial reference material doesn&rsquo;t exist. Tune antigen density to model severity &mdash; not just presence.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">03 &mdash; Adoptive Cell Therapy</div>
+        <div class="why-item-title">Controls cell therapy manufacturing actually needs</div>
+        <p class="why-item-desc">Validate CAR-T potency, identity, and purity endpoints with custom controls for enumeration, transgene expression, and viral vector characterization &mdash; even when no commercial reference exists.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">04 &mdash; Drug Development</div>
+        <div class="why-item-title">Consistent data from Phase 1 through approval</div>
+        <p class="why-item-desc">Stable, reproducible reagents reduce complex normalisation workflows historically required for multi-site clinical trials. Phase 1 to NDA: same signal, same control, same lot.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">05 &mdash; Instrument Performance</div>
+        <div class="why-item-title">Tech errors visible against a stable baseline</div>
+        <p class="why-item-desc">Calibration, compensation, and unmixing controls for cross-platform consistency. Instrument drift stands out immediately when your reference is a synthetic standard, not a variable biological.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 03-C: DE-MATERIALISED ════ -->
+<div class="opt-strip">
+  <span class="opt-pill">C</span>
+  <span class="opt-label">De-materialised — present but not demanding</span>
+</div>
+<section class="why-section" id="why-c">
+  <div class="container">
+    <div class="why-head">
+      <div class="why-head-left reveal">
+        <div class="eyebrow">The science</div>
+        <h2>Why Cell Mimics<br>Replace Cells</h2>
+      </div>
+      <div class="why-head-right why-ghost reveal">
+        <p class="why-para">Through the intersection of biochemistry, polymer chemistry and high-precision manufacturing, we have created synthetic cell mimics that behave similarly to real cells. The Slingshot platform is the world&rsquo;s first on demand, synthetic cell design platform to address the industry&rsquo;s reliance on and limitations around biologically-derived cellular controls.</p>
+        <p class="why-para">This breakthrough technology creates synthetic cell mimics that match the optical, fluorescence and biochemical features of biological cells. The result is the ideal cell control, achieved without sacrificing performance or consistency.</p>
+        <p class="why-para-bridge">Synthetic cell mimics are shelf stable and can be created on-demand and at scale. Slingshot&rsquo;s technology decreases costs, shortens development timelines and increases accessibility to cell-like controls. Our cutting-edge technology platform can be used in a range of applications <em class="why-including">including:</em></p>
+      </div>
+    </div>
+    <div class="why-bento reveal">
+      
+      <div class="why-item">
+        <div class="why-item-n">01 &mdash; Assay Development</div>
+        <div class="why-item-title">Standardize across every stage of development</div>
+        <p class="why-item-desc">Engineer custom controls for biomarker assays, immune monitoring, and novel endpoints. Move assays from translational research through pivotal trials without operator variability or lot-to-lot drift.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">02 &mdash; Laboratory Diagnostics</div>
+        <div class="why-item-title">Model any disease state, not just common ones</div>
+        <p class="why-item-desc">Match biomarker expression to specific disease states, including rare and emerging indications where commercial reference material doesn&rsquo;t exist. Tune antigen density to model severity &mdash; not just presence.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">03 &mdash; Adoptive Cell Therapy</div>
+        <div class="why-item-title">Controls cell therapy manufacturing actually needs</div>
+        <p class="why-item-desc">Validate CAR-T potency, identity, and purity endpoints with custom controls for enumeration, transgene expression, and viral vector characterization &mdash; even when no commercial reference exists.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">04 &mdash; Drug Development</div>
+        <div class="why-item-title">Consistent data from Phase 1 through approval</div>
+        <p class="why-item-desc">Stable, reproducible reagents reduce complex normalisation workflows historically required for multi-site clinical trials. Phase 1 to NDA: same signal, same control, same lot.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-item-n">05 &mdash; Instrument Performance</div>
+        <div class="why-item-title">Tech errors visible against a stable baseline</div>
+        <p class="why-item-desc">Calibration, compensation, and unmixing controls for cross-platform consistency. Instrument drift stands out immediately when your reference is a synthetic standard, not a variable biological.</p>
+      </div>
+    </div>
   </div>
 </section>
 
